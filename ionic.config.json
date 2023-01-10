@@ -1,0 +1,7 @@
+{
+  "name": "FrontCarriPlan",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
