@@ -1,0 +1,64 @@
+<ion-content [fullscreen]="true">
+
+  <div class="row tite" style="margin-top: 60px; display: flex; font-size: 30px; margin-left: 20px;">
+
+    <div class="col-4">
+      <!-- <ion-icon (click)="back()" name="arrow-back-outline"></ion-icon> -->
+      <ion-icon (click)="back()" name="arrow-back-circle-outline"></ion-icon>
+    </div>
+    <div class="col" style="margin-left: 35px;">
+      <div class="titee">
+        <h2 class="tit">Inscription Elève</h2>
+      </div>
+    </div>
+    <div class="col-4"></div>
+  </div>
+
+  <div align="center" style="margin-top: 20px; margin-bottom: 30px;">
+    <p>
+      CarriPlan vous accompagne pour vous aider à planifier votre carrière.
+    </p>
+  </div>
+
+  <form>
+
+    <ion-item mode="md">
+      <ion-label position="floating">Nom & Prénom</ion-label>
+      <ion-input required="true"></ion-input>
+    </ion-item>
+    <ion-item mode="md">
+      <ion-label position="floating">Numéro</ion-label>
+      <ion-input type="tel" required="true"></ion-input>
+    </ion-item>
+    <ion-item mode="md">
+      <ion-label position="floating">Email</ion-label>
+      <ion-input type="email"></ion-input>
+    </ion-item>
+    <ion-item mode='md'>
+      <ion-icon [name]="type ? 'eye-off' : 'eye'" slot="end" color="dark" (click)="changeType()" style="font-family: 'Poppins';
+        font-style: normal; opacity: 0.5;">
+      </ion-icon>
+      <ion-label position='floating'>Mot de passe</ion-label>
+      <ion-input required="true" color="black" type="password" [type]="type ? 'password' : 'text'"></ion-input>
+    </ion-item>
+    <ion-item mode='md'>
+      <ion-icon slot="end" color="dark" (click)="changeType()" style="font-family: 'Poppins';
+        font-style: normal; opacity: 0.5;">
+      </ion-icon>
+      <ion-label position='floating'>Confirmer Mot de passe</ion-label>
+      <ion-input required="true" color="black" type="password"></ion-input>
+    </ion-item>
+    <ion-button [routerLink]="['/connexion']" style="--background: #00A5E4; margin: 10px," expand="block">S’inscrire</ion-button>
+
+
+
+  </form>
+
+
+  <div class="row" style="text-align: center; margin-top: 50px;">
+    <p style="font-family: 'Poppins';
+    font-style: normal; opacity: 0.8;color: black; font-size: 17px;">Déjà un compte ? <a
+            [routerLink]="['/connexion']"
+            style="color: #00A5E4; font-weight: 600; text-decoration: none; font-size: 17px;">connectez-vous</a></p>
+</div>
+</ion-content>

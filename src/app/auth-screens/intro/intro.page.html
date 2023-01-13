@@ -1,0 +1,34 @@
+<ion-content [fullscreen]="true">
+
+  <ion-slides #slides pager="true">
+    <ion-slide [style.background-image]="'url(assets/imgs/background.png)'" class="topRight">
+      <div class="slide">
+        <img src="assets/imgs/scre1.png" />
+        <h2>Bienvenue dans CarriPlan</h2>
+        <p>
+          Une communauté et un accompagnement
+          entièrement gratuits pour vous aider dans ton orientation.
+        </p>
+      </div>
+    </ion-slide>
+
+    <ion-slide [style.background-image]="'url(assets/imgs/background.png)'" class="topRight">
+      <img src="assets/imgs/scre1.png" />
+      <h2>Trouvez votre voie. </h2>
+      <p>
+        <b>CarriPlan</b> vous accompagne pour vous aider à trouver votre orientation.
+      </p>
+    </ion-slide>
+
+    <ion-slide [style.background-image]="'url(assets/imgs/background.png)'" class="topRight">
+      <img src="assets/imgs/scre1.png" />
+      <h2>Planifiez votre carrière</h2>
+      <p>
+        <b>CarriPlan</b> vous aide à planifier votre carrière en fonction de vos compétences, vos intérêts ...
+      </p>
+      <ion-button [routerLink]="['/connexion']" style="--background: #00A5E4; ">Commencer <ion-icon slot="end"
+          name="arrow-forward"></ion-icon></ion-button>
+    </ion-slide>
+  </ion-slides>
+
+</ion-content>

@@ -1,0 +1,28 @@
+
+<ion-content [fullscreen]="true">
+  <div class="row tite" style="margin-top: 60px; display: flex; font-size: 30px; margin-left: 20px;">
+
+    <div class="col-4">
+        <!-- <ion-icon (click)="back()"  name="arrow-back-outline"></ion-icon> -->
+        <ion-icon (click)="back()" name="arrow-back-circle-outline"></ion-icon>
+    </div>
+    <div class="col" style="margin-left: 30px;">
+        <div class="titee">
+            <h2 class="tit">Mot de passe oublié</h2>
+        </div>
+    </div>
+    <div class="col-4"></div>  
+</div>
+  
+  <div align="center" style="margin-top: 10px;">
+    <img src="assets/imgs/scre1.png" />
+  </div>
+
+  <form>
+    <ion-item mode="md">
+      <ion-label position="floating">Numéro ou Email</ion-label>
+      <ion-input required="true"></ion-input>
+    </ion-item>
+    <ion-button style="--background: #00A5E4; margin: 10px," expand="block">Réinitialiser mon mot de passe</ion-button>
+  </form>
+</ion-content>

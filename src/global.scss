@@ -24,3 +24,27 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+
+
+.swiper-container-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet {
+    margin: 0 4px;
+    background-color: #00A5E4;
+}
+
+.button-native::after {
+    background-color: #00A5E4;
+}
+
+ion-activated {
+    background-color: #00A5E4;
+}
+
+ion-button:hover {
+    background-color: #00A5E4 !important;
+}
+
+ion-button:hover {
+    border-radius: 10px;
+}
+
