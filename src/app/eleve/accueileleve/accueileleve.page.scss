@@ -1,0 +1,56 @@
+ion-content {
+    // ICI ON BLOCK LE SCROLLING
+    --offset-bottom: auto !important;
+    // background: #F8F6FB;
+    background: url('../../../assets/imgs/background.png') no-repeat center center/cover;
+    --overflow: hidden;
+    overflow: auto;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+    // --background: url('../../../assets/imgs/background.png') no-repeat center center/cover;
+}
+
+* {
+    font-family: 'Poppins';
+    // line-height: 194.5%;
+    // opacity: 0.5;
+    transform: rotate(0.01deg);
+    // line-height: 194.5%;
+    font-style: normal;
+}
+
+ion-card {
+    text-align: center;
+    align-content: center;
+    align-self: center;
+    // width: 100%;
+    margin-top: 30px;
+
+    // img {
+    //     text-align: center;
+    //     align-content: center;
+    //     align-self: center;
+    //     max-width: 40%;
+    //     max-height: 20%;
+    // }
+}
+
+h3 {
+    // margin-top: 2.8rem;
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-align: center;
+}
+
+.num{
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    background-color: #5AC7EB;
+    
+}

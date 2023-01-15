@@ -1,0 +1,22 @@
+ion-content {
+    // ICI ON BLOCK LE SCROLLING
+    --offset-bottom: auto !important;
+    // background: #F8F6FB;
+    background: url('../../../assets/imgs/background.png') no-repeat center center/cover;
+    --overflow: hidden;
+    overflow: auto;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+    // --background: url('../../../assets/imgs/background.png') no-repeat center center/cover;
+}
+
+* {
+    font-family: 'Poppins';
+    // line-height: 194.5%;
+    // opacity: 0.5;
+    transform: rotate(0.01deg);
+    // line-height: 194.5%;
+    font-style: normal;
+}

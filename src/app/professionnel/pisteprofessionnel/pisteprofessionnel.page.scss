@@ -1,0 +1,62 @@
+ion-content {
+    // ICI ON BLOCK LE SCROLLING
+    --offset-bottom: auto !important;
+    // background: #FFFF;
+    background: url('../../../assets/imgs/background.png') no-repeat center center/cover;
+    --overflow: hidden;
+    overflow: auto;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+    ion-list {
+        // margin: 0 4vh;
+        border-radius: 20px;
+        box-shadow: 0 0 3px 0 var(--ion-color-medium);
+        background: url('../../../assets/imgs/background.png') no-repeat center center/cover;
+        width: 100%;
+        ion-segment {
+            // --background: var(--ion-color-primary-contrast);
+            // border-radius: 20px;
+            // border: 1px solid lightgray;
+            --margin-top: 5px;
+            --margin-bottom:5px;
+            ion-segment-button {
+                --background-checked: #00A5E4;
+                --indicator-color: var(--ion-color-primary);
+                // --border-radius: 20px;
+                --color: #000000;
+                --color-checked: var(--ion-color-primary-contrast);
+                ion-label{
+                    font-size: 16px;
+                    font-family: 'Poppins';
+                }
+            }
+            
+        }
+    }
+    // --background: url('../../../assets/imgs/background.png') no-repeat center center/cover;
+}
+
+* {
+    font-family: 'Poppins';
+    // line-height: 194.5%;
+    // opacity: 0.5;
+    transform: rotate(0.01deg);
+    // line-height: 194.5%;
+    font-style: normal;
+}
+
+h3 {
+    margin-top: 15px; 
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-align: center;
+    // margin: 0px !important;
+}
+
+// .marginBottom {
+//      margin-bottom: 4vh;
+// }
+
