@@ -14,9 +14,7 @@ ion-content {
     // --background: url('../../../assets/imgs/background.png') no-repeat center center/cover;
 }
 
-ion-list {
-    background: url('../../../assets/imgs/background.png') no-repeat center center/cover;
-}
+
 
 * {
     font-family: 'Poppins';
@@ -29,12 +27,12 @@ ion-list {
 }
 
 h3 {
-    margin-top: 1.8rem;
-    font-size: 20px;
+    margin-top: 1.0rem;
+    font-size: 25px;
     font-weight: 800;
     letter-spacing: 0.06em;
     text-align: center;
-    margin-bottom: 1.8rem;
+    margin-bottom: 1.5rem;
 }
 
 ion-item {
@@ -58,3 +56,11 @@ ion-input {
     caret-color: auto;
 }
 
+.mat-stepper-horizontal {
+    margin-top: 8px;
+  }
+  
+  .mat-mdc-form-field {
+    margin-top: 16px;
+  }
+  

@@ -9,7 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatStepperModule} from '@angular/material/stepper';
-import { EtapeeleveComponent } from './eleve/autoevaluationeleve/etapeeleve/etapeeleve.component';
+
 
 @NgModule({
   declarations: [AppComponent],

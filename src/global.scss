@@ -36,6 +36,14 @@
     background-color: #00A5E4;
 }
 
+
+.mat-horizontal-content-container {
+    overflow: hidden;
+    padding: 0 24px 24px 24px;
+    height: 200px;
+    background-image: url("assets/imgs/dbatiment.jpg");
+  }
+
 ion-activated {
     background-color: #00A5E4;
 }
@@ -48,9 +56,16 @@ ion-button:hover {
     border-radius: 10px;
 }
 
-.mat-stepper-label-position-bottom .mat-horizontal-stepper-header .mat-step-icon {
-    margin-right: 0;
-    margin-left: 0;
+// .mat-stepper-label-position-bottom .mat-horizontal-stepper-header .mat-step-icon {
+//     margin-right: 0;
+//     margin-left: 0;
+//     background-color: #00A5E4;
+//     color: white;
+// }
+
+.mat-horizontal-stepper-header .mat-step-icon {
+    margin-right: 8px;
+    flex: none;
     background-color: #00A5E4;
     color: white;
 }

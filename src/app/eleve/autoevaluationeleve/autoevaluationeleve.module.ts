@@ -7,7 +7,6 @@ import { IonicModule } from '@ionic/angular';
 import { AutoevaluationelevePageRoutingModule } from './autoevaluationeleve-routing.module';
 
 import { AutoevaluationelevePage } from './autoevaluationeleve.page';
-import { EtapeeleveComponent } from './etapeeleve/etapeeleve.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatStepperModule} from '@angular/material/stepper';
@@ -20,6 +19,6 @@ import {MatStepperModule} from '@angular/material/stepper';
     AutoevaluationelevePageRoutingModule,
     MatStepperModule, ReactiveFormsModule, MatFormFieldModule
   ],
-  declarations: [AutoevaluationelevePage, EtapeeleveComponent]
+  declarations: [AutoevaluationelevePage]
 })
 export class AutoevaluationelevePageModule {}

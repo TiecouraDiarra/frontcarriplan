@@ -19,47 +19,55 @@
 <ion-content>
   <h3>Questionnaire</h3>
 
-    <mat-horizontal-stepper>
+  <!-- <button mat-raised-button (click)="isEditable = !isEditable">
+    {{!isEditable ? 'Enable edit mode' : 'Disable edit mode'}}
+  </button> -->
 
-      <mat-step label="Step 1">
-        <form>
-          <ion-item mode="md">
-            <ion-label position="floating">Rédaction :</ion-label>
-            <ion-input max="20" min="0" pattern="[0-9]" type="number" integerOnly step="1" minlength="0" maxlength="10"
-              required="true"></ion-input>
-          </ion-item>
-          <ion-item mode="md">
-            <ion-label position="floating">Histoire & Géographie :</ion-label>
-            <ion-input type="number" required="true"></ion-input>
-          </ion-item>
-          <ion-item mode="md">
-            <ion-label position="floating">Dictée & Question :</ion-label>
-            <ion-input type="number" required="true"></ion-input>
-          </ion-item>
-          <ion-item mode="md">
-            <ion-label position="floating">Mathématiques :</ion-label>
-            <ion-input type="number" required="true"></ion-input>
-          </ion-item>
-  
-        </form>
-      </mat-step>
-    
-      <mat-step label="Step 2">
-        Step 2 content
-      </mat-step>
-    
-      <mat-step label="Step 3">
-        You are now done.
-      </mat-step>
+  <mat-horizontal-stepper>
+
+    <mat-step label="eta 1" [stepControl]="firstFormGroup">
       
-    </mat-horizontal-stepper>
+      <!-- <form>
+          <ng-template matStepLabel>Fill out your name</ng-template>
+          <mat-form-field appearance="fill">
+            <mat-label>Name</mat-label>
+            <input matInput formControlName="firstCtrl" placeholder="Last name, First name" required>
+          </mat-form-field>
+          <div>
+            <button mat-button matStepperNext>Next</button>
+          </div>
+        </form> -->
+    </mat-step>
+    <style>
+     
+    </style>
+
+    <mat-step label="eta 2">
+      Step 2 content
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </mat-step>
+
+    <mat-step>
+      <ng-template matStepLabel>Fait</ng-template>
+      <p>You are now done.</p>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <!-- <button mat-button (click)="stepper.reset()">Reset</button> -->
+      </div>
+    </mat-step>
+
+
+  </mat-horizontal-stepper>
 
 
 
   <!-- <div [ngSwitch]="etape" class="contenu">
     <ion-list *ngSwitchCase="'etape1'">
       <div class="row" style="margin: 20px;">
-        <ion-progress-bar style="height: 10px; border-radius: 15px;" value="0.4"></ion-progress-bar>
+        <ion-progress-bar style="height: 10px; border-radius: 15px;" value="0.5"></ion-progress-bar>
       </div>
       <h3>Vos moyennes au DEF</h3>
       <form>
@@ -70,15 +78,15 @@
         </ion-item>
         <ion-item mode="md">
           <ion-label position="floating">Histoire & Géographie :</ion-label>
-          <ion-input type="number" required="true"></ion-input>
+          <ion-input max="20" min="0" type="number" required="true"></ion-input>
         </ion-item>
         <ion-item mode="md">
           <ion-label position="floating">Dictée & Question :</ion-label>
-          <ion-input type="number" required="true"></ion-input>
+          <ion-input max="20" min="0" type="number" required="true"></ion-input>
         </ion-item>
         <ion-item mode="md">
           <ion-label position="floating">Mathématiques :</ion-label>
-          <ion-input type="number" required="true"></ion-input>
+          <ion-input max="20" min="0" type="number" required="true"></ion-input>
         </ion-item>
 
       </form>
@@ -86,42 +94,42 @@
 
     <ion-list *ngSwitchCase="'etape2'">
       <div class="row" style="margin: 20px;">
-        <ion-progress-bar style="height: 10px; border-radius: 15px;" value="0.8"></ion-progress-bar>
+        <ion-progress-bar style="height: 10px; border-radius: 15px;" value="1.0"></ion-progress-bar>
       </div>
       <h3>Vos moyennes au DEF</h3>
       <form>
         <ion-item mode="md">
           <ion-label position="floating">Science Naturelle :</ion-label>
-          <ion-input pattern="[0-9]" type="number" integerOnly step="1" minlength="0" maxlength="10"
+          <ion-input max="20" min="0" pattern="[0-9]" type="number" integerOnly step="1" minlength="0" maxlength="10"
             required="true"></ion-input>
         </ion-item>
         <ion-item mode="md">
           <ion-label position="floating">Physique & Chimie :</ion-label>
-          <ion-input type="number" required="true"></ion-input>
+          <ion-input max="20" min="0" pattern="[0-9]" type="number" type="number" required="true"></ion-input>
         </ion-item>
         <ion-item mode="md">
           <ion-label position="floating">Anglais :</ion-label>
-          <ion-input type="number" required="true"></ion-input>
+          <ion-input max="20" min="0" pattern="[0-9]" type="number" type="number" required="true"></ion-input>
         </ion-item>
         <ion-item mode="md">
           <ion-label position="floating">ECM :</ion-label>
-          <ion-input type="number" required="true"></ion-input>
+          <ion-input max="20" min="0" pattern="[0-9]" type="number" type="number" required="true"></ion-input>
         </ion-item>
       </form>
     </ion-list>
   </div>
 
-  <div padding>
+  <div>
     <ion-segment [(ngModel)]="etape">
       <ion-segment-button  value="etape1">
-        Retour
+        Etape 1
       </ion-segment-button>
       <ion-segment-button  value="etape2">
-        Suivant
+        Etape 2
       </ion-segment-button>
     </ion-segment>
   </div>
 
-  <ion-button  expand="block">Envoyer</ion-button> -->
+  <ion-button [routerLink]="['/#']" style="--background: #00A5E4; margin: 30px," expand="block">Envoyer</ion-button> -->
 
 </ion-content>

@@ -10,14 +10,19 @@ export class AutoevaluationelevePage implements OnInit {
 
   userForm!: FormGroup;
 
+  firstFormGroup = this._formBuilder.group({
+    firstCtrl: ['', Validators.required],
+  });
+  secondFormGroup = this._formBuilder.group({
+    secondCtrl: ['', Validators.required],
+  });
+  isEditable = false;
+
   constructor(private _formBuilder: FormBuilder) {}
   etape: string = "etape1"; // default button
 
   ngOnInit() {
-    this.userForm = this._formBuilder.group({
-      name: ['', Validators.required],
-      address: ['', Validators.required]
-    });
+    
   }
   
 }
