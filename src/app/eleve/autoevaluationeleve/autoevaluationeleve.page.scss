@@ -10,10 +10,11 @@ ion-content {
     &::-webkit-scrollbar {
         display: none;
     }
+
     // --background: url('../../../assets/imgs/background.png') no-repeat center center/cover;
 }
 
-ion-list{
+ion-list {
     background: url('../../../assets/imgs/background.png') no-repeat center center/cover;
 }
 
@@ -49,10 +50,11 @@ ion-item {
     letter-spacing: 0.06em;
 }
 
-ion-button:hover{
+ion-button:hover {
     border-radius: 10px;
 }
 
 ion-input {
     caret-color: auto;
-   }
+}
+

@@ -48,3 +48,9 @@ ion-button:hover {
     border-radius: 10px;
 }
 
+.mat-stepper-label-position-bottom .mat-horizontal-stepper-header .mat-step-icon {
+    margin-right: 0;
+    margin-left: 0;
+    background-color: #00A5E4;
+    color: white;
+}

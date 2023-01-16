@@ -19,7 +19,44 @@
 <ion-content>
   <h3>Questionnaire</h3>
 
-  <div [ngSwitch]="etape" class="contenu">
+    <mat-horizontal-stepper>
+
+      <mat-step label="Step 1">
+        <form>
+          <ion-item mode="md">
+            <ion-label position="floating">Rédaction :</ion-label>
+            <ion-input max="20" min="0" pattern="[0-9]" type="number" integerOnly step="1" minlength="0" maxlength="10"
+              required="true"></ion-input>
+          </ion-item>
+          <ion-item mode="md">
+            <ion-label position="floating">Histoire & Géographie :</ion-label>
+            <ion-input type="number" required="true"></ion-input>
+          </ion-item>
+          <ion-item mode="md">
+            <ion-label position="floating">Dictée & Question :</ion-label>
+            <ion-input type="number" required="true"></ion-input>
+          </ion-item>
+          <ion-item mode="md">
+            <ion-label position="floating">Mathématiques :</ion-label>
+            <ion-input type="number" required="true"></ion-input>
+          </ion-item>
+  
+        </form>
+      </mat-step>
+    
+      <mat-step label="Step 2">
+        Step 2 content
+      </mat-step>
+    
+      <mat-step label="Step 3">
+        You are now done.
+      </mat-step>
+      
+    </mat-horizontal-stepper>
+
+
+
+  <!-- <div [ngSwitch]="etape" class="contenu">
     <ion-list *ngSwitchCase="'etape1'">
       <div class="row" style="margin: 20px;">
         <ion-progress-bar style="height: 10px; border-radius: 15px;" value="0.4"></ion-progress-bar>
@@ -28,7 +65,7 @@
       <form>
         <ion-item mode="md">
           <ion-label position="floating">Rédaction :</ion-label>
-          <ion-input pattern="[0-9]" type="number" integerOnly step="1" minlength="0" maxlength="10"
+          <ion-input max="20" min="0" pattern="[0-9]" type="number" integerOnly step="1" minlength="0" maxlength="10"
             required="true"></ion-input>
         </ion-item>
         <ion-item mode="md">
@@ -85,6 +122,6 @@
     </ion-segment>
   </div>
 
-  <ion-button  expand="block">Envoyer</ion-button>
+  <ion-button  expand="block">Envoyer</ion-button> -->
 
 </ion-content>

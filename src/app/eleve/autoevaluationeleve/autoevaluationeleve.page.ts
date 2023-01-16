@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-autoevaluationeleve',
@@ -7,10 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AutoevaluationelevePage implements OnInit {
 
-  constructor() { }
+  userForm!: FormGroup;
+
+  constructor(private _formBuilder: FormBuilder) {}
   etape: string = "etape1"; // default button
 
   ngOnInit() {
+    this.userForm = this._formBuilder.group({
+      name: ['', Validators.required],
+      address: ['', Validators.required]
+    });
   }
   
 }
