@@ -14,7 +14,9 @@ ion-content {
     // --background: url('../../../assets/imgs/background.png') no-repeat center center/cover;
 }
 
-
+ion-list{
+    background: url('../../../assets/imgs/background.png') no-repeat center center/cover;
+}
 
 * {
     font-family: 'Poppins';
@@ -63,4 +65,5 @@ ion-input {
   .mat-mdc-form-field {
     margin-top: 16px;
   }
+  
   

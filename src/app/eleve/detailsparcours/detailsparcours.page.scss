@@ -1,74 +1,49 @@
-ion-content {
+ion-content{
     // ICI ON BLOCK LE SCROLLING
-    --offset-bottom: auto !important;
+    --offset-bottom: auto!important;
     // background: #F8F6FB;
     background: url('../../../assets/imgs/background.png') no-repeat center center/cover;
-    --overflow: hidden;
-    overflow: auto;
-
-    &::-webkit-scrollbar {
-        display: none;
-    }
-    // --background: url('../../../assets/imgs/background.png') no-repeat center center/cover;
+  --overflow: hidden;
+  overflow: auto;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 * {
     font-family: 'Poppins';
-    // line-height: 194.5%;
-    // opacity: 0.5;
     transform: rotate(0.01deg);
-    // line-height: 194.5%;
     font-style: normal;
 }
 
-ion-card {
-    text-align: center;
-    align-content: center;
-    align-self: center;
-    width: 93%;
-    margin-top: 30px;
-
-    // img {
-    //     text-align: center;
-    //     align-content: center;
-    //     align-self: center;
-    //     max-width: 40%;
-    //     max-height: 20%;
-    // }
+// .tt {
+//     z-index: 1;
+//     position: absolute;
+//     text-align: center;
+//     margin: 0 auto;
+//     left: 0;
+//     right: 0;
+//     top: 8%;
+//     color: white;
+//     font-size: 25px;
+//     font-weight: bold;
+// }
+.pagination {
+    justify-content: center;
+    margin-top: 20px;
+    margin-left: -30px;
+  }
+  
+.ttt{
+    height: 10%;
+    width: 100%;
 }
 
-h3 {
-    margin-top: 15px; 
-    font-size: 20px;
-    font-weight: 800;
-    letter-spacing: 0.06em;
-    text-align: center;
-    // margin: 0px !important;
-}
-h4 {
-    margin-top: 15px; 
-    font-size: 18px;
-    font-weight: 800;
-    letter-spacing: 0.06em;
-    text-align: center;
-    // margin: 0px !important;
-}
-
-
-.num{
-    position: absolute;
-    top: 4%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 1;
-    background-color: #5AC7EB;
-    
-}
-
-.titee{
-    text-align: center;
-    justify-content: center
-}
+// ion-card{
+//     img{
+//         height: 20px;
+//     }
+// }
 
 ion-card .card2{
     text-align: center;
@@ -90,6 +65,10 @@ ion-card .card2{
         opacity: 1.0;
     }
 }
+
+// .image {
+
+// }
 
 .tt1 {
     // background: rgba(0, 0, 0, 0.8);

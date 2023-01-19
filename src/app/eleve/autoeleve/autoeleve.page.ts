@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class AutoelevePage implements OnInit {
 
   constructor() { }
+  p:number=1;
 
   ngOnInit() {
   }

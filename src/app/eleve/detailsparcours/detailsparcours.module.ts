@@ -4,9 +4,9 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { AutoelevePageRoutingModule } from './autoeleve-routing.module';
+import { DetailsparcoursPageRoutingModule } from './detailsparcours-routing.module';
 
-import { AutoelevePage } from './autoeleve.page';
+import { DetailsparcoursPage } from './detailsparcours.page';
 import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
@@ -14,9 +14,9 @@ import { NgxPaginationModule } from 'ngx-pagination';
     CommonModule,
     FormsModule,
     IonicModule,
-    AutoelevePageRoutingModule,
+    DetailsparcoursPageRoutingModule,
     NgxPaginationModule
   ],
-  declarations: [AutoelevePage]
+  declarations: [DetailsparcoursPage]
 })
-export class AutoelevePageModule {}
+export class DetailsparcoursPageModule {}

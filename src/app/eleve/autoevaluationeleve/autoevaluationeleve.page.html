@@ -23,20 +23,29 @@
     {{!isEditable ? 'Enable edit mode' : 'Disable edit mode'}}
   </button> -->
 
-  <mat-horizontal-stepper>
+  <!-- <mat-horizontal-stepper>
 
-    <mat-step label="eta 1" [stepControl]="firstFormGroup">
-      
-      <!-- <form>
-          <ng-template matStepLabel>Fill out your name</ng-template>
-          <mat-form-field appearance="fill">
-            <mat-label>Name</mat-label>
-            <input matInput formControlName="firstCtrl" placeholder="Last name, First name" required>
-          </mat-form-field>
-          <div>
-            <button mat-button matStepperNext>Next</button>
+    <mat-step label="eta 1" [stepControl]="firstFormGroup" fxFlex="100"  fxLayout="column">
+      <div class="mat-horizontal-content-container">
+        <div style="border: 2px solid green; margin-top: 200px;" fxFlex="100">
+          <div fxFlex="100" fxFill style="border: 2px solid red;">
+            Step 1: must fill the entire space <br>
+            Step 1: must fill the entire space <br>
+            Step 1: must fill the entire space <br>
+            Step 1: must fill the entire space <br>
+            Step 1: must fill the entire space <br>
+            Step 1: must fill the entire space <br>
+            Step 1: must fill the entire space <br>
+            Step 1: must fill the entire space <br>
+            Step 1: must fill the entire space <br>
+            Step 1: must fill the entire space <br>
+            Step 1: must fill the entire space <br>
+            
+            <p>Issues? <a href="mailto:&#103;&#105;&#116;&#104;&#117;&#098;&#064;&#116;&#111;&#110;&#121;&#115;&#097;&#109;&#112;&#101;&#114;&#105;&#046;&#105;&#116;">Text me!</a>
           </div>
-        </form> -->
+        </div>
+      </div>
+      
     </mat-step>
     <style>
      
@@ -55,16 +64,15 @@
       <p>You are now done.</p>
       <div>
         <button mat-button matStepperPrevious>Back</button>
-        <!-- <button mat-button (click)="stepper.reset()">Reset</button> -->
       </div>
     </mat-step>
 
 
-  </mat-horizontal-stepper>
+  </mat-horizontal-stepper> -->
 
 
 
-  <!-- <div [ngSwitch]="etape" class="contenu">
+  <div [ngSwitch]="etape" class="contenu">
     <ion-list *ngSwitchCase="'etape1'">
       <div class="row" style="margin: 20px;">
         <ion-progress-bar style="height: 10px; border-radius: 15px;" value="0.5"></ion-progress-bar>
@@ -130,6 +138,6 @@
     </ion-segment>
   </div>
 
-  <ion-button [routerLink]="['/#']" style="--background: #00A5E4; margin: 30px," expand="block">Envoyer</ion-button> -->
+  <ion-button [routerLink]="['/tabs/valid']" style="--background: #00A5E4; margin: 30px," expand="block">Envoyer</ion-button>
 
 </ion-content>

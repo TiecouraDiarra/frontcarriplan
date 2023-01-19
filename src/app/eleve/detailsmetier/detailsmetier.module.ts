@@ -4,9 +4,9 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { AutoelevePageRoutingModule } from './autoeleve-routing.module';
+import { DetailsmetierPageRoutingModule } from './detailsmetier-routing.module';
 
-import { AutoelevePage } from './autoeleve.page';
+import { DetailsmetierPage } from './detailsmetier.page';
 import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
@@ -14,9 +14,9 @@ import { NgxPaginationModule } from 'ngx-pagination';
     CommonModule,
     FormsModule,
     IonicModule,
-    AutoelevePageRoutingModule,
+    DetailsmetierPageRoutingModule,
     NgxPaginationModule
   ],
-  declarations: [AutoelevePage]
+  declarations: [DetailsmetierPage]
 })
-export class AutoelevePageModule {}
+export class DetailsmetierPageModule {}

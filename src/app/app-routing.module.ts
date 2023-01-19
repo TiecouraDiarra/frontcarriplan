@@ -106,7 +106,20 @@ const routes: Routes = [
   {
     path: 'autoevaluationeleve',
     loadChildren: () => import('./eleve/autoevaluationeleve/autoevaluationeleve.module').then( m => m.AutoevaluationelevePageModule)
+  },  {
+    path: 'valid',
+    loadChildren: () => import('./eleve/valid/valid.module').then( m => m.ValidPageModule)
   },
+  {
+    path: 'detailsparcours',
+    loadChildren: () => import('./eleve/detailsparcours/detailsparcours.module').then( m => m.DetailsparcoursPageModule)
+  },
+  {
+    path: 'detailsmetier',
+    loadChildren: () => import('./eleve/detailsmetier/detailsmetier.module').then( m => m.DetailsmetierPageModule)
+  },
+
+
 ];
 
 @NgModule({

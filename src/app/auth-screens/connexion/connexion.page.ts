@@ -10,12 +10,21 @@ export class ConnexionPage implements OnInit {
 
   // form!: FormGroup;
   type = true;
+  numeromdp: string;
+  psw: string;
+  submitted = false;
+  
 
   constructor() { }
 
   ngOnInit() {
   }
+  
 
+  submitForm() {
+    console.log('Nom :', this.numeromdp);
+    console.log('Adresse e-mail :', this.psw);
+  }
 
   changeType() {
     this.type = !this.type;

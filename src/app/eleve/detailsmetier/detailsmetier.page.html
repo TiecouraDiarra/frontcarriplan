@@ -1,0 +1,56 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+  integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons>
+      <ion-button>
+        <h4 style="color: black; font-weight: bold;">CarriPlan</h4>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="primary">
+      <ion-button>
+        <ion-icon slot="icon-only" style="color: black;" name="person-circle"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="row tite" style="margin-top: 10px; display: flex; font-size: 30px; margin-left: 1px;">
+
+    <div class="col-2">
+      <!-- <ion-icon (click)="back()" name="arrow-back-outline"></ion-icon> -->
+      <ion-icon (click)="back()" name="arrow-back-circle-outline"></ion-icon>
+    </div>
+    <div class="col" style="margin-top: 4px;">
+      <div class="titee">
+        <h2 class="tit">Informaticien</h2>
+      </div>
+    </div>
+    <div class="col-2"></div>
+  </div>
+  <div class="container" style="padding: 0px">
+    <ion-card>
+      <!-- <div class="tt" >
+        <p>Science Exacte</p>
+      </div> -->
+      <img style="opacity: 2.0;" alt="" src="assets/imgs/metier1.jpg" />
+      <ion-card-header>
+        <ion-card-subtitle style="color: black; font-weight: bold;font-size: 16px;">Description</ion-card-subtitle>
+      </ion-card-header>
+    
+      <ion-card-content style="margin-top: -10px; text-align: justify;">
+        Here's a small text description for the card content. Nothing more, nothing less.
+      </ion-card-content>
+
+      <ion-card-header style="margin-top: -19px;">
+        <ion-card-subtitle style="color: black; font-weight: bold; ">Les Conseils</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content style="margin-top: -10px; text-align: justify;">
+        Here's a small text description for the card content. Nothing more, nothing less.
+      </ion-card-content>
+    </ion-card>
+  </div>
+ 
+</ion-content>

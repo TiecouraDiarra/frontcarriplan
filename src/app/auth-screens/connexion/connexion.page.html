@@ -3,12 +3,14 @@
   <div align="center" style="margin-top: 50px;">
     <img src="assets/imgs/scre1.png" />
   </div>
-  <form>
+  <form (ngSubmit)="submitForm()">
     <ion-item mode="md" >
       <ion-label position="floating">Numéro ou Email</ion-label>
-      <ion-input required="true"></ion-input>
+      <ion-input [(ngModel)]="numeromdp" name="numeromdp"></ion-input>
     </ion-item>
-    
+    <div *ngIf="!numeromdp && submitted" class="error-message">
+      Tous les champs sont obligatoires
+    </div>
     
     <ion-item mode='md'>
       <ion-icon 
@@ -19,15 +21,13 @@
         font-style: normal; opacity: 0.5;">
       </ion-icon>
       <ion-label position='floating'>Mot de passe</ion-label>
-      <ion-input required="true" color="black" type="password" [type]="type ? 'password' : 'text'"></ion-input>
+      <ion-input [(ngModel)]="psw" name="psw" color="black" type="password" [type]="type ? 'password' : 'text'"></ion-input>
     </ion-item>
 
     <div class="row" style="text-align: center; margin-bottom: 30px;">
       <a [routerLink]="['/motdepasseoublie']" style="color: #00A5E4; font-weight: 400; text-decoration: none; font-size: 16px; ">Mot de passe oubliè ?</a>
     </div>
-    <ion-button [routerLink]="['/#']" style="--background: #00A5E4; margin: 10px," expand="block">Connexion</ion-button>
-  
-    
+    <ion-button type="submit" style="--background: #00A5E4; margin: 10px," expand="block">Connexion</ion-button>
   
   </form>
   

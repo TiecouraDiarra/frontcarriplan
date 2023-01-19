@@ -28,11 +28,13 @@
     </ion-item>
     <ion-item mode="md">
       <ion-label position="floating">Numéro</ion-label>
-      <ion-input type="tel" required="true"></ion-input>
+      <ion-input type="tel" required></ion-input>
     </ion-item>
     <ion-item mode="md">
       <ion-label position="floating">Email</ion-label>
       <ion-input type="email"></ion-input>
+      <!-- <ion-note slot="helper">Enter un email valid</ion-note>
+      <ion-note slot="error">Email invalid</ion-note> -->
     </ion-item>
     <ion-item mode='md'>
       <ion-icon [name]="type ? 'eye-off' : 'eye'" slot="end" color="dark" (click)="changeType()" style="font-family: 'Poppins';

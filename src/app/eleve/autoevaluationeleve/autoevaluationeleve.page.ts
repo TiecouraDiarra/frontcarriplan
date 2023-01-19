@@ -22,6 +22,10 @@ export class AutoevaluationelevePage implements OnInit {
   etape: string = "etape1"; // default button
 
   ngOnInit() {
+    this.userForm = this._formBuilder.group({
+      name: ['', Validators.required],
+      address: ['', Validators.required]
+    });
     
   }
   
