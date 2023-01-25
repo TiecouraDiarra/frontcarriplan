@@ -64,3 +64,23 @@ ion-card {
         margin-bottom: 30px;
     }
 }
+
+.ligne{
+    overflow-y: scroll; 
+    height: 400px;
+    --overflow: hidden;
+    overflow: auto;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+
+.crd:hover {
+    cursor: pointer;
+}
+
+.crd{
+    cursor: pointer;
+}

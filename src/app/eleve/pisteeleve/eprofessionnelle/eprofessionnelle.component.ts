@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ParcoursService } from 'src/app/services/parcours/parcours.service';
 
 @Component({
   selector: 'app-eprofessionnelle',
@@ -7,8 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EprofessionnelleComponent implements OnInit {
 
-  constructor() { }
+  parcours: any;
+  constructor(public service: ParcoursService, private route: Router) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+     //AFFICHER LA LISTE DES PARCOURS DES ECOLES PROFESSIONNELES
+     this.service.getParcoursEcoleProfessionnelle().subscribe(data => {
+      this.parcours = data;
+    })
+  }
+
+  goToDettailParcours(id: number) {
+    console.log(id);
+    return this.route.navigate(['tabs/detailsparcours', id])
+  }
 
 }

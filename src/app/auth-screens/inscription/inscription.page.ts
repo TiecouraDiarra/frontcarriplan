@@ -8,7 +8,6 @@ import { Router } from '@angular/router';
 })
 export class InscriptionPage implements OnInit {
 
-  eleve:any;
   constructor(private router:Router) { 
   }
 

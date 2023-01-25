@@ -1,0 +1,77 @@
+ion-content {
+    // ICI ON BLOCK LE SCROLLING
+    --offset-bottom: auto !important;
+    // background: #F8F6FB;
+    background: url('../../../assets/imgs/background.png') no-repeat center center/cover;
+    --overflow: hidden;
+    overflow: auto;
+    margin: 8px;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    // --background: url('../../../assets/imgs/background.png') no-repeat center center/cover;
+}
+
+ion-list{
+    background: url('../../../assets/imgs/background.png') no-repeat center center/cover;
+}
+
+* {
+    font-family: 'Poppins';
+    line-height: 100%;
+    // opacity: 0.5;
+    transform: rotate(0.01deg);
+    // line-height: 194.5%;
+    font-style: normal;
+    // width: 100%;
+}
+
+h3 {
+    margin-top: 1.0rem;
+    font-size: 17px;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-align: center;
+    margin: auto;
+    // margin-bottom: 0.2rem;
+}
+h2 {
+    margin-top: 3.0rem;
+    font-size: 23px;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-align: center;
+    // margin-bottom: 0.7rem;
+}
+
+ion-item {
+    margin: 10px;
+    border-radius: 20px;
+    font-family: 'Poppins';
+    font-style: normal;
+    opacity: 0.9;
+    // transform: rotate(0.03deg);
+    width: 93%;
+    align-items: center;
+    letter-spacing: 0.06em;
+}
+
+ion-button:hover {
+    border-radius: 10px;
+}
+
+ion-input {
+    caret-color: auto;
+}
+
+.mat-stepper-horizontal {
+    margin-top: 8px;
+  }
+  
+  .mat-mdc-form-field {
+    margin-top: 16px;
+  }
+  
+  

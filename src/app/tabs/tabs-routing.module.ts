@@ -33,12 +33,20 @@ const routes: Routes = [
         loadChildren: () => import('../eleve/valid/valid.module').then( m => m.ValidPageModule)
       },
       {
-        path: 'detailsparcours',
+        path: 'detailsparcours/:id',
         loadChildren: () => import('../eleve/detailsparcours/detailsparcours.module').then( m => m.DetailsparcoursPageModule)
       },
       {
-        path: 'detailsmetier',
+        path: 'detailsmetier/:id',
         loadChildren: () => import('../eleve/detailsmetier/detailsmetier.module').then( m => m.DetailsmetierPageModule)
+      },
+      {
+        path: 'profileleve',
+        loadChildren: () => import('../eleve/profileleve/profileleve.module').then( m => m.ProfilelevePageModule)
+      },
+      {
+        path: 'loadingpage',
+        loadChildren: () => import('../eleve/loadingpage/loadingpage.module').then( m => m.LoadingpagePageModule)
       },
     
     ]

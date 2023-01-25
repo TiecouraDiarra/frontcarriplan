@@ -1,12 +1,11 @@
 <ion-content [fullscreen]="true">
 
-  <div class="row tite" style="margin-top: 40px; display: flex; font-size: 30px; margin-left: 20px;">
+  <div class="row tite" style="margin-top: 40px; display: flex; font-size: 30px; margin-left: 10px;">
 
-    <div class="col-4">
-      <!-- <ion-icon (click)="back()" name="arrow-back-outline"></ion-icon> -->
+    <div class="col-2">
       <ion-icon (click)="back()" name="arrow-back-circle-outline"></ion-icon>
     </div>
-    <div class="col" style="margin-left: auto; margin-right: auto;">
+    <div class="col" style=" margin-right: auto;">
       <div class="titee">
         <h2 class="tit">Inscription Professionnel</h2>
       </div>
@@ -20,49 +19,117 @@
     </p>
   </div>
 
-  <form>
+  <form *ngIf="!isSuccessful" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
 
     <ion-item mode="md">
-      <ion-label position="floating">Nom & Prénom</ion-label>
-      <ion-input required="true"></ion-input>
+      <ion-label for="nomcomplet" position="floating">Nom & Prénom</ion-label>
+      <ion-input name="nomcomplet" [(ngModel)]="form.nomcomplet" required minlength="3" maxlength="20"
+        #nomcomplet="ngModel" [ngClass]="{ 'is-invalid': f.submitted && nomcomplet.errors }">
+      </ion-input>
+      <div class="invalid-feedback" *ngIf="nomcomplet.errors && f.submitted">
+        <div *ngIf="nomcomplet.errors['required']">nomcomplet is required</div>
+        <div *ngIf="nomcomplet.errors['minlength']">
+          nomcomplet must be at least 3 characters
+        </div>
+        <div *ngIf="nomcomplet.errors['maxlength']">
+          nomcomplet must be at most 20 characters
+        </div>
+      </div>
+    </ion-item>
+    <ion-item mode=" md">
+      <ion-label for="numero" position="floating">Numéro</ion-label>
+      <ion-input name="numero" [(ngModel)]="form.numero" required minlength="3" maxlength="20" #numero="ngModel"
+        [ngClass]="{ 'is-invalid': f.submitted && numero.errors }" type="tel" required="true"></ion-input>
+      <div class="invalid-feedback" *ngIf="numero.errors && f.submitted">
+        <div *ngIf="numero.errors['required']">numero is required</div>
+        <div *ngIf="numero.errors['minlength']">
+          numero must be at least 3 characters
+        </div>
+        <div *ngIf="numero.errors['maxlength']">
+          numero must be at most 20 characters
+        </div>
+      </div>
     </ion-item>
     <ion-item mode="md">
-      <ion-label position="floating">Numéro</ion-label>
-      <ion-input type="tel" required="true"></ion-input>
-    </ion-item>
-    <ion-item mode="md">
-      <ion-label position="floating">Email</ion-label>
-      <ion-input type="email"></ion-input>
+      <ion-label for="email" position="floating">Email</ion-label>
+      <ion-input name="email" [(ngModel)]="form.email" required email #email="ngModel"
+        [ngClass]="{ 'is-invalid': f.submitted && email.errors }" type="email"></ion-input>
+      <div class="invalid-feedback" *ngIf="email.errors && f.submitted">
+        <div *ngIf="email.errors['required']">Email is required</div>
+        <div *ngIf="email.errors['email']">
+          Email must be a valid email address
+        </div>
+      </div>
     </ion-item>
     <ion-item mode='md'>
       <ion-icon [name]="type ? 'eye-off' : 'eye'" slot="end" color="dark" (click)="changeType()" style="font-family: 'Poppins';
         font-style: normal; opacity: 0.5;">
       </ion-icon>
-      <ion-label position='floating'>Mot de passe</ion-label>
-      <ion-input required="true" color="black" type="password" [type]="type ? 'password' : 'text'"></ion-input>
+      <ion-label for="password" position='floating'>Mot de passe</ion-label>
+      <ion-input name="password" [(ngModel)]="form.password" required minlength="6" #password="ngModel"
+        [ngClass]="{ 'is-invalid': f.submitted && password.errors }" color="black" type="password"
+        [type]="type ? 'password' : 'text'"></ion-input>
+      <div class="invalid-feedback" *ngIf="password.errors && f.submitted">
+        <div *ngIf="password.errors['required']">Password is required</div>
+        <div *ngIf="password.errors['minlength']">
+          Password must be at least 6 characters
+        </div>
+      </div>
     </ion-item>
     <ion-item mode='md'>
       <ion-icon slot="end" color="dark" (click)="changeType()" style="font-family: 'Poppins';
         font-style: normal; opacity: 0.5;">
       </ion-icon>
-      <ion-label position='floating'>Confirmer Mot de passe</ion-label>
-      <ion-input required="true" color="black" type="password"></ion-input>
+      <ion-label for="confirmpassword" position='floating'>Confirmer Mot de passe</ion-label>
+      <ion-input name="confirmpassword" [(ngModel)]="form.confirmpassword" required minlength="6"
+        #confirmpassword="ngModel" [ngClass]="{ 'is-invalid': f.submitted && confirmpassword.errors }" color="black"
+        type="confirmpassword"></ion-input>
+      <div class="invalid-feedback" *ngIf="confirmpassword.errors && f.submitted">
+        <div *ngIf="confirmpassword.errors['required']">confirmpassword is required</div>
+        <div *ngIf="confirmpassword.errors['minlength']">
+          confirmpassword must be at least 6 characters
+        </div>
+      </div>
     </ion-item>
-    <!-- <ion-list> -->
-      <ion-item>
+    <ion-item>
+      <ion-label for="serie" position='floating'>Selectionnez votre domaine</ion-label>
+      <ion-select style="font-family: 'Poppins';
+        font-style: normal; opacity: 0.5;" interface="popover" color="black" name="domaine" [(ngModel)]="form.domaine">
+        <ion-select-option *ngFor="let Dom of domaines" [value]="Dom">{{Dom.nomdomaine}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <!-- <ion-item mode="md">
+      <ion-label for="domaine" position="floating">Domaine</ion-label>
+      <ion-input name="domaine" [(ngModel)]="form.domaine" required minlength="3" maxlength="20" #domaine="ngModel"
+        [ngClass]="{ 'is-invalid': f.submitted && domaine.errors }">
+      </ion-input>
+      <div class="invalid-feedback" *ngIf="domaine.errors && f.submitted">
+        <div *ngIf="domaine.errors['required']">domaine is required</div>
+        <div *ngIf="domaine.errors['minlength']">
+          domaine must be at least 3 characters
+        </div>
+        <div *ngIf="domaine.errors['maxlength']">
+          domaine must be at most 20 characters
+        </div>
+      </div>
+    </ion-item> -->
+    <!-- <ion-item>
         <ion-label position='floating'>Selectionnez votre domaine</ion-label>
         <ion-select style="font-family: 'Poppins';
         font-style: normal; opacity: 0.5;" interface="popover" color="black">
-          <!-- <ion-select-option position='floating' >Selectionnez votre filière</ion-select-option> -->
           <ion-select-option value="informatique">Informatique</ion-select-option>
           <ion-select-option value="comptabilité">Comptabilité</ion-select-option>
           <ion-select-option value="bananas">Médécine</ion-select-option>
         </ion-select>
-      </ion-item>
-    <!-- </ion-list> -->
-    <ion-button [routerLink]="['/tab3/accueilprofessionnel']" style="--background: #00A5E4; margin: 10px,"
-      expand="block">S’inscrire</ion-button>
+      </ion-item> -->
 
+    <!-- <ion-button [routerLink]="['/tab3/accueilprofessionnel']" style="--background: #00A5E4; margin: 10px,"
+      expand="block">S’inscrire</ion-button> -->
+
+    <ion-button (click)="onSubmit()" style="--background: #00A5E4; margin: 10px," expand="block">S’inscrire</ion-button>
+    <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+      Signup failed!<br />{{ errorMessage }}
+    </div>
 
 
   </form>

@@ -1,0 +1,103 @@
+ion-content{
+    // ICI ON BLOCK LE SCROLLING
+    --offset-bottom: auto!important;
+    // background: #F8F6FB;
+    background: url('../../../assets/imgs/background.png') no-repeat center center/cover;
+  --overflow: hidden;
+  overflow: auto;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+* {
+    font-family: 'Poppins';
+    transform: rotate(0.01deg);
+    font-style: normal;
+}
+
+// .tt {
+//     z-index: 1;
+//     position: absolute;
+//     text-align: center;
+//     margin: 0 auto;
+//     left: 0;
+//     right: 0;
+//     top: 8%;
+//     color: white;
+//     font-size: 25px;
+//     font-weight: bold;
+// }
+.pagination {
+    justify-content: center;
+    margin-top: 20px;
+    margin-left: -30px;
+  }
+  
+.ttt{
+    height: 10%;
+    width: 100%;
+}
+
+// ion-card{
+//     img{
+//         height: 20px;
+//     }
+// }
+
+ion-card .card2{
+    text-align: center;
+    align-content: center;
+    align-self: center;
+    border-radius: 15px;
+    width: 100%;
+    img {
+        // text-align: center;
+        // align-content: center;
+        // align-self: center;
+        // max-width: 40%;
+        // max-height: 20%;
+        border-radius: 15px;
+        // background-color: black;
+        // opacity: 0.8;
+        // background-color: #000000;
+        // border: 3px solid white;
+        opacity: 1.0;
+    }
+}
+
+// .image {
+
+// }
+
+.tt1 {
+    // background: rgba(0, 0, 0, 0.8);
+    z-index: 1;
+    position: absolute;
+    text-align: center;
+    // font-family: Georgia;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    top: 20%;
+    color: white;
+    // width: 70%;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.tit{
+    // margin: 0px !important;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.titee{
+    text-align: center;
+    justify-content: center
+}
+
+ion-button:hover{
+    background: none !important;
+}

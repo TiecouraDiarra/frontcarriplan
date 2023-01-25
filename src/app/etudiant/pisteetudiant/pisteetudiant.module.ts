@@ -9,13 +9,15 @@ import { PisteetudiantPageRoutingModule } from './pisteetudiant-routing.module';
 import { PisteetudiantPage } from './pisteetudiant.page';
 import { FiliereetudiantComponent } from './filiereetudiant/filiereetudiant.component';
 import { MetieretudiantComponent } from './metieretudiant/metieretudiant.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    PisteetudiantPageRoutingModule
+    PisteetudiantPageRoutingModule,
+    NgxPaginationModule
   ],
   declarations: [PisteetudiantPage, FiliereetudiantComponent,MetieretudiantComponent]
 })

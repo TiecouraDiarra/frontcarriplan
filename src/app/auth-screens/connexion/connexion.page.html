@@ -1,38 +1,65 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+  integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 <ion-content [fullscreen]="true">
 
-  <div align="center" style="margin-top: 50px;">
+  <div align="center" style="margin-top: 30px;">
     <img src="assets/imgs/scre1.png" />
   </div>
-  <form (ngSubmit)="submitForm()">
-    <ion-item mode="md" >
-      <ion-label position="floating">Numéro ou Email</ion-label>
-      <ion-input [(ngModel)]="numeromdp" name="numeromdp"></ion-input>
+  <form *ngIf="!isLoggedIn" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+    <ion-item mode="md">
+      <ion-label for="numeroOrEmail" position="floating">Numéro ou Email</ion-label>
+      <ion-input type="text" name="numeroOrEmail" [(ngModel)]="form.numeroOrEmail" required #numeroOrEmail="ngModel"
+        [ngClass]="{ 'is-invalid': f.submitted && numeroOrEmail.errors }" name="numeroOrEmail">
+      </ion-input>
+      <div style="text-align: center;" *ngIf="numeroOrEmail.errors && f.submitted" class="invalid-feedback">
+        <div *ngIf="numeroOrEmail.errors['required']">Numero ou Email obligatoire</div>
+        <!-- <div *ngIf="numeroOrEmail.errors['minlength']">
+          Password must be at least 6 characters
+        </div> -->
+      </div>
     </ion-item>
-    <div *ngIf="!numeromdp && submitted" class="error-message">
-      Tous les champs sont obligatoires
-    </div>
     
+    <!-- <div *ngIf="numeroOrEmail.errors && f.submitted">
+      numero ou Email obligatoire
+    </div> -->
+
     <ion-item mode='md'>
-      <ion-icon 
-        [name]="type ? 'eye-off' : 'eye'" 
-        slot="end" 
-        color="dark" 
-        (click)="changeType()" style="font-family: 'Poppins';
+      <ion-icon [name]="type ? 'eye-off' : 'eye'" slot="end" color="dark" (click)="changeType()" style="font-family: 'Poppins';
         font-style: normal; opacity: 0.5;">
       </ion-icon>
-      <ion-label position='floating'>Mot de passe</ion-label>
-      <ion-input [(ngModel)]="psw" name="psw" color="black" type="password" [type]="type ? 'password' : 'text'"></ion-input>
+      <ion-label for="password" position='floating'>Mot de passe</ion-label>
+      <ion-input name="password" [(ngModel)]="form.password" required minlength="6" #password="ngModel"
+        [ngClass]="{ 'is-invalid': f.submitted && password.errors }" name="password" color="black" type="password"
+        [type]="type ? 'password' : 'text'"></ion-input>
+      <div style="text-align: center;" *ngIf="password.errors && f.submitted" class="invalid-feedback">
+        <div *ngIf="password.errors['required']">Mot de passe obligatoire</div>
+        <div *ngIf="password.errors['minlength']">
+          Mot de passe minimun 6 caractères
+        </div>
+      </div>
     </ion-item>
-
+    
     <div class="row" style="text-align: center; margin-bottom: 30px;">
-      <a [routerLink]="['/motdepasseoublie']" style="color: #00A5E4; font-weight: 400; text-decoration: none; font-size: 16px; ">Mot de passe oubliè ?</a>
+      <a [routerLink]="['/motdepasseoublie']"
+        style="color: #00A5E4; font-weight: 400; text-decoration: none; font-size: 16px; ">Mot de passe oubliè ?</a>
     </div>
-    <ion-button type="submit" style="--background: #00A5E4; margin: 10px," expand="block">Connexion</ion-button>
-  
-  </form>
-  
+    <!-- <button type="submit">Connexion</button> -->
+    <ion-button ion-button type="submit" style="--background: #00A5E4; margin: 10px," expand="block">Connexion</ion-button>
+    <div class="form-group">
+      <div *ngIf="f.submitted && isLoginFailed" class="alert alert-danger" role="alert">
+        Connexion impossible: {{ errorMessage }}
+      </div>
+    </div>
 
-  <div class="row" style="text-align: center; margin-top: 40px;">
-    <p style="color: black; font-size: 17px;">Pas de compte ? <a [routerLink]="['/inscription']" style="color: #00A5E4; font-weight: 400; text-decoration: none; font-size: 17px;">Inscris-toi</a></p>
+  </form>
+
+  <div class="alert alert-success" *ngIf="isLoggedIn">
+    Logged in as {{ roles }}.
+    <ion-button (click)="logout()"> dfghj</ion-button>
+  </div>
+
+  <div class="row" style="text-align: center; margin-top: 30px;">
+    <p style="color: black; font-size: 17px;">Pas de compte ? <a [routerLink]="['/inscription']"
+        style="color: #00A5E4; font-weight: 400; text-decoration: none; font-size: 17px;">Inscris-toi</a></p>
   </div>
 </ion-content>

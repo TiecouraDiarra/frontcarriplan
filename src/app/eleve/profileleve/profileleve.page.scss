@@ -1,0 +1,77 @@
+ion-content {
+    // ICI ON BLOCK LE SCROLLING
+    --offset-bottom: auto !important;
+    // background: #F8F6FB;
+    background: url('../../../assets/imgs/background.png') no-repeat center center/cover;
+    --overflow: hidden;
+    overflow: auto;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+    // --background: url('../../../assets/imgs/background.png') no-repeat center center/cover;
+}
+
+* {
+    font-family: 'Poppins';
+    // line-height: 194.5%;
+    // opacity: 0.5;
+    transform: rotate(0.01deg);
+    // line-height: 194.5%;
+    font-style: normal;
+}
+
+ion-button:hover{
+    background: none !important;
+}
+
+.avtar{
+    display: flex;
+    justify-content: center;
+  
+  }
+    // ion-item{
+    //   border-bottom: 1px solid red;
+    // }
+   .info{
+    border: 3px solid #368E8C;
+    // background-color: #368E8C;
+    border-radius: 30px;
+  
+   }
+   .container{
+    padding: 20px;
+   }
+   span{
+    font-size: 16px;
+   }
+   ion-button{
+    border-radius: 10px;
+    border: 1px solid #353558;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    margin-top: 15px ;
+    background: #353558;
+    color: white;
+   }
+  
+   ion-avatar{
+    width: 80px;
+    height: 80px;
+  
+   }
+   .info{
+    margin-top: -22px;
+   }
+   ion-icon{
+    color: #368E8C;
+   
+    font-size: 25px;
+  
+   }
+  
+   .icon-inner, .ionicon, svg {
+    display: block;
+    height: 114%;
+    width: 100%;
+  }

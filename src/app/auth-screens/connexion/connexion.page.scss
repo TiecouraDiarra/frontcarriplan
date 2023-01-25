@@ -2,7 +2,7 @@
     font-family: 'Poppins';
     line-height: 100%;
     // opacity: 0.5;
-    transform: rotate(0.01deg);
+    // transform: rotate(0.01deg);
     // line-height: 194.5%;
     font-style: normal;
     // width: 100%;
@@ -11,6 +11,12 @@
 ion-content {
     --background: url('../../../assets/imgs/background.png') no-repeat center center/cover;
     margin: 8px;
+    --overflow: hidden;
+      overflow: auto;
+  
+      &::-webkit-scrollbar {
+          display: none;
+      }
 }
 
 
@@ -27,7 +33,7 @@ ion-item {
     font-family: 'Poppins';
     font-style: normal;
     opacity: 0.9;
-    transform: rotate(0.03deg);
+    // transform: rotate(0.03deg);
     width: 93%;
     align-items: center;
     letter-spacing: 0.06em;

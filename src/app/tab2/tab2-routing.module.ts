@@ -24,6 +24,22 @@ const routes: Routes = [
         path: 'pisteetudiant',
         loadChildren: () => import('../etudiant/pisteetudiant/pisteetudiant.module').then( m => m.PisteetudiantPageModule)
       },
+      {
+        path: 'detailsparcours/:id',
+        loadChildren: () => import('../etudiant/detailsparcours/detailsparcours.module').then( m => m.DetailsparcoursPageModule)
+      },
+      {
+        path: 'detailsmetiers/:id',
+        loadChildren: () => import('../etudiant/detailsmetiers/detailsmetiers.module').then( m => m.DetailsmetiersPageModule)
+      },
+      {
+        path: 'profiletudiant',
+        loadChildren: () => import('../etudiant/profiletudiant/profiletudiant.module').then( m => m.ProfiletudiantPageModule)
+      },
+      {
+        path: 'autoevaluationetudiant',
+        loadChildren: () => import('../etudiant/autoevaluationetudiant/autoevaluationetudiant.module').then( m => m.AutoevaluationetudiantPageModule)
+      },
     ]
   }
 ];

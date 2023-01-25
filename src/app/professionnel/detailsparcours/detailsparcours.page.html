@@ -1,0 +1,80 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+  integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <ion-header [translucent]="true">
+    <ion-toolbar>
+    </ion-toolbar>
+  </ion-header>
+
+<ion-content>
+  <div class="row tite" style="margin-top: 10px; display: flex; font-size: 30px; margin-left: 1px;">
+
+    <div class="col-2">
+      <!-- <ion-icon (click)="back()" name="arrow-back-outline"></ion-icon> -->
+      <ion-icon (click)="back()" name="arrow-back-circle-outline"></ion-icon>
+    </div>
+    <div class="col" style="margin-top: 4px;">
+      <div class="titee">
+        <h2 class="tit">{{parcours.nomparcours}}</h2>
+      </div>
+    </div>
+    <div class="col-2"></div>
+  </div>
+  <div class="container" style="padding: 0px; padding-bottom: 55px;">
+    <ion-card>
+      <!-- <div class="tt" >
+        <p>Science Exacte</p>
+      </div> -->
+      <img style="opacity: 2.0;" alt="" src="../../assets/imgs/parcours/{{parcours.imageparcours}}" />
+      <ion-card-header>
+        <ion-card-subtitle style="color: black; font-weight: bold;font-size: 16px;">Description</ion-card-subtitle>
+      </ion-card-header>
+    
+      <ion-card-content style="margin-top: -10px; text-align: justify;">
+        {{parcours.description}}
+      </ion-card-content>
+
+      <ion-card-header style="margin-top: -19px;">
+        <ion-card-subtitle style="color: black; font-weight: bold; font-size: 16px;">Les Cours</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content style="margin-top: -10px;">
+        <ul style="text-align: justify;" *ngFor="let Matiere of matiere">
+          <li><b>{{Matiere.nommatiere}} : </b>{{Matiere.descriptionmatiere}}</li>
+          <!-- <li><b>Maths : </b>Tigre de Chine méridionale</li>
+          <li><b>Maths : </b>Tigre de Chine méridionale</li>
+          <li><b>Maths : </b>Tigre de Chine méridionale</li> -->
+        </ul>
+      </ion-card-content>
+      <ion-card-header style="margin-top: -28px;">
+        <ion-card-subtitle style="color: black; font-weight: bold; font-size: 16px;">Les Métiers qui sont liés à cette séries</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content style="margin-top: -10px;">
+        <div class="row">
+          <div class="col-6" style="margin-left: -11px;" *ngFor="let Metier of metier | paginate:{itemsPerPage :2, currentPage:p}; let id = index">
+          <!-- *ngFor="let Pays of pays | paginate:{itemsPerPage :10, currentPage:p}; let id = index"> -->
+            <a (click)="goToDettailMetiers(Metier.id)" style="text-decoration: none;">
+              <ion-card class="card2">
+                <div class="row image ">
+                  <img style="height: 70px;" alt="" src="../../assets/imgs/metiers/{{Metier.imagemetier}}" />
+                  <div class="tt1">
+                    <p>{{Metier.nommetier}}</p>
+                  </div>
+                </div>
+                <div class="tti" style="text-align: center; font-weight: bold;">
+                  Savoir plus
+                </div>
+              </ion-card>
+            </a>
+          </div>
+        </div>
+        <pagination-controls (pageChange)="p = $event" class="pagination"></pagination-controls>
+      </ion-card-content>
+      <ion-card-header style="margin-top: -19px;">
+        <ion-card-subtitle style="color: black; font-weight: bold; ">Les Conseils</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content style="margin-top: -10px; text-align: justify;">
+        {{parcours.conseil}}
+      </ion-card-content>
+    </ion-card>
+  </div>
+ 
+</ion-content>

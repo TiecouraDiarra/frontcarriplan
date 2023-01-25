@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ParcoursService } from 'src/app/services/parcours/parcours.service';
 
 @Component({
   selector: 'app-lycee',
@@ -7,8 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LyceeComponent implements OnInit {
 
-  constructor() { }
+  parcours: any;
+  constructor(public service: ParcoursService, private route: Router) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    //AFFICHER LA LISTE DES PARCOURS DU LYCEE
+    this.service.getParcoursEleve().subscribe(data => {
+      this.parcours = data;
+    })
+  }
+
+  //LA METHODE PERMETTANT DE NAVIGUER VERS LA PAGE SUIVANYE
+  goToDettailParcours(id: number) {
+    console.log(id);
+    return this.route.navigate(['tabs/detailsparcours', id])
+  }
 
 }

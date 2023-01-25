@@ -1,25 +1,14 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-buttons>
-      <ion-button>
-        <h4 style="color: black; font-weight: bold;">CarriPlan</h4>
-      </ion-button>
-    </ion-buttons>
-    <ion-buttons slot="primary">
-      <ion-button>
-        <ion-icon slot="icon-only" style="color: black;" name="person-circle"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-
   </ion-toolbar>
 </ion-header>
 <ion-content [fullscreen]="true">
   <div class="container fluid">
     <h3>Mes pistes </h3>
     <div class="row" style="text-align: center; letter-spacing: 0.06em;">
-      <ion-button style="--background: #E6F4F1; color: black;">
+      <ion-button [routerLink]="['/tab3/autoevaluationprofessionnel']" style="--background: #E6F4F1; color: black;">
         <ion-icon name="color-filter-outline"></ion-icon>
-             <p style="margin-left: 10px;">Faire une auto-évaluation</p>
+             <p style="margin-left: 10px; margin-top: 20px;">Faire une auto-évaluation</p>
       </ion-button>
     </div>
   </div>

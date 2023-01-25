@@ -1,0 +1,186 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+  integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+<ion-header [translucent]="true">
+  <ion-toolbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <h2>Questionnaire</h2>
+  <div class="row" style="margin: 20px;">
+    <ion-progress-bar style="height: 10px; border-radius: 15px;" value="1.0"></ion-progress-bar>
+  </div>
+  <h3>Vos moyennes au BAC</h3>
+  <form>
+    <div class="ligne">
+      <ion-item mode="md" *ngFor="let question of questions">
+        <ion-label position="floating">{{question.question}}</ion-label>
+        <ion-input [(ngModel)]="answers[question.id]" name="answers[question.id]" max="20" min="0" pattern="[0-9]" type="number" integerOnly step="1" minlength="0" maxlength="20"
+          required="true"></ion-input> 
+      </ion-item>
+      <!-- <ion-item mode="md">
+        <ion-label position="floating">Histoire & Géographie :</ion-label>
+        <ion-input max="20" min="0" type="number" required="true"></ion-input>
+      </ion-item>
+      <ion-item mode="md">
+        <ion-label position="floating">Dictée & Question :</ion-label>
+        <ion-input max="20" min="0" type="number" required="true"></ion-input>
+      </ion-item> 
+      <ion-item mode="md">
+        <ion-label position="floating">Mathématiques :</ion-label>
+        <ion-input max="20" min="0" type="number" required="true"></ion-input>
+      </ion-item>
+      <ion-item mode="md">
+        <ion-label position="floating">Science Naturelle :</ion-label>
+        <ion-input max="20" min="0" pattern="[0-9]" type="number" integerOnly step="1" minlength="0" maxlength="10"
+          required="true"></ion-input>
+      </ion-item>
+      <ion-item mode="md">
+        <ion-label position="floating">Physique & Chimie :</ion-label>
+        <ion-input max="20" min="0" pattern="[0-9]" type="number" type="number" required="true"></ion-input>
+      </ion-item>
+      <ion-item mode="md">
+        <ion-label position="floating">Anglais :</ion-label>
+        <ion-input max="20" min="0" pattern="[0-9]" type="number" type="number" required="true"></ion-input>
+      </ion-item>
+      <ion-item mode="md">
+        <ion-label position="floating">ECM :</ion-label>
+        <ion-input max="20" min="0" pattern="[0-9]" type="number" type="number" required="true"></ion-input>
+      </ion-item> -->
+    </div>
+    <ion-button (click)="submitAnswers()" style="--background: #00A5E4; margin: 10px; float: right;">Suivant</ion-button>
+  </form>
+</ion-content>
+
+
+
+
+
+
+
+
+<!--<ion-content>
+  <h3>Questionnaire</h3>-->
+
+<!-- <button mat-raised-button (click)="isEditable = !isEditable">
+    {{!isEditable ? 'Enable edit mode' : 'Disable edit mode'}}
+  </button> -->
+
+<!-- <mat-horizontal-stepper>
+
+    <mat-step label="eta 1" [stepControl]="firstFormGroup" fxFlex="100"  fxLayout="column">
+      <div class="mat-horizontal-content-container">
+        <div style="border: 2px solid green; margin-top: 200px;" fxFlex="100">
+          <div fxFlex="100" fxFill style="border: 2px solid red;">
+            Step 1: must fill the entire space <br>
+            Step 1: must fill the entire space <br>
+            Step 1: must fill the entire space <br>
+            Step 1: must fill the entire space <br>
+            Step 1: must fill the entire space <br>
+            Step 1: must fill the entire space <br>
+            Step 1: must fill the entire space <br>
+            Step 1: must fill the entire space <br>
+            Step 1: must fill the entire space <br>
+            Step 1: must fill the entire space <br>
+            Step 1: must fill the entire space <br>
+            
+            <p>Issues? <a href="mailto:&#103;&#105;&#116;&#104;&#117;&#098;&#064;&#116;&#111;&#110;&#121;&#115;&#097;&#109;&#112;&#101;&#114;&#105;&#046;&#105;&#116;">Text me!</a>
+          </div>
+        </div>
+      </div>
+      
+    </mat-step>
+    <style>
+     
+    </style>
+
+    <mat-step label="eta 2">
+      Step 2 content
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </mat-step>
+
+    <mat-step>
+      <ng-template matStepLabel>Fait</ng-template>
+      <p>You are now done.</p>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+      </div>
+    </mat-step>
+
+
+  </mat-horizontal-stepper> -->
+
+
+
+<!-- <div [ngSwitch]="etape" class="contenu">
+    <ion-list *ngSwitchCase="'etape1'">
+      <div class="row" style="margin: 20px;">
+        <ion-progress-bar style="height: 10px; border-radius: 15px;" value="0.5"></ion-progress-bar>
+      </div>
+      <h3>Vos moyennes au DEF</h3>
+      <form>
+        <ion-item mode="md">
+          <ion-label position="floating">Rédaction :</ion-label>
+          <ion-input max="20" min="0" pattern="[0-9]" type="number" integerOnly step="1" minlength="0" maxlength="10"
+            required="true"></ion-input>
+        </ion-item>
+        <ion-item mode="md">
+          <ion-label position="floating">Histoire & Géographie :</ion-label>
+          <ion-input max="20" min="0" type="number" required="true"></ion-input>
+        </ion-item>
+        <ion-item mode="md">
+          <ion-label position="floating">Dictée & Question :</ion-label>
+          <ion-input max="20" min="0" type="number" required="true"></ion-input>
+        </ion-item>
+        <ion-item mode="md">
+          <ion-label position="floating">Mathématiques :</ion-label>
+          <ion-input max="20" min="0" type="number" required="true"></ion-input>
+        </ion-item>
+
+      </form>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'etape2'">
+      <div class="row" style="margin: 20px;">
+        <ion-progress-bar style="height: 10px; border-radius: 15px;" value="1.0"></ion-progress-bar>
+      </div>
+      <h3>Vos moyennes au DEF</h3>
+      <form>
+        <ion-item mode="md">
+          <ion-label position="floating">Science Naturelle :</ion-label>
+          <ion-input max="20" min="0" pattern="[0-9]" type="number" integerOnly step="1" minlength="0" maxlength="10"
+            required="true"></ion-input>
+        </ion-item>
+        <ion-item mode="md">
+          <ion-label position="floating">Physique & Chimie :</ion-label>
+          <ion-input max="20" min="0" pattern="[0-9]" type="number" type="number" required="true"></ion-input>
+        </ion-item>
+        <ion-item mode="md">
+          <ion-label position="floating">Anglais :</ion-label>
+          <ion-input max="20" min="0" pattern="[0-9]" type="number" type="number" required="true"></ion-input>
+        </ion-item>
+        <ion-item mode="md">
+          <ion-label position="floating">ECM :</ion-label>
+          <ion-input max="20" min="0" pattern="[0-9]" type="number" type="number" required="true"></ion-input>
+        </ion-item>
+      </form>
+    </ion-list>
+  </div>
+
+  <div>
+    <ion-segment [(ngModel)]="etape">
+      <ion-segment-button  value="etape1">
+        Etape 1
+      </ion-segment-button>
+      <ion-segment-button  value="etape2">
+        Etape 2
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+
+  <ion-button [routerLink]="['/tabs/valid']" style="--background: #00A5E4; margin: 30px," expand="block">Envoyer</ion-button> 
+
+</ion-content>-->

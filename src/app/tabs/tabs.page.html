@@ -1,22 +1,46 @@
+
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <img style="margin-bottom: -13px;" src="assets/imgs/imgconfig/logo.png" />
+    <ion-buttons slot="primary">
+      <ion-button id="popover-button">
+        <ion-icon slot="icon-only" style="color: black; margin-bottom: -13px;" name="person-circle"></ion-icon>
+      </ion-button>
+  
+      <ion-popover trigger="popover-button" [dismissOnSelect]="true" class="popUps">
+        <ng-template class="popUp">
+          <ion-content>
+            <ion-list >
+              <ion-item [button]="true" [detail]="false" routerLink="/tabs/profileleve">Profil</ion-item>
+              <ion-item class="td" (click)="logout()">Déconnexion</ion-item>
+            </ion-list>
+          </ion-content>
+        </ng-template>
+      </ion-popover>
+  
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
 <ion-tabs>
 
   <ion-tab-bar slot="bottom">
-    <ion-tab-button tab="accueileleve">
+    <ion-tab-button tab="accueileleve" *ngIf="showEleveBoard">
       <ion-icon name="home-outline"></ion-icon>
       <ion-label>Accueil</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button tab="autoeleve">
+    <ion-tab-button tab="autoeleve" *ngIf="showEleveBoard">
       <ion-icon name="color-filter-outline"></ion-icon>
       <ion-label>Evaluation</ion-label>
     </ion-tab-button>  
 
-    <ion-tab-button tab="pisteeleve">
+    <ion-tab-button tab="pisteeleve" *ngIf="showEleveBoard">
       <ion-icon name="analytics-outline"></ion-icon>
       <ion-label>Séries</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button tab="carriereeleve">
+    <ion-tab-button tab="carriereeleve" *ngIf="showEleveBoard">
       <ion-icon name="briefcase-outline"></ion-icon>
       <ion-label>Carrière</ion-label>
     </ion-tab-button>

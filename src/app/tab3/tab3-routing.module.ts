@@ -24,6 +24,22 @@ const routes: Routes = [
         path: 'pisteprofessionnel',
         loadChildren: () => import('../professionnel/pisteprofessionnel/pisteprofessionnel.module').then( m => m.PisteprofessionnelPageModule)
       },
+      {
+        path: 'detailsparcours/:id',
+        loadChildren: () => import('../professionnel/detailsparcours/detailsparcours.module').then( m => m.DetailsparcoursPageModule)
+      },
+      {
+        path: 'detailsmetiers/:id',
+        loadChildren: () => import('../professionnel/detailsmetiers/detailsmetiers.module').then( m => m.DetailsmetiersPageModule)
+      },
+      {
+        path: 'profilprofessionnel',
+        loadChildren: () => import('../professionnel/profilprofessionnel/profilprofessionnel.module').then( m => m.ProfilprofessionnelPageModule)
+      },
+      {
+        path: 'autoevaluationprofessionnel',
+        loadChildren: () => import('../professionnel/autoevaluationprofessionnel/autoevaluationprofessionnel.module').then( m => m.AutoevaluationprofessionnelPageModule)
+      },
     ]
   }
 ];

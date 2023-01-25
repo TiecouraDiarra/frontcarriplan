@@ -19,6 +19,11 @@ ion-card {
     }
 }
 
+.pagination {
+    justify-content: center;
+    margin-top: 20px;
+    margin-left: -30px;
+  }
 // .image {
 
 // }
@@ -39,7 +44,16 @@ ion-card {
     font-weight: bold;
 }
 
+.ligne{
+    overflow-y: scroll; 
+    height: 400px;
+    --overflow: hidden;
+    overflow: auto;
 
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
 
 // .card-img-top {
 //     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);

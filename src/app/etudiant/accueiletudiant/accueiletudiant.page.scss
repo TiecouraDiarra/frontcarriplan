@@ -38,7 +38,7 @@ ion-card {
 }
 
 h3 {
-    // margin-top: 2.8rem;
+    margin-top: 1.0rem;
     font-size: 20px;
     font-weight: 800;
     letter-spacing: 0.06em;
@@ -53,4 +53,8 @@ h3 {
     z-index: 1;
     background-color: #5AC7EB;
     
+}
+
+ion-button:hover{
+    background: none !important;
 }

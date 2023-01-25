@@ -10,6 +10,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatStepperModule} from '@angular/material/stepper';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { HttpClientModule } from '@angular/common/http';
+import { httpInterceptorProviders } from './_helpers/http.interceptor';
 
 
 @NgModule({
@@ -22,9 +24,11 @@ import { NgxPaginationModule } from 'ngx-pagination';
     ReactiveFormsModule, 
     FormsModule, 
     MatFormFieldModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    HttpClientModule,
+
   ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, httpInterceptorProviders],
   bootstrap: [AppComponent],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
