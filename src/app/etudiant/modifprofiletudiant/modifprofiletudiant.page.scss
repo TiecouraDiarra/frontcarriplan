@@ -1,0 +1,53 @@
+ion-content {
+    // ICI ON BLOCK LE SCROLLING
+    --offset-bottom: auto !important;
+    // background: #F8F6FB;
+    background: url('../../../assets/imgs/background.png') no-repeat center center/cover;
+    --overflow: hidden;
+    overflow: auto;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+* {
+    font-family: 'Poppins';
+    line-height: 100%;
+    // opacity: 0.5;
+    transform: rotate(0.01deg);
+    // line-height: 194.5%;
+    font-style: normal;
+    // width: 100%;
+}
+
+ion-list{
+    background: url('../../../assets/imgs/background.png') no-repeat center center/cover;
+}
+
+.tit{
+    margin: 0px !important;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.titee{
+    text-align: center;
+    justify-content: center
+}
+
+ion-item {
+    margin: 10px;
+    border-radius: 20px;
+    // font-family: 'Poppins';
+    font-style: normal;
+    opacity: 0.9;
+    // transform: rotate(0.03deg);
+    width: 93%;
+    align-items: center;
+    letter-spacing: 0.06em;
+}
+
+ion-button:hover{
+    background: none !important;
+}

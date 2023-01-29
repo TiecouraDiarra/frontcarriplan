@@ -2,10 +2,14 @@
   integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 <ion-content [fullscreen]="true">
 
-  <div align="center" style="margin-top: 30px;">
+  <div align="center">
     <img src="assets/imgs/scre1.png" />
   </div>
+
+  <!-- Debut du formulaire d'inscription -->
   <form *ngIf="!isLoggedIn" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+
+    <!-- Debut du champ de saisie pour le numéro ou email -->
     <ion-item mode="md">
       <ion-label for="numeroOrEmail" position="floating">Numéro ou Email</ion-label>
       <ion-input type="text" name="numeroOrEmail" [(ngModel)]="form.numeroOrEmail" required #numeroOrEmail="ngModel"
@@ -18,11 +22,13 @@
         </div> -->
       </div>
     </ion-item>
-    
+    <!-- Fin du champ de saisie pour le numéro ou email -->
+
     <!-- <div *ngIf="numeroOrEmail.errors && f.submitted">
       numero ou Email obligatoire
     </div> -->
 
+    <!-- Debut du champ de saisie pour le mot de passe -->
     <ion-item mode='md'>
       <ion-icon [name]="type ? 'eye-off' : 'eye'" slot="end" color="dark" (click)="changeType()" style="font-family: 'Poppins';
         font-style: normal; opacity: 0.5;">
@@ -38,28 +44,44 @@
         </div>
       </div>
     </ion-item>
-    
+    <!-- Fin du champ de saisie pour le mot de passe -->
+
+    <!-- Debut de la division permettant de naviguer vers la page de mot de passe oublié -->
     <div class="row" style="text-align: center; margin-bottom: 30px;">
       <a [routerLink]="['/motdepasseoublie']"
         style="color: #00A5E4; font-weight: 400; text-decoration: none; font-size: 16px; ">Mot de passe oubliè ?</a>
     </div>
+    <!-- Debut de la division permettant de naviguer vers la page de mot de passe oublié -->
+
+    <!-- Debut du boutton permettant de se connecter -->
     <!-- <button type="submit">Connexion</button> -->
-    <ion-button ion-button type="submit" style="--background: #00A5E4; margin: 10px," expand="block">Connexion</ion-button>
+    <!-- Debut du boutton permettant de modifier le profil -->
+    <div class="row mx-5" style="margin-top: 30px;">
+      <ion-button ion-button type="submit" style="--background: #00A5E4; margin-right: 11px; border-radius: 10px;">Connexion</ion-button>
+    </div>
+    <!-- Fin du boutton permettant de modifier le profil -->
+    <!-- Debut du boutton permettant de se connecter -->
+
+    <!-- Debut de la division permettant d'afficher le message en cas d'erreur -->
     <div class="form-group">
       <div *ngIf="f.submitted && isLoginFailed" class="alert alert-danger" role="alert">
         Connexion impossible: {{ errorMessage }}
       </div>
     </div>
+    <!-- Fin de la division permettant d'afficher le message en cas d'erreur -->
 
   </form>
+  <!-- Fin du formulaire d'inscription -->
 
   <div class="alert alert-success" *ngIf="isLoggedIn">
     Logged in as {{ roles }}.
     <ion-button (click)="logout()"> dfghj</ion-button>
   </div>
 
+  <!-- Debut de la division permettant de naviguer vers la page d'inscription -->
   <div class="row" style="text-align: center; margin-top: 30px;">
     <p style="color: black; font-size: 17px;">Pas de compte ? <a [routerLink]="['/inscription']"
         style="color: #00A5E4; font-weight: 400; text-decoration: none; font-size: 17px;">Inscris-toi</a></p>
   </div>
+  <!-- Fin de la division permettant de naviguer vers la page d'inscription -->
 </ion-content>

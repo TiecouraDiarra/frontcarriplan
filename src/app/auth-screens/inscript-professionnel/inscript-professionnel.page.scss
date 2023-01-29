@@ -9,8 +9,16 @@
 }
 
 ion-content {
-    --background: url('../../../assets/imgs/background.png') no-repeat center center/cover;
+    --offset-bottom: auto !important;
+    background: url('../../../assets/imgs/background.png') no-repeat center center/cover;
     margin: 8px;
+    margin: 8px;
+    --overflow: hidden;
+      overflow: auto;
+  
+      &::-webkit-scrollbar {
+          display: none;
+      }
 }
 
 
@@ -67,7 +75,7 @@ p {
 
 .tit{
     margin: 0px !important;
-    font-size: 24px;
+    font-size: 20px;
     font-weight: bold;
     text-align: center;
 }

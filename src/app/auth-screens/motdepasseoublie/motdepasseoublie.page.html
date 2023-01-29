@@ -21,8 +21,8 @@
   <form>
     <ion-item mode="md">
       <ion-label position="floating">Numéro ou Email</ion-label>
-      <ion-input required="true"></ion-input>
+      <ion-input [(ngModel)]="form.email" name="email" required="true"></ion-input>
     </ion-item>
-    <ion-button style="--background: #00A5E4; margin: 10px," expand="block">Réinitialiser mon mot de passe</ion-button>
+    <button (click)="onSubmit()" type="submit" ion-button style="--background: #00A5E4; margin: 10px," expand="block">Réinitialiser mon mot de passe</button>
   </form>
 </ion-content>

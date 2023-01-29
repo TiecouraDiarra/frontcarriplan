@@ -40,6 +40,10 @@ const routes: Routes = [
         path: 'autoevaluationprofessionnel',
         loadChildren: () => import('../professionnel/autoevaluationprofessionnel/autoevaluationprofessionnel.module').then( m => m.AutoevaluationprofessionnelPageModule)
       },
+      {
+        path: 'modifprofilprofessionnel',
+        loadChildren: () => import('../professionnel/modifprofilprofessionnel/modifprofilprofessionnel.module').then( m => m.ModifprofilprofessionnelPageModule)
+      },
     ]
   }
 ];

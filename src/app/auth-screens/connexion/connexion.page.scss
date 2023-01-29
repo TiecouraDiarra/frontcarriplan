@@ -1,12 +1,6 @@
-* {
-    font-family: 'Poppins';
-    line-height: 100%;
-    // opacity: 0.5;
-    // transform: rotate(0.01deg);
-    // line-height: 194.5%;
-    font-style: normal;
-    // width: 100%;
-}
+// * {
+
+// }
 
 ion-content {
     --background: url('../../../assets/imgs/background.png') no-repeat center center/cover;
@@ -30,7 +24,7 @@ img {
 ion-item {
     margin: 10px;
     border-radius: 20px;
-    font-family: 'Poppins';
+    // font-family: 'Poppins';
     font-style: normal;
     opacity: 0.9;
     // transform: rotate(0.03deg);
@@ -41,6 +35,9 @@ ion-item {
 
 ion-button:hover{
     border-radius: 10px;
+}
+ion-button:hover{
+    background: none !important;
 }
 
 ion-icon {

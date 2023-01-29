@@ -1,0 +1,177 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>modifprofilprofessionnel</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="row tite" style="margin-top: 40px; display: flex; font-size: 30px; margin-left: 10px;">
+
+    <div class="col-2">
+      <ion-icon (click)="back()" name="arrow-back-circle-outline"></ion-icon>
+    </div>
+    <div class="col">
+      <div class="titee" style="margin-top: 5px; margin-bottom: 30px;">
+        <h2 class="tit">Modification profil</h2>
+      </div>
+    </div>
+    <div class="col-2"></div>
+  </div>
+
+  <div padding>
+    <ion-segment [(ngModel)]="cat">
+      <ion-segment-button value="profil">
+        Profil
+      </ion-segment-button>
+      <ion-segment-button value="mdp">
+        Mot de passe
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+
+  <div [ngSwitch]="cat">
+    <ion-list *ngSwitchCase="'profil'">
+
+      <form *ngIf="!isSuccessful" name="form" (ngSubmit)="f.form.valid && ModifierProfessionnel()" #f="ngForm"
+        novalidate>
+        <!-- Debut du champ de saisie pour le nom et prenomm -->
+        <ion-item mode="md">
+          <ion-label for="nomcomplet" position="floating">Nom & Prénom</ion-label>
+          <ion-input name="nomcomplet" [(ngModel)]="form.nomcomplet" required minlength="3" maxlength="20"
+            #nomcomplet="ngModel" [ngClass]="{ 'is-invalid': f.submitted && nomcomplet.errors }">
+          </ion-input>
+          <div style="text-align: center;" class="invalid-feedback" *ngIf="nomcomplet.errors && f.submitted">
+            <div *ngIf="nomcomplet.errors['required']">Nom et Prénom sont obligatoires</div>
+            <div *ngIf="nomcomplet.errors['minlength']">
+              Nom et prénom doivent avoir au moins 3 caractères
+            </div>
+            <div *ngIf="nomcomplet.errors['maxlength']">
+              Nom et prénom doivent comporter au maximum 20 caractères
+            </div>
+          </div>
+        </ion-item>
+        <!-- Fin du champ de saisie pour le nom et prenomm -->
+
+        <!-- Debut du champ de saisie pour le numéro -->
+        <ion-item mode="md">
+          <ion-label for="numero" position="floating">Numéro</ion-label>
+          <ion-input type="tel" name="numero" [(ngModel)]="form.numero" required minlength="8" maxlength="13"
+            #numero="ngModel" [ngClass]="{ 'is-invalid': f.submitted && numero.errors }">
+          </ion-input>
+          <div style="text-align: center;" class="invalid-feedback" *ngIf="numero.errors && f.submitted">
+            <div *ngIf="numero.errors['required']">Numero est obligatoire</div>
+            <div *ngIf="numero.errors['minlength']">
+              numero doit avoir au moins 8 caractères
+            </div>
+            <div *ngIf="numero.errors['maxlength']">
+              Numéro doit comporter au maximum 13 caractères
+            </div>
+          </div>
+        </ion-item>
+        <!-- Fin du champ de saisie pour le numéro -->
+
+        <!-- Debut du champ de saisie pour l'email -->
+        <ion-item mode="md">
+          <ion-label for="email" position="floating">Email</ion-label>
+          <ion-input name="email" [(ngModel)]="form.email" required email #email="ngModel"
+            [ngClass]="{ 'is-invalid': f.submitted && email.errors }" type="email"></ion-input>
+          <div style="text-align: center;" class="invalid-feedback" *ngIf="email.errors && f.submitted">
+            <div *ngIf="email.errors['required']">Email est obligatoire</div>
+            <div *ngIf="email.errors['email']">
+              Email doit être une adresse e-mail valide
+            </div>
+          </div>
+        </ion-item>
+        <!-- Fin du champ de saisie pour l'email -->
+
+        <!-- Debut du boutton permettant de modifier le profil -->
+        <div class="row mx-5" style="margin-top: 30px;">
+          <ion-button ion-button type="submit" style="--background: #00A5E4; margin-right: 11px; ">Modifier</ion-button>
+        </div>
+        <!-- Fin du boutton permettant de modifier le profil -->
+
+        <!-- Debut de la division permettant d'afficher le message en cas d'erreur -->
+        <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+          Modification annulée <br />{{ errorMessage }}
+        </div>
+        <!-- Fin de la division permettant d'afficher le message en cas d'erreur -->
+      </form>
+
+
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'mdp'">
+      <form *ngIf="!isSuccessful" name="form" (ngSubmit)="f.form.valid && ModifierMdpProfessionnel()" #f="ngForm"
+        novalidate>
+        <!-- Debut du champ de saisie pour l'ancien mot de passe -->
+        <ion-item mode='md'>
+          <ion-icon [name]="type ? 'eye-off' : 'eye'" slot="end" color="dark" (click)="changeType()" style="font-family: 'Poppins';
+        font-style: normal; opacity: 0.5;">
+          </ion-icon>
+          <ion-label for="confirmNewmdp" position='floating'>Actuel mot de passe</ion-label>
+          <ion-input name="ancienmdp" [(ngModel)]="form.ancienmdp" required minlength="6" #ancienmdp="ngModel"
+            [ngClass]="{ 'is-invalid': f.submitted && ancienmdp.errors }" color="black" type="password"
+            [type]="type ? 'password' : 'text'"></ion-input>
+          <div style="text-align: center;" class="invalid-feedback" *ngIf="ancienmdp.errors && f.submitted">
+            <div *ngIf="ancienmdp.errors['required']">Mot de passe actuel obligatoire</div>
+            <div *ngIf="ancienmdp.errors['minlength']">
+              Mot de passe doit être au moins 6 caractères
+            </div>
+          </div>
+        </ion-item>
+        <!-- Fin du champ de saisie pour l'ancien mot de passe -->
+
+        <!-- Debut du champ de saisie pour le nouveau mot de passe -->
+        <ion-item mode='md'>
+          <ion-icon [name]="type ? 'eye-off' : 'eye'" slot="end" color="dark" (click)="changeType()" style="font-family: 'Poppins';
+        font-style: normal; opacity: 0.5;">
+          </ion-icon>
+          <ion-label for="nouveaumdp" position='floating'>Nouveau mot de passe</ion-label>
+          <ion-input name="nouveaumdp" [(ngModel)]="form.nouveaumdp" required minlength="6" #nouveaumdp="ngModel"
+            [ngClass]="{ 'is-invalid': f.submitted && nouveaumdp.errors }" color="black" type="password"
+            [type]="type ? 'password' : 'text'"></ion-input>
+          <div style="text-align: center;" class="invalid-feedback" *ngIf="nouveaumdp.errors && f.submitted">
+            <div *ngIf="nouveaumdp.errors['required']">Nouveau mot de passe obligatoire</div>
+            <div *ngIf="nouveaumdp.errors['minlength']">
+              Mot de passe doit être au moins 6 caractères
+            </div>
+          </div>
+        </ion-item>
+        <!-- Fin du champ de saisie pour le nouveau mot de passe -->
+
+        <!-- Debut du champ de saisie pour confirmer le mot de passe -->
+        <ion-item mode='md'>
+          <ion-icon [name]="type ? 'eye-off' : 'eye'" slot="end" color="dark" (click)="changeType()" style="font-family: 'Poppins';
+        font-style: normal; opacity: 0.5;">
+          </ion-icon>
+          <ion-label for="confirmNewmdp" position='floating'>Confirmer le mot de passe</ion-label>
+          <ion-input name="confirmNewmdp" [(ngModel)]="form.confirmNewmdp" required minlength="6"
+            #confirmNewmdp="ngModel" [ngClass]="{ 'is-invalid': f.submitted && confirmNewmdp.errors }" color="black"
+            type="password" [type]="type ? 'password' : 'text'"></ion-input>
+          <div style="text-align: center;" class="invalid-feedback" *ngIf="confirmNewmdp.errors && f.submitted">
+            <div *ngIf="confirmNewmdp.errors['required']">Mot de passe obligatoire</div>
+            <div *ngIf="confirmNewmdp.errors['minlength']">
+              Mot de passe doit être au moins 6 caractères
+            </div>
+          </div>
+        </ion-item>
+        <!-- Fin du champ de saisie pour confirmer le mot de passe -->
+
+        <!-- Debut du boutton permettant de modifier le profil -->
+        <div class="row mx-5" style="margin-top: 30px;">
+          <ion-button ion-button type="submit" style="--background: #00A5E4; margin-right: 11px; ">Modifier</ion-button>
+        </div>
+        <!-- Fin du boutton permettant de modifier le profil -->
+
+        <!-- Debut de la division permettant d'afficher le message en cas d'erreur -->
+        <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+          Inscription annulée <br />{{ errorMessage }}
+        </div>
+        <!-- Fin de la division permettant d'afficher le message en cas d'erreur -->
+      </form>
+
+    </ion-list>
+  </div>
+
+
+</ion-content>

@@ -12,30 +12,17 @@ import { StorageService } from '../services/storage/storage.service';
 })
 export class TabsPage implements OnInit {
 
-  private roles: string[] = [];
-  isLoggedIn = false;
-  showAdminBoard = false;
-  showEleveBoard = false;
-  showEtudiantBoard = false;
-  showProfessionnelBoard = false;
-  username?: string;
+  User: any
 
-  constructor(private storageService: StorageService, private authService: AuthService,  private route: Router, private alertController: AlertController) { }
+  phrase: string = "";
+  initials: string;
+
+  constructor(private storageService: StorageService, private authService: AuthService,  private route: Router, private alertController: AlertController) {
+    this.phrase = this.storageService.getUser().nomcomplet;
+    this.initials = this.getInitials(this.phrase);
+   }
 
   ngOnInit() {
-    this.isLoggedIn = this.storageService.isLoggedIn();
-
-    if (this.isLoggedIn) {
-      const user = this.storageService.getUser();
-      this.roles = user.roles;
-
-      this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
-      this.showEleveBoard = this.roles.includes('ROLE_ELEVE');
-      this.showEtudiantBoard = this.roles.includes('ROLE_ETUDIANT');
-      this.showProfessionnelBoard = this.roles.includes('ROLE_PROFESSIONNEL');
-
-      this.username = user.username;
-    }
   }
 
   //METHODE PERMETTANT DE SE DECONNECTER
@@ -70,6 +57,16 @@ export class TabsPage implements OnInit {
       }
     })
     
+  }
+
+  //METHODE PERMETTANT DE RECUPERER LES INITIALS DE L'UTILISATEUR CONNECTE
+  getInitials(phrase: string): string {
+    let words = phrase.split(" ");
+    let initials = "";
+    words.forEach(word => {
+      initials += word[0];
+    });
+    return initials;
   }
 
 }

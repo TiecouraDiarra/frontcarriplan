@@ -108,13 +108,13 @@
 
     <!-- Debut du champ de saisie pour confirmer le mot de passe -->
     <ion-item mode='md'>
-      <ion-icon slot="end" color="dark" (click)="changeType()" style="font-family: 'Poppins';
-        font-style: normal; opacity: 0.5;">
+      <ion-icon [name]="type ? 'eye-off' : 'eye'" slot="end" color="dark" (click)="changeType()" style="font-family: 'Poppins';
+        font-style: normal; opacity: 0.5;"> 
       </ion-icon>
       <ion-label for="confirmpassword" position='floating'>Confirmer Mot de passe</ion-label>
       <ion-input name="confirmpassword" [(ngModel)]="form.confirmpassword" required minlength="6"
         #confirmpassword="ngModel" [ngClass]="{ 'is-invalid': f.submitted && confirmpassword.errors }" color="black"
-        type="confirmpassword"></ion-input>
+        type="password" [type]="type ? 'password' : 'text'"></ion-input>
       <div style="text-align: center;" class="invalid-feedback" *ngIf="confirmpassword.errors && f.submitted">
         <div *ngIf="confirmpassword.errors['required']">Confirmation obligatoire</div>
         <div *ngIf="confirmpassword.errors['minlength']">

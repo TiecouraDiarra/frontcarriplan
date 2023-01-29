@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'app-motdepasseoublie',
@@ -9,9 +10,21 @@ export class MotdepasseoubliePage implements OnInit {
 
   type = true;
 
-  constructor() { }
+  form:any ={
+    email : null
+  }
+
+  constructor(private authService : AuthService) { }
 
   ngOnInit() {
+  }
+
+  //REINITIALISER LE MOT DE PASSE
+  onSubmit(): void {
+    const {email} = this.form;
+    this.authService.reinitialisermotdepasse(email).subscribe(data =>(
+      console.log(data)
+    ))
   }
 
   changeType() {

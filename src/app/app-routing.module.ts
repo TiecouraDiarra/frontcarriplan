@@ -180,6 +180,18 @@ const routes: Routes = [
     path: 'autoevaluationetudiant',
     loadChildren: () => import('./etudiant/autoevaluationetudiant/autoevaluationetudiant.module').then( m => m.AutoevaluationetudiantPageModule)
   },
+  {
+    path: 'modifprofiletudiant',
+    loadChildren: () => import('./etudiant/modifprofiletudiant/modifprofiletudiant.module').then( m => m.ModifprofiletudiantPageModule)
+  },
+  {
+    path: 'modifprofileleve',
+    loadChildren: () => import('./eleve/modifprofileleve/modifprofileleve.module').then( m => m.ModifprofilelevePageModule)
+  },
+  {
+    path: 'modifprofilprofessionnel',
+    loadChildren: () => import('./professionnel/modifprofilprofessionnel/modifprofilprofessionnel.module').then( m => m.ModifprofilprofessionnelPageModule)
+  },
 
 
 

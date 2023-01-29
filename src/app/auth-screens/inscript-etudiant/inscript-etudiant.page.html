@@ -2,19 +2,19 @@
 
   <div class="row tite" style="margin-top: 40px; display: flex; font-size: 30px; margin-left: 20px;">
 
-    <div class="col-4">
+    <div class="col-2">
       <!-- <ion-icon (click)="back()" name="arrow-back-outline"></ion-icon> -->
       <ion-icon (click)="back()" name="arrow-back-circle-outline"></ion-icon>
     </div>
-    <div class="col" style="margin-left: 25px;">
+    <div class="col" style="margin-top: 7px;">
       <div class="titee">
         <h2 class="tit">Inscription Etudiant</h2>
       </div>
     </div>
-    <div class="col-4"></div>
+    <div class="col-2"></div>
   </div>
 
-  <div align="center" style="margin-top: 20px; margin-bottom: 30px;">
+  <div align="center" style="margin-top: 20px; margin-bottom: 15px;">
     <p>
       CarriPlan vous accompagne pour vous aider à trouver votre orientation.
     </p>
@@ -38,7 +38,7 @@
           Nom et prénom doivent comporter au maximum 20 caractères
         </div>
       </div>
-    </ion-item>
+    </ion-item> 
     <!-- Fin du champ de saisie pour le nom et prenomm -->
 
     <!-- Debut du champ de saisie pour le numéro -->
@@ -93,13 +93,13 @@
 
     <!-- Debut du champ de saisie pour confirmer le mot de passe -->
     <ion-item mode='md'>
-      <ion-icon slot="end" color="dark" (click)="changeType()" style="font-family: 'Poppins';
+      <ion-icon [name]="type ? 'eye-off' : 'eye'" slot="end" color="dark" (click)="changeType()" style="font-family: 'Poppins';
         font-style: normal; opacity: 0.5;">
       </ion-icon>
       <ion-label for="confirmpassword" position='floating'>Confirmer Mot de passe</ion-label>
       <ion-input name="confirmpassword" [(ngModel)]="form.confirmpassword" required minlength="6"
         #confirmpassword="ngModel" [ngClass]="{ 'is-invalid': f.submitted && confirmpassword.errors }" color="black"
-        type="confirmpassword"></ion-input>
+        type="password" [type]="type ? 'password' : 'text'"></ion-input>
       <div style="text-align: center;" class="invalid-feedback" *ngIf="confirmpassword.errors && f.submitted">
         <div *ngIf="confirmpassword.errors['required']">Confirmation obligatoire</div>
         <div *ngIf="confirmpassword.errors['minlength']">
@@ -134,7 +134,7 @@
   <!-- Fin du formulaire d'inscription -->
 
   <!-- Debut de la division permettant de naviguer vers la page de connexion -->
-  <div class="row" style="text-align: center; margin-top: 30px;">
+  <div class="row" style="text-align: center; margin-top: 20px;">
     <p style="font-family: 'Poppins';
     font-style: normal; opacity: 0.8;color: black; font-size: 17px;">Déjà un compte ? <a [routerLink]="['/connexion']"
         style="color: #00A5E4; font-weight: 600; text-decoration: none; font-size: 17px;">connectez-vous</a></p>

@@ -48,6 +48,10 @@ const routes: Routes = [
         path: 'loadingpage',
         loadChildren: () => import('../eleve/loadingpage/loadingpage.module').then( m => m.LoadingpagePageModule)
       },
+      {
+        path: 'modifprofileleve',
+        loadChildren: () => import('../eleve/modifprofileleve/modifprofileleve.module').then( m => m.ModifprofilelevePageModule)
+      },
     
     ]
   }

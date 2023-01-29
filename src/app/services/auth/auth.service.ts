@@ -30,6 +30,41 @@ export class AuthService {
     );
   }
 
+  //Modifier profil Utilisateur
+  modifier(nomcomplet: string, numero: string, email: string, iduser:number): Observable<any> {
+    console.log("L'identifiant de user : " +iduser);
+    return this.http.put(
+      AUTH_API + 'user/'  + `${iduser}`,
+      {
+        nomcomplet,
+        numero,
+        email,
+        iduser
+      },
+      httpOptions
+    );
+  }
+
+  //Modifier mot de passe Utilisateur
+  modifierMotDePasse(ancienmdp: string, nouveaumdp: string, confirmNewmdp: string, numero:string): Observable<any> {
+    console.log("Le numero de user : " +numero);
+    return this.http.put(
+      AUTH_API + 'modifierpassword/'  + `${numero}`,
+      {
+        ancienmdp,
+        nouveaumdp,
+        confirmNewmdp,
+        numero
+      },
+      httpOptions
+    );
+  }
+
+  //REINITIALISER LE MOT DE PASSE AVEC EMAIL
+  reinitialisermotdepasse(email:string):Observable<any>{
+    return this.http.get(AUTH_API + 'resetpassword/' + `${email}`)
+  }
+
 
   //Inscription eleve
   inscriptioneleve(nomcomplet: string, numero:string, email: string, password: string, confirmpassword:string): Observable<any> {

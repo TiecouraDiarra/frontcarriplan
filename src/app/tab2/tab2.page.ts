@@ -10,10 +10,38 @@ import { StorageService } from '../services/storage/storage.service';
   styleUrls: ['./tab2.page.scss'],
 })
 export class Tab2Page implements OnInit {
+  User: any
 
-  constructor(private authService: AuthService, private storageService: StorageService, private route: Router) { }
+  phrase: string = "";
+  initials: string;
+  // phrase: string = '';
+  // words: string[] = this.phrase.split(" ");
+  // initials: string = "";
+
+
+  constructor(private authService: AuthService, private storageService: StorageService, private route: Router) {
+    this.phrase = this.storageService.getUser().nomcomplet;
+    this.initials = this.getInitials(this.phrase);
+   }
+   //METHODE PERMETTANT DE RECUPERER LES INITIALS DE L'UTILISATEUR CONNECTE
+   getInitials(phrase: string): string {
+    let words = phrase.split(" ");
+    let initials = "";
+    words.forEach(word => {
+      initials += word[0];
+    });
+    return initials;
+  }
 
   ngOnInit() {
+    this.User = this.storageService.getUser();
+    console.log(this.User);
+    
+    // this.phrase = this.User.nomcomplet;
+    // this.words.forEach((word: string) => {
+    //   this.initials += word[0];
+    // });
+    // console.log(this.initials); // JD
   }
 
   //METHODE PERMETTANT DE SE DECONNECTER
@@ -47,6 +75,6 @@ export class Tab2Page implements OnInit {
         });
       }
     })
-    
+
   }
 }

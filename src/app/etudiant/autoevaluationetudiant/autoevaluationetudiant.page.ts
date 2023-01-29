@@ -17,9 +17,9 @@ export class AutoevaluationetudiantPage implements OnInit {
   idUser: any;
 
   message: string | undefined;
-  resetForm(){
-    questions:'';
-    answers:'';
+  resetForm() {
+    questions: '';
+    answers: '';
   }
 
   constructor(public serviceQ: QuestionService, private service: AutoevaluationService, private route: Router, private storage: StorageService) { }
@@ -28,49 +28,49 @@ export class AutoevaluationetudiantPage implements OnInit {
     this.idUser = this.storage.getUser()
     console.log(this.idUser)
     //AFFICHER LA LISTE DES QUESTIONS POUR LES ETUDIANTS QUI ONT FAIT LA TSECO
-    if(this.idUser.serie=="TSECO"){
+    if (this.idUser.serie.nomserie == "TSECO") {
       this.serviceQ.AfficherLaListeQuestionTseco().subscribe(data => {
-        console.log(this.questions)
         this.questions = data;
+        console.log(this.questions) 
       })
     }
     //AFFICHER LA LISTE DES QUESTIONS POUR LES ETUDIANTS QUI ONT FAIT LA TSE
-    else if(this.idUser.serie=="TSE"){
+    else if (this.idUser.serie.nomserie == "TSE") {
       this.serviceQ.AfficherLaListeQuestionTse().subscribe(data => {
         console.log(this.questions)
         this.questions = data;
       })
     }
     //AFFICHER LA LISTE DES QUESTIONS POUR LES ETUDIANTS QUI ONT FAIT LA TSEXP
-    else if(this.idUser.serie=="TSEXP"){
+    else if (this.idUser.serie.nomserie == "TSEXP") {
       this.serviceQ.AfficherLaListeQuestionTsexp().subscribe(data => {
         console.log(this.questions)
         this.questions = data;
       })
     }
     //AFFICHER LA LISTE DES QUESTIONS POUR LES ETUDIANTS QUI ONT FAIT LA TLL
-    else if(this.idUser.serie=="TLL"){
+    else if (this.idUser.serie.nomserie == "TLL") {
       this.serviceQ.AfficherLaListeQuestionTll().subscribe(data => {
         console.log(this.questions)
         this.questions = data;
       })
     }
     //AFFICHER LA LISTE DES QUESTIONS POUR LES ETUDIANTS QUI ONT FAIT LA TAL
-    else if(this.idUser.serie=="TAL"){
+    else if (this.idUser.nomseries == "TAL") {
       this.serviceQ.AfficherLaListeQuestionTal().subscribe(data => {
         console.log(this.questions)
         this.questions = data;
       })
     }
     //AFFICHER LA LISTE DES QUESTIONS POUR LES ETUDIANTS QUI ONT FAIT LA TSS
-    else if(this.idUser.serie=="TSS"){
+    else if (this.idUser.nomseries == "TSS") {
       this.serviceQ.AfficherLaListeQuestionTss().subscribe(data => {
         console.log(this.questions)
         this.questions = data;
       })
     }
-     
-    
+
+
   }
 
   submitAnswers() {
@@ -86,7 +86,7 @@ export class AutoevaluationetudiantPage implements OnInit {
         this.message = " Tous les champs sont obligatoires !",
       )
       this.resetForm();
-    }else{
+    } else {
       swalWithBootstrapButtons.fire({
         // title: 'Etes-vous sûre de vous déconnecter?',
         text: "Vous allez effectuer votre autoévaluation ?",
@@ -97,7 +97,7 @@ export class AutoevaluationetudiantPage implements OnInit {
         // reverseButtons: true
       }).then((result) => {
         if (result.isConfirmed) {
-          this.route.navigate(['/tabs/autoeleve']);
+          this.route.navigate(['/tab2/autoetudiant']);
           swalWithBootstrapButtons.fire(
             'Auto-évaluation effectuée avec succès !',
             'Tes pistes sont prêtes',
@@ -113,11 +113,11 @@ export class AutoevaluationetudiantPage implements OnInit {
                 'Auto-évaluation effectuée avec succès !',
                 'Tes pistes sont prêtes',
                 'success',)
-                this.resetForm();
-  
+              this.resetForm();
+
             }
           )
-        }else if (
+        } else if (
           /* Read more about handling dismissals below */
           result.dismiss === Swal.DismissReason.cancel
         ) {
@@ -128,7 +128,7 @@ export class AutoevaluationetudiantPage implements OnInit {
         }
       })
     }
-    
+
   }
 
 
