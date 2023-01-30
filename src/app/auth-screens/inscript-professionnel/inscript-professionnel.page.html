@@ -19,14 +19,14 @@
     </p>
   </div>
 
-     <!-- Debut du formulaire d'inscription -->
+  <!-- Debut du formulaire d'inscription -->
   <form *ngIf="!isSuccessful" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
 
-     <!-- Debut du champ de saisie pour le nom et prenomm -->
-     <ion-item mode="md">
+    <!-- Debut du champ de saisie pour le nom et prenomm -->
+    <ion-item mode="md">
       <ion-label for="nomcomplet" position="floating">Nom & Prénom</ion-label>
-      <ion-input name="nomcomplet" [(ngModel)]="form.nomcomplet" required minlength="3"
-        maxlength="20" #nomcomplet="ngModel" [ngClass]="{ 'is-invalid': f.submitted && nomcomplet.errors }">
+      <ion-input name="nomcomplet" [(ngModel)]="form.nomcomplet" required minlength="3" maxlength="20"
+        #nomcomplet="ngModel" [ngClass]="{ 'is-invalid': f.submitted && nomcomplet.errors }">
       </ion-input>
       <div style="text-align: center;" class="invalid-feedback" *ngIf="nomcomplet.errors && f.submitted">
         <div *ngIf="nomcomplet.errors['required']">Nom et Prénom sont obligatoires</div>
@@ -37,14 +37,14 @@
           Nom et prénom doivent comporter au maximum 20 caractères
         </div>
       </div>
-    </ion-item> 
+    </ion-item>
     <!-- Fin du champ de saisie pour le nom et prenomm -->
 
     <!-- Debut du champ de saisie pour le numéro -->
     <ion-item mode="md">
       <ion-label for="numero" position="floating">Numéro</ion-label>
-      <ion-input type="tel" name="numero" [(ngModel)]="form.numero" required minlength="8"
-        maxlength="13" #numero="ngModel" [ngClass]="{ 'is-invalid': f.submitted && numero.errors }">
+      <ion-input type="tel" name="numero" [(ngModel)]="form.numero" required minlength="8" maxlength="13"
+        #numero="ngModel" [ngClass]="{ 'is-invalid': f.submitted && numero.errors }">
       </ion-input>
       <div style="text-align: center;" class="invalid-feedback" *ngIf="numero.errors && f.submitted">
         <div *ngIf="numero.errors['required']">Numero est obligatoire</div>
@@ -78,8 +78,8 @@
         font-style: normal; opacity: 0.5;">
       </ion-icon>
       <ion-label for="password" position='floating'>Mot de passe</ion-label>
-      <ion-input name="password" [(ngModel)]="form.password" required minlength="6"
-        #password="ngModel" [ngClass]="{ 'is-invalid': f.submitted && password.errors }" color="black" type="password"
+      <ion-input name="password" [(ngModel)]="form.password" required minlength="6" #password="ngModel"
+        [ngClass]="{ 'is-invalid': f.submitted && password.errors }" color="black" type="password"
         [type]="type ? 'password' : 'text'"></ion-input>
       <div style="text-align: center;" class="invalid-feedback" *ngIf="password.errors && f.submitted">
         <div *ngIf="password.errors['required']">Mot de passe obligatoire</div>
@@ -107,7 +107,7 @@
       </div>
     </ion-item>
     <!-- Fin du champ de saisie pour confirmer le mot de passe -->
-    
+
     <!-- Debut du champ de saisie pour selectionner un domaine -->
     <ion-item>
       <ion-label for="serie" position='floating'>Selectionnez votre domaine</ion-label>
@@ -118,13 +118,14 @@
     </ion-item>
     <!-- Fin du champ de saisie pour selectionner un domaine -->
 
-     <!-- Debut du boutton permettant d'envoyer le formulaire -->
-    <ion-button ion-button type="submit" 
-    style="--background: #00A5E4; margin: 10px," 
-    expand="block">S’inscrire</ion-button>
-     <!-- Fin du boutton permettant d'envoyer le formulaire -->
+    <!-- Debut du boutton permettant d'envoyer le formulaire -->
+    <div class="row mx-5" style="margin-top: 5px;">
+      <ion-button ion-button type="submit" style="--background: #00A5E4; 
+      margin-right: 11px; border-radius: 10px;">S’inscrire</ion-button>
+    </div>
+    <!-- Fin du boutton permettant d'envoyer le formulaire -->
 
-     <!-- Debut de la division permettant d'afficher le message en cas d'erreur -->
+    <!-- Debut de la division permettant d'afficher le message en cas d'erreur -->
     <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
       Inscription annulée <br />{{ errorMessage }}
     </div>

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AwaitComponent } from '../eleve/await/await.component';
 
 import { TabsPage } from './tabs.page';
 
@@ -8,6 +9,10 @@ const routes: Routes = [
     path: 'tabs',
     component: TabsPage,
     children: [
+      {
+        path:'await',
+        component: AwaitComponent
+      },
       {
         path: 'accueileleve',
         loadChildren: () => import('../eleve/accueileleve/accueileleve.module').then( m => m.AccueilelevePageModule)

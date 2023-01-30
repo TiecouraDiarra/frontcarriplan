@@ -3,10 +3,10 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content [fullscreen]="true">
   <h3>Les filières et les métiers </h3>
   <ion-list>
-    <div class="ion-margin marginBottom" (ionChange)="segmentChanged($event)">
+    <div class="ion-margin marginBottom " (ionChange)="segmentChanged($event)">
       <ion-segment mode="ios" [value]="segmentValue">
         <ion-segment-button value="1">
           <ion-label>Filières</ion-label>

@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { data } from 'jquery';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { SerieetudiantService } from 'src/app/services/serieetudiant/serieetudiant.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-inscript-etudiant',
@@ -53,12 +54,10 @@ export class InscriptEtudiantPage implements OnInit {
 console.log(serie)
     this.authService.inscriptionetudiant(nomcomplet,numero, email, password, confirmpassword, serie.nomserie).subscribe({
       next: data => {
-        if (this.isSuccessful=true) {
-          this.route.navigateByUrl('/connexion');
-        }
         console.log(data);
         this.isSuccessful = true;
         this.isSignUpFailed = false;
+        this.popUp();
       },
       error: err => {
         this.errorMessage = err.error.message;
@@ -66,4 +65,27 @@ console.log(serie)
       }
     });
   }
+
+  popUp() {
+    Swal.fire({
+      position:'center',
+      text: 'Compte creé avec success!!',
+      icon:'success',
+      heightAuto: false,
+      showConfirmButton: true,
+      confirmButtonText: "OK",
+      confirmButtonColor: '#0857b5',
+      showDenyButton: false,
+      showCancelButton: false,
+      allowOutsideClick: false
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.route.navigateByUrl('/connexion', {skipLocationChange: true}).then(() => {
+          this.route.navigate(["/connexion"])
+        })
+      }
+    })
+
+  }
+  
 }

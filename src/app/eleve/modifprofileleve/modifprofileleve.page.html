@@ -32,7 +32,7 @@
   <div [ngSwitch]="cat">
     <ion-list *ngSwitchCase="'profil'">
 
-      <form *ngIf="!isSuccessful" name="form" (ngSubmit)="f.form.valid && ModifierEleve()" #f="ngForm" novalidate>
+      <form *ngIf="!isSuccessful" name="form" (ngSubmit)="f.form.valid && popUpModifProfil()" #f="ngForm" novalidate>
         <!-- Debut du champ de saisie pour le nom et prenomm -->
         <ion-item mode="md">
           <ion-label for="nomcomplet" position="floating">Nom & Prénom</ion-label>
@@ -100,7 +100,7 @@
     </ion-list>
 
     <ion-list *ngSwitchCase="'mdp'">
-      <form *ngIf="!isSuccessful" name="form" (ngSubmit)="f.form.valid && ModifierMdpEleve()" #f="ngForm" novalidate>
+      <form *ngIf="!isSuccessful" name="form" (ngSubmit)="f.form.valid && popUpModifMdpEleve()" #f="ngForm" novalidate>
         <!-- Debut du champ de saisie pour l'ancien mot de passe -->
         <ion-item mode='md'>
           <ion-icon [name]="type ? 'eye-off' : 'eye'" slot="end" color="dark" (click)="changeType()" style="font-family: 'Poppins';

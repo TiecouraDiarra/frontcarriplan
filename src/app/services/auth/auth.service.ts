@@ -16,6 +16,9 @@ const httpOptions = {
   providedIn: 'root',
 })
 export class AuthService {
+
+  AUTH_API_ETUDIANT1 = 'http://localhost:8080/etudiant/';
+
   constructor(private http: HttpClient) {}
 
   //Connexion
@@ -64,6 +67,15 @@ export class AuthService {
   reinitialisermotdepasse(email:string):Observable<any>{
     return this.http.get(AUTH_API + 'resetpassword/' + `${email}`)
   }
+
+   //Recuperer un étudiant à travers son numéro
+   AfficherEtudiant(numero:string): Observable<any> {
+    console.log("Le numero de user : " +numero);
+    return this.http.get(
+      AUTH_API_ETUDIANT + 'afficher/'  + `${numero}`,
+    );
+  }
+
 
 
   //Inscription eleve

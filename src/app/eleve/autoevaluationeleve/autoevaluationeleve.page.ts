@@ -20,7 +20,11 @@ export class AutoevaluationelevePage implements OnInit {
 
   // constructor(private authService: AuthService, private route: Router) { }
 
-form:FormGroup
+  form: FormGroup
+
+  isSuccessful = false;
+  isSignUpFailed = false;
+  errorMessage = '';
 
 
   questions: any[];
@@ -28,9 +32,9 @@ form:FormGroup
   idUser: any;
 
   message: string | undefined;
-  resetForm(){
-    questions:'';
-    answers:'';
+  resetForm() {
+    questions: '';
+    answers: '';
   }
 
   constructor(public serviceQ: QuestionService, private service: AutoevaluationService, private route: Router, private storage: StorageService) {
@@ -50,7 +54,26 @@ form:FormGroup
     })
   }
 
+  //FAIRE UNE AUTOEVALUATION
   submitAnswers() {
+    this.service.faireAuto(this.answers, this.idUser.id).subscribe({
+      next: data => {
+        this.answers = data;
+        console.log(data);
+        this.isSuccessful = true;
+        this.isSignUpFailed = false;
+      },
+      error: err => {
+        this.errorMessage = err.error.message;
+        this.isSignUpFailed = true;
+      }
+    }
+    )
+  }
+
+
+  //POPUP PERMETTANT DE FAIRE AUTOEVALUATION
+  popUpFaireAuto() {
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
         confirmButton: 'btn btn-primary',
@@ -58,54 +81,27 @@ form:FormGroup
       },
       heightAuto: false
     })
-    if (this.answers == "") {
-      swalWithBootstrapButtons.fire(
-        this.message = " Tous les champs sont obligatoires !",
-      )
-      this.resetForm();
-    }else{
-      swalWithBootstrapButtons.fire({
-        // title: 'Etes-vous sûre de vous déconnecter?',
-        text: "Vous allez effectuer votre autoévaluation ?",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonText: 'Confimer',
-        cancelButtonText: 'Annuler',
-        // reverseButtons: true
-      }).then((result) => {
-        if (result.isConfirmed) {
-          this.route.navigate(['/tabs/autoeleve']);
-          swalWithBootstrapButtons.fire(
-            'Auto-évaluation effectuée avec succès !',
-            'Tes pistes sont prêtes',
-            'success',)
-          // console.log(this.answers);
-          console.log(this.answers);
-          this.service.faireAuto(this.answers, this.idUser.id).subscribe(
-            data => {
-              //this.route.navigate(['/tabs/loadingpage']);
-              this.answers = data;
-              console.log(data);
-              swalWithBootstrapButtons.fire(
-                'Auto-évaluation effectuée avec succès !',
-                'Tes pistes sont prêtes',
-                'success',)
-                this.resetForm();
-  
-            }
-          )
-        }else if (
-          /* Read more about handling dismissals below */
-          result.dismiss === Swal.DismissReason.cancel
-        ) {
-          swalWithBootstrapButtons.fire(
-            'Auto-évaluation annulée'
-          )
+    swalWithBootstrapButtons.fire({
+      // title: 'Etes-vous sûre de vous déconnecter?',
+      text: "Vous allez effectuer votre autoévaluation ?",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Confimer',
+      cancelButtonText: 'Annuler',
+      // reverseButtons: true
+    }).then((result) => {
+      if (result.isConfirmed) {
+        swalWithBootstrapButtons.fire(
+          'Auto-évaluation effectuée avec succès !',
+          'Tes pistes sont prêtes',
+          'success',);
+        this.submitAnswers();
+        this.route.navigateByUrl('/tabs/await', { skipLocationChange: true }).then(() => {
+          this.route.navigate(["/tabs/await"])
+        })
+      }
+    })
 
-        }
-      })
-    }
-    
   }
 
 

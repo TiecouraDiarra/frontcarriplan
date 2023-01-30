@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { DomaineprofService } from 'src/app/services/domaineprof/domaineprof.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-inscript-professionnel',
@@ -51,18 +52,39 @@ export class InscriptProfessionnelPage implements OnInit {
 
     this.authService.inscriptionprofessionnel(nomcomplet,numero, email, password, confirmpassword, domaine.nomdomaine).subscribe({
       next: data => {
-        if (this.isSuccessful=true) {
-          this.route.navigateByUrl('/connexion');
-        }
+        
         console.log(data);
         this.isSuccessful = true;
         this.isSignUpFailed = false;
+        this.popUp();
       },
       error: err => {
         this.errorMessage = err.error.message;
         this.isSignUpFailed = true;
       }
     });
+  }
+
+  popUp() {
+    Swal.fire({
+      position:'center',
+      text: 'Compte creé avec success!!',
+      icon:'success',
+      heightAuto: false,
+      showConfirmButton: true,
+      confirmButtonText: "OK",
+      confirmButtonColor: '#0857b5',
+      showDenyButton: false,
+      showCancelButton: false,
+      allowOutsideClick: false
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.route.navigateByUrl('/connexion', {skipLocationChange: true}).then(() => {
+          this.route.navigate(["/connexion"])
+        })
+      }
+    })
+
   }
 
 }

@@ -19,6 +19,7 @@ ion-card {
         // opacity: 1.0;
         opacity: 1.0;
         filter: alpha(opacity=100);
+        background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
     }
 }
 
@@ -40,11 +41,12 @@ ion-card {
     margin: 0 auto;
     left: 0;
     right: 0;
-    top: 20%;
+    top: 30%;
     color: white;
+
     // width: 70%;
     font-size: 15px;
-    font-weight: bold;
+    font-weight: 1000;
 }
 
 // .card-img-top {
@@ -73,11 +75,19 @@ ion-card {
 
 .ligne{
     overflow-y: scroll; 
-    height: 400px;
+    height: 350px;
     --overflow: hidden;
     overflow: auto;
 
     &::-webkit-scrollbar {
         display: none;
     }
+}
+
+.crd:hover {
+    cursor: pointer;
+}
+
+.crd{
+    cursor: pointer;
 }

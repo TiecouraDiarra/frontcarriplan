@@ -18,11 +18,22 @@
     <img src="assets/imgs/imgconfig/motdepasseou.png" />
   </div>
 
-  <form>
+  <form *ngIf="!isSuccessful" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
     <ion-item mode="md">
-      <ion-label position="floating">Numéro ou Email</ion-label>
-      <ion-input [(ngModel)]="form.email" name="email" required="true"></ion-input>
+      <ion-label for="email" position="floating">Email</ion-label>
+      <ion-input name="email" [(ngModel)]="form.email" required email #email="ngModel"
+        [ngClass]="{ 'is-invalid': f.submitted && email.errors }" type="email"></ion-input>
+      <div style="text-align: center;" class="invalid-feedback" *ngIf="email.errors && f.submitted">
+        <div *ngIf="email.errors['required']">Email est obligatoire</div>
+        <div *ngIf="email.errors['email']">
+          Email doit être une adresse e-mail valide
+        </div>
+      </div>
     </ion-item>
-    <button (click)="onSubmit()" type="submit" ion-button style="--background: #00A5E4; margin: 10px," expand="block">Réinitialiser mon mot de passe</button>
+    <div class="row mx-5" style="margin-top: 5px;">
+      <ion-button ion-button type="submit" style="--background: #00A5E4; 
+      margin-right: 11px; border-radius: 10px;">Réinitialiser</ion-button>
+    </div>
+    <!-- <button (click)="onSubmit()" type="submit" ion-button style="--background: #00A5E4; margin: 10px," expand="block">Réinitialiser mon mot de passe</button> -->
   </form>
 </ion-content>

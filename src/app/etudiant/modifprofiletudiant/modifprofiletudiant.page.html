@@ -32,7 +32,7 @@
   <div [ngSwitch]="cat">
     <ion-list *ngSwitchCase="'profil'">
 
-      <form *ngIf="!isSuccessful" name="form" (ngSubmit)="f.form.valid && ModifierEtudiant()" #f="ngForm" novalidate>
+      <form *ngIf="!isSuccessful" name="form" (ngSubmit)="f.form.valid && popUpModifProfil()" #f="ngForm" novalidate>
         <!-- Debut du champ de saisie pour le nom et prenomm -->
         <ion-item mode="md">
           <ion-label for="nomcomplet" position="floating">Nom & Prénom</ion-label>
@@ -100,14 +100,14 @@
     </ion-list>
 
     <ion-list *ngSwitchCase="'mdp'">
-      <form *ngIf="!isSuccessful" name="form" (ngSubmit)="f.form.valid && ModifierMdpEtudiant()" #f="ngForm" novalidate>
+      <form *ngIf="!isSuccessful" name="form" (ngSubmit)="f.form.valid && popUpModifMdpEtudiant()" #f="ngForm" novalidate>
         <!-- Debut du champ de saisie pour l'ancien mot de passe -->
         <ion-item mode='md'>
           <ion-icon [name]="type ? 'eye-off' : 'eye'" slot="end" color="dark" (click)="changeType()" style="font-family: 'Poppins';
             font-style: normal; opacity: 0.5;">
           </ion-icon>
           <ion-label for="confirmNewmdp" position='floating'>Actuel mot de passe</ion-label>
-          <ion-input name="ancienmdp" [(ngModel)]="form.ancienmdp" required minlength="6"
+          <ion-input  name="ancienmdp" [(ngModel)]="form.ancienmdp" required minlength="6"
             #ancienmdp="ngModel" [ngClass]="{ 'is-invalid': f.submitted && ancienmdp.errors }" color="black" type="password"
             [type]="type ? 'password' : 'text'"></ion-input>
           <div style="text-align: center;" class="invalid-feedback" *ngIf="ancienmdp.errors && f.submitted">

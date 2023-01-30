@@ -53,6 +53,25 @@ export class ModifprofilelevePage implements OnInit {
 
   //METHODE PERMETTANT DE MODIFIER LE PROFIL D'UN ELEVE
   ModifierEleve() {
+    const { nomcomplet,
+      numero,
+      email } = this.form;
+    this.authService.modifier(nomcomplet, numero, email, this.User.id).subscribe({
+      next: data => {
+        console.log(data);
+        this.isSuccessful = true;
+        this.isSignUpFailed = false;
+      },
+      error: err => {
+        this.errorMessage = err.error.message;
+        this.isSignUpFailed = true;
+      }
+    }
+      
+    )
+  }
+  //POPUP PERMETTANT DE CONFIRMER LA MODIFICATION DU PROFIL 
+  popUpModifProfil() {
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
         confirmButton: 'btn btn-primary',
@@ -70,35 +89,15 @@ export class ModifprofilelevePage implements OnInit {
       // reverseButtons: true
     }).then((result) => {
       if (result.isConfirmed) {
-        this.route.navigate(['/tab2/profiletudiant']);
         swalWithBootstrapButtons.fire(
           'Modification effectuée avec succès !',
           'Tes pistes sont prêtes',
-          'success',)
-        const { nomcomplet,
-          numero,
-          email } = this.form;
-        this.authService.modifier(nomcomplet, numero, email, this.User.id).subscribe(
-          data => {
-            //this.route.navigate(['/tabs/loadingpage']);
-            // this.answers = data;
-            console.log(data);
-            swalWithBootstrapButtons.fire(
-              'Modification effectuée avec succès !',
-              'Tes pistes sont prêtes',
-              'success',)
-
-          }
-        )
-      } else if (
-        /* Read more about handling dismissals below */
-        result.dismiss === Swal.DismissReason.cancel
-      ) {
-        swalWithBootstrapButtons.fire(
-          'Modification annulée'
-        )
-
-      }
+          'success',);
+          this.ModifierEleve();
+        this.route.navigateByUrl('/tabs/profileleve', { skipLocationChange: true }).then(() => {
+          this.route.navigate(["/tabs/profileleve"])
+        })
+      } 
     })
 
   }
@@ -110,7 +109,7 @@ export class ModifprofilelevePage implements OnInit {
       confirmNewmdp } = this.form;
     this.authService.modifierMotDePasse(ancienmdp, nouveaumdp, confirmNewmdp, this.User.numero).subscribe({
       next: data => {
-        if (this.isSuccessful=true) {
+        if (this.isSuccessful = true) {
           this.route.navigateByUrl('/tab2/profiletudiant');
         }
       },
@@ -121,5 +120,39 @@ export class ModifprofilelevePage implements OnInit {
     }
     )
   }
+
+  //POPUP PERMETTANT DE CONFIRMER LA MODIFICATION DU MOT DE PASSE 
+  popUpModifMdpEleve() {
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: 'btn btn-primary',
+        cancelButton: 'btn btn-danger',
+      },
+      heightAuto: false
+    })
+    swalWithBootstrapButtons.fire({
+      // title: 'Etes-vous sûre de vous déconnecter?',
+      text: "Etes-vous sûre de modifier votre profil ?",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Confimer',
+      cancelButtonText: 'Annuler',
+      // reverseButtons: true
+    }).then((result) => {
+      if (result.isConfirmed) {
+        swalWithBootstrapButtons.fire(
+          'Modification effectuée avec succès !',
+          'success',);
+          this.ModifierMdpEleve();
+        this.route.navigateByUrl('/tabs/profileleve', { skipLocationChange: true }).then(() => {
+          this.route.navigate(["/tabs/profileleve"])
+        })
+      } 
+    })
+
+  }
+
+
+  
 
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth/auth.service';
 import { AutoevaluationService } from 'src/app/services/autoevaluation/autoevaluation.service';
 import { QuestionService } from 'src/app/services/question/question.service';
 import { StorageService } from 'src/app/services/storage/storage.service';
@@ -15,6 +16,7 @@ export class AutoevaluationetudiantPage implements OnInit {
   questions: any[];
   answers: any = {};
   idUser: any;
+  Etudiant : any
 
   message: string | undefined;
   resetForm() {
@@ -22,13 +24,26 @@ export class AutoevaluationetudiantPage implements OnInit {
     answers: '';
   }
 
-  constructor(public serviceQ: QuestionService, private service: AutoevaluationService, private route: Router, private storage: StorageService) { }
+  form:any ={
+    numero : null
+  }
+
+  constructor(public serviceQ: QuestionService, private service: AutoevaluationService, private route: Router, private storage: StorageService, private authService : AuthService) { }
 
   ngOnInit() {
     this.idUser = this.storage.getUser()
-    console.log(this.idUser)
+    console.log(this.idUser);
+    const {numero} = this.form;
+    this.authService.AfficherEtudiant(this.idUser.numero).subscribe(data =>(
+      this.Etudiant = data,
+      console.log(this.Etudiant),
+      console.log(this.Etudiant.serieLycee.nomserie)
+    ))
+
+    console.log(this.Etudiant)
+
     //AFFICHER LA LISTE DES QUESTIONS POUR LES ETUDIANTS QUI ONT FAIT LA TSECO
-    if (this.idUser.serie.nomserie == "TSECO") {
+    if (this.idUser.serie == null) {
       this.serviceQ.AfficherLaListeQuestionTseco().subscribe(data => {
         this.questions = data;
         console.log(this.questions) 
