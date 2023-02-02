@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { data } from 'jquery';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { AutoevaluationService } from 'src/app/services/autoevaluation/autoevaluation.service';
@@ -19,7 +20,7 @@ export class CarriereetudiantPage implements OnInit {
   incrementCounter() {
     this.counter++;
   }
-  constructor(private authService: AuthService, private storageService: StorageService, private auService : AutoevaluationService) { }
+  constructor(private authService: AuthService, private storageService: StorageService, private auService : AutoevaluationService, private route : Router) { }
 
   ngOnInit() {
     this.User = this.storageService.getUser()
@@ -57,5 +58,10 @@ export class CarriereetudiantPage implements OnInit {
     });
   }
 
+  //LA METHODE PERMETTANT DE NAVIGUER VERS LA PAGE SUIVANYE
+  goToDettailAuto(id: number) {
+    console.log(id);
+    return this.route.navigate(['tab2/detailsautoevaluationetudiant', id])
+  }
 
 }

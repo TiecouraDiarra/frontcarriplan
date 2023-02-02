@@ -10,6 +10,7 @@ import { ParcoursService } from 'src/app/services/parcours/parcours.service';
 export class EprofessionnelleComponent implements OnInit {
 
   parcours: any;
+  searchText:any;
   constructor(public service: ParcoursService, private route: Router) { }
 
   ngOnInit() {

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { LoadingController } from '@ionic/angular';
 
 @Component({
   selector: 'app-await',
@@ -8,13 +9,26 @@ import { Router } from '@angular/router';
 })
 export class AwaitComponent implements OnInit {
 
-  constructor(private router : Router) { }
+  constructor(private loadingCtrl : LoadingController,private router : Router) { }
 
   ngOnInit() {
-    setTimeout(() => {
-      this.router.navigate(['/tabs/autoeleve'])
-      // this.router.navigateByUrl('/tabs/autoeleve');
-      }, 1000);
+     setTimeout(() => {
+    this.router.navigate(['/tabs/autoeleve'])
+  }, 1000);
   }
+
+ 
+
+  //  Loading fonction
+  async showLoading() {
+    const loading = await this.loadingCtrl.create({
+      message: 'Patientez...',
+      duration: 3000,
+      spinner: 'circles',
+      
+    });
+    loading.present();
+  }
+
 
 }

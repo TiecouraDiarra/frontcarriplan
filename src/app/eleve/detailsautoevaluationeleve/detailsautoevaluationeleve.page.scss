@@ -1,0 +1,57 @@
+ion-content {
+    // ICI ON BLOCK LE SCROLLING
+    --offset-bottom: auto !important;
+    // background: #F8F6FB;
+    background: url('../../../assets/imgs/background.png') no-repeat center center/cover;
+    --overflow: hidden;
+    overflow: auto;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    // --background: url('../../../assets/imgs/background.png') no-repeat center center/cover;
+}
+
+* {
+    font-family: 'Poppins';
+    // line-height: 194.5%;
+    // opacity: 0.5;
+    transform: rotate(0.01deg);
+    // line-height: 194.5%;
+    font-style: normal;
+}
+
+ion-card {
+    text-align: center;
+    align-content: center;
+    align-self: center;
+    border-radius: 15px;
+    width: 100%;
+
+    img {
+        // text-align: center;
+        // align-content: center;
+        // align-self: center;
+        // max-width: 40%;
+        // max-height: 20%;
+        border-radius: 15px;
+        // background-color: black;
+        // opacity: 0.8;
+        // background-color: #000000;
+        // border: 3px solid white;
+        opacity: 1.0;
+    }
+}
+
+.titee {
+    text-align: center;
+    justify-content: center
+}
+.tit {
+    margin: 0px !important;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+

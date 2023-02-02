@@ -12,6 +12,7 @@ export class MetieretudiantComponent implements OnInit {
 
   metier : any
   p:number=1
+  searchText:any;
   constructor(public service: MetiersService, private route: Router) { }
 
   ngOnInit() {

@@ -16,7 +16,7 @@ export class AutoevaluationetudiantPage implements OnInit {
   questions: any[];
   answers: any = {};
   idUser: any;
-  Etudiant : any
+  Etudiant: any
 
   message: string | undefined;
   resetForm() {
@@ -24,66 +24,69 @@ export class AutoevaluationetudiantPage implements OnInit {
     answers: '';
   }
 
-  form:any ={
-    numero : null
+  form: any = {
+    numero: null
   }
 
-  constructor(public serviceQ: QuestionService, private service: AutoevaluationService, private route: Router, private storage: StorageService, private authService : AuthService) { }
+  constructor(public serviceQ: QuestionService, private service: AutoevaluationService, private route: Router, private storage: StorageService, private authService: AuthService) { }
 
   ngOnInit() {
     this.idUser = this.storage.getUser()
     console.log(this.idUser);
-    const {numero} = this.form;
-    this.authService.AfficherEtudiant(this.idUser.numero).subscribe(data =>(
+    const { numero } = this.form;
+    this.authService.RecupererIdEtudiant(this.idUser.id).subscribe(data => {
       this.Etudiant = data,
-      console.log(this.Etudiant),
-      console.log(this.Etudiant.serieLycee.nomserie)
-    ))
+        console.log(this.Etudiant),
+        console.log(this.Etudiant.serieLycee.nomserie);
+      //AFFICHER LA LISTE DES QUESTIONS POUR LES ETUDIANTS QUI ONT FAIT LA TSECO
+      if (this.Etudiant.serieLycee.nomserie == "TSECO") {
+        this.serviceQ.AfficherLaListeQuestionTseco().subscribe(data => {
+          this.questions = data;
+          console.log(this.questions)
+        })
+      }
+      //AFFICHER LA LISTE DES QUESTIONS POUR LES ETUDIANTS QUI ONT FAIT LA TSE
+      else if (this.Etudiant.serieLycee.nomserie == "TSE") {
+        this.serviceQ.AfficherLaListeQuestionTse().subscribe(data => {
+          console.log(this.questions)
+          this.questions = data;
+        })
+      }
+      //AFFICHER LA LISTE DES QUESTIONS POUR LES ETUDIANTS QUI ONT FAIT LA TSEXP
+      else if (this.Etudiant.serieLycee.nomserie == "TSEXP") {
+        this.serviceQ.AfficherLaListeQuestionTsexp().subscribe(data => {
+          console.log(this.questions)
+          this.questions = data;
+        })
+      }
+      //AFFICHER LA LISTE DES QUESTIONS POUR LES ETUDIANTS QUI ONT FAIT LA TLL
+      else if (this.Etudiant.serieLycee.nomserie == "TLL") {
+        this.serviceQ.AfficherLaListeQuestionTll().subscribe(data => {
+          console.log(this.questions)
+          this.questions = data;
+        })
+      }
+      //AFFICHER LA LISTE DES QUESTIONS POUR LES ETUDIANTS QUI ONT FAIT LA TAL
+      else if (this.Etudiant.serieLycee.nomserie == "TAL") {
+        this.serviceQ.AfficherLaListeQuestionTal().subscribe(data => {
+          console.log(this.questions)
+          this.questions = data;
+        })
+      }
+      //AFFICHER LA LISTE DES QUESTIONS POUR LES ETUDIANTS QUI ONT FAIT LA TSS
+      else if (this.Etudiant.serieLycee.nomserie == "TSS") {
+        this.serviceQ.AfficherLaListeQuestionTss().subscribe(data => {
+          console.log(this.questions)
+          this.questions = data;
+        })
+      }
+
+    })
 
     console.log(this.Etudiant)
 
-    //AFFICHER LA LISTE DES QUESTIONS POUR LES ETUDIANTS QUI ONT FAIT LA TSECO
-    if (this.idUser.serie == null) {
-      this.serviceQ.AfficherLaListeQuestionTseco().subscribe(data => {
-        this.questions = data;
-        console.log(this.questions) 
-      })
-    }
-    //AFFICHER LA LISTE DES QUESTIONS POUR LES ETUDIANTS QUI ONT FAIT LA TSE
-    else if (this.idUser.serie.nomserie == "TSE") {
-      this.serviceQ.AfficherLaListeQuestionTse().subscribe(data => {
-        console.log(this.questions)
-        this.questions = data;
-      })
-    }
-    //AFFICHER LA LISTE DES QUESTIONS POUR LES ETUDIANTS QUI ONT FAIT LA TSEXP
-    else if (this.idUser.serie.nomserie == "TSEXP") {
-      this.serviceQ.AfficherLaListeQuestionTsexp().subscribe(data => {
-        console.log(this.questions)
-        this.questions = data;
-      })
-    }
-    //AFFICHER LA LISTE DES QUESTIONS POUR LES ETUDIANTS QUI ONT FAIT LA TLL
-    else if (this.idUser.serie.nomserie == "TLL") {
-      this.serviceQ.AfficherLaListeQuestionTll().subscribe(data => {
-        console.log(this.questions)
-        this.questions = data;
-      })
-    }
-    //AFFICHER LA LISTE DES QUESTIONS POUR LES ETUDIANTS QUI ONT FAIT LA TAL
-    else if (this.idUser.nomseries == "TAL") {
-      this.serviceQ.AfficherLaListeQuestionTal().subscribe(data => {
-        console.log(this.questions)
-        this.questions = data;
-      })
-    }
-    //AFFICHER LA LISTE DES QUESTIONS POUR LES ETUDIANTS QUI ONT FAIT LA TSS
-    else if (this.idUser.nomseries == "TSS") {
-      this.serviceQ.AfficherLaListeQuestionTss().subscribe(data => {
-        console.log(this.questions)
-        this.questions = data;
-      })
-    }
+
+
 
 
   }

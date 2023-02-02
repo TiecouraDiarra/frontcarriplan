@@ -14,7 +14,7 @@ ion-content {
     // --background: url('../../../assets/imgs/background.png') no-repeat center center/cover;
 }
 
-ion-list{
+ion-list {
     background: url('../../../assets/imgs/background.png') no-repeat center center/cover;
 }
 
@@ -45,8 +45,9 @@ h2 {
     text-align: center;
     // margin-bottom: 0.7rem;
 }
-.ligne{
-    overflow-y: scroll; 
+
+.ligne {
+    overflow-y: scroll;
     height: 350px;
     --overflow: hidden;
     overflow: auto;
@@ -79,10 +80,12 @@ ion-input {
 
 .mat-stepper-horizontal {
     margin-top: 8px;
-  }
-  
-  .mat-mdc-form-field {
+}
+
+.mat-mdc-form-field {
     margin-top: 16px;
-  }
-  
-  
+}
+
+ion-button:hover {
+    background: none !important;
+}

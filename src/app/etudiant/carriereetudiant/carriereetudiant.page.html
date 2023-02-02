@@ -87,155 +87,21 @@
   </ion-slides>
 
   <div class="container" style="margin: 8px;">
-    <div class="row">
+    <div class="row" *ngIf="auto.length > 0">
       <h4>Mes auto-evaluations</h4>
     </div>
+    <div class="row" *ngIf="auto.length == 0">
+      <h4>Aucune auto-évaluation n'a été faite !!!</h4>
+    </div>
     <ion-row>
-      <ion-col *ngFor="let Auto of auto">
-        <ion-card style="margin-left: -8px;">
+      <ion-col *ngFor="let Auto of auto, let i = index">
+        <ion-card (click)="goToDettailAuto(Auto.id)" class="crd">
           <ion-card-header>
-            <ion-card-title style="font-size:  15px;">Evaluation {{counter}}</ion-card-title>
-            <ion-card-subtitle style="font-size: 12px;">{{Auto.dateauto | date:"dd/MM/yyyy"}}</ion-card-subtitle>
+            <ion-card-title>{{i+1}} auto-evaluation</ion-card-title>
+            <ion-card-subtitle style="font-size: 12px;">{{Auto.dateauto | date:"dd/MM/yyyy hh'h'mm"}}</ion-card-subtitle>
           </ion-card-header>
         </ion-card>
       </ion-col>
-      <!-- <ion-col>
-        <ion-card style="margin-left: -10px;">
-          <ion-card-header>
-            <ion-card-title>2 ème</ion-card-title>
-            <ion-card-subtitle style="font-size: 12px;">18-01-2023</ion-card-subtitle>
-          </ion-card-header>
-        </ion-card>
-      </ion-col>
-      <ion-col>
-        <ion-card style="margin-left: -14px;">
-          <ion-card-header>
-            <ion-card-title>3 ème</ion-card-title>
-            <ion-card-subtitle style="font-size: 12px;">18-01-2023</ion-card-subtitle>
-          </ion-card-header>
-        </ion-card>
-      </ion-col> -->
     </ion-row>
   </div>
-
-<div class="card-container" style="margin: 6px;">
-  <div class="row">
-    <div class="col">
-      <div class="card">
-        <div class="card-count-container">
-          <div class="card-count">1</div>
-        </div>
-        
-        <div class="card-content">
-          <!-- <h2>Title</h2> -->
-          10/01/2023 
-        </div>    
-        
-        <div class="card-footer">
-            Savoir plus
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card">
-        <div class="card-count-container">
-          <div class="card-count">1</div>
-        </div>
-        
-        <div class="card-content">
-          <!-- <h2>Title</h2> -->
-          10/01/2023 
-        </div>    
-        
-        <div class="card-footer">
-            Savoir plus
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card">
-        <div class="card-count-container">
-          <div class="card-count">1</div>
-        </div>
-        
-        <div class="card-content">
-          <!-- <h2>Title</h2> -->
-          10/01/2023 
-        </div>    
-        
-        <div class="card-footer">
-            Savoir plus
-        </div>
-      </div>
-    </div>
-  </div>
-  
-  
-  <!-- <div class="card">
-    <div class="card-count-container">
-      <div class="card-count">2</div>
-    </div>
-    <div class="card-content">
-      <h2>Title</h2>
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis iste vel accusamus sequi laboriosam voluptatibus placeat omnis magni, at ducimus nesciunt? Tempora inventore tempore iure suscipit molestiae. Cum, ab labore?
-    </div>
-    
-    <div class="card-footer">
-        Lorem ipsum dolor sit amet.
-    </div>
-  </div>
-  
-  <div class="card">
-    <div class="card-count-container">
-      <div class="card-count">3</div>
-    </div>
-    <div class="card-content">
-      <h2>Title</h2>
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis iste vel accusamus sequi laboriosam voluptatibus placeat omnis magni, at ducimus nesciunt? Tempora inventore tempore iure suscipit molestiae. Cum, ab labore?
-    </div>
-    
-    <div class="card-footer">
-        Lorem ipsum dolor sit amet.
-    </div>
-  </div> -->
-</div>
-  
-  <!-- <ion-row>
-      <ion-col>
-        <ion-card>
-          <ion-card-header>
-            <ion-card-title>Card Title</ion-card-title>
-            <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
-          </ion-card-header>
-        
-          <ion-card-content>
-            Here's a small text description for the card content. Nothing more, nothing less.
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-      <ion-col>
-        <ion-card>
-          <ion-card-header>
-            <ion-card-title>Card Title</ion-card-title>
-            <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
-          </ion-card-header>
-        
-          <ion-card-content>
-            Here's a small text description for the card content. Nothing more, nothing less.
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-      <ion-col>
-        <ion-card>
-          <ion-card-header>
-            <ion-card-title>Card Title</ion-card-title>
-            <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
-          </ion-card-header>
-        
-          <ion-card-content>
-            Here's a small text description for the card content. Nothing more, nothing less.
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-    </ion-row> -->
 </ion-content>

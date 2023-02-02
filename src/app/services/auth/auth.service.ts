@@ -76,6 +76,14 @@ export class AuthService {
     );
   }
 
+  //Recuperer un étudiant à travers son id
+  RecupererIdEtudiant(id:string): Observable<any> {
+    console.log("L'id etudiant : " +id);
+    return this.http.get(
+      AUTH_API_ETUDIANT + 'RetournerIdEtudiant/'  + `${id}`,
+    );
+  }
+
 
 
   //Inscription eleve

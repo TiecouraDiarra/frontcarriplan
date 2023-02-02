@@ -10,6 +10,7 @@ import { PisteetudiantPage } from './pisteetudiant.page';
 import { FiliereetudiantComponent } from './filiereetudiant/filiereetudiant.component';
 import { MetieretudiantComponent } from './metieretudiant/metieretudiant.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
   imports: [
@@ -17,7 +18,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     FormsModule,
     IonicModule,
     PisteetudiantPageRoutingModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    Ng2SearchPipeModule
   ],
   declarations: [PisteetudiantPage, FiliereetudiantComponent,MetieretudiantComponent]
 })

@@ -18,8 +18,12 @@
   </div>
 </div> -->
 
+<div class="search-one">
+  <ion-icon name="search-outline"></ion-icon>
+  <ion-input type="text" placeholder="Rechercher séries par nom" [(ngModel)]="searchText"></ion-input>
+</div>
 <div class="row ligne">
-  <div class="gride" style="margin-bottom: -25px;" *ngFor="let Parcours of parcours">
+  <div class="gride" *ngFor="let Parcours of parcours | filter:searchText">
     <a (click)="goToDettailParcours(Parcours.id)" style="text-decoration: none;">
       <ion-card class="crd">
         <div class="row image" style="height: 20vh !important;">
@@ -31,7 +35,7 @@
           </div>
         </div>
         
-        <div class="tti" style="text-align: center; font-weight: bold; font-size: 16px;">
+        <div class="tti" style="text-align: center; font-weight: bold; font-size: 16px; background: #00A5E4; color: white;">
           Savoir plus
         </div>
       </ion-card>

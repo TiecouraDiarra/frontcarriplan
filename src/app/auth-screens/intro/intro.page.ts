@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { INTRO_KEY, StorageService } from 'src/app/services/storage/storage.service';
+import {StorageService } from 'src/app/services/storage/storage.service';
 
 @Component({
   selector: 'app-intro',
@@ -15,9 +15,9 @@ export class IntroPage implements OnInit {
   ngOnInit() {
   }
 
-  async goToConnexion() {
-    await this.storage.setStorage(INTRO_KEY, 'true');
-    this.router.navigateByUrl('/inscription', { replaceUrl: true });
-  }
+  // async goToConnexion() {
+  //   await this.storage.setStorage(INTRO_KEY, 'true');
+  //   this.router.navigateByUrl('/inscription', { replaceUrl: true });
+  // }
 
 }

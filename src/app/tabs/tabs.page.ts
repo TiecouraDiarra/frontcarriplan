@@ -48,6 +48,7 @@ export class TabsPage implements OnInit {
           next: res => {
             console.log(res);
             this.storageService.clean();
+            //  window.location.reload();
             this.route.navigateByUrl("/connexion")
           },
           error: err => {

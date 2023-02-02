@@ -14,6 +14,11 @@ const routes: Routes = [
         component: AwaitComponent
       },
       {
+        path: '',
+        redirectTo: 'accueileleve',
+        pathMatch: 'full'
+      },
+      {
         path: 'accueileleve',
         loadChildren: () => import('../eleve/accueileleve/accueileleve.module').then( m => m.AccueilelevePageModule)
       },
@@ -57,6 +62,11 @@ const routes: Routes = [
         path: 'modifprofileleve',
         loadChildren: () => import('../eleve/modifprofileleve/modifprofileleve.module').then( m => m.ModifprofilelevePageModule)
       },
+      {
+        path: 'detailsautoevaluationeleve/:id',
+        loadChildren: () => import('../eleve/detailsautoevaluationeleve/detailsautoevaluationeleve.module').then( m => m.DetailsautoevaluationelevePageModule)
+      },
+    
     
     ]
   }

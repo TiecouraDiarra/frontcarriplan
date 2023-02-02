@@ -101,3 +101,60 @@ ion-card .card2{
 ion-button:hover{
     background: none !important;
 }
+
+// .tt {
+//     z-index: 1;
+//     position: absolute;
+//     text-align: center;
+//     margin: 0 auto;
+//     left: 0;
+//     right: 0;
+//     top: 30%;
+//     color: white;
+//     font-size: 15px;
+//     font-weight: 1000;
+// }
+
+.mescards,.mescards{
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+.testcard{
+    width: 90%;
+}
+
+.mescards ion-card-header{
+    --font-size: 10px !important;
+    padding: 7px;
+    background-color: #00A5E4;
+    
+}
+
+.mescards ion-card-title{
+    --color: white;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.tt {
+    // background: rgba(0, 0, 0, 0.8);
+    z-index: 1;
+    position: absolute;
+    text-align: center;
+    // font-family: Georgia;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    top: 30%;
+    color: white;
+
+    // width: 70%;
+    font-size: 15px;
+    font-weight: 1000;
+}
+
+.mescards ion-card-content{
+    margin-top: 10px;
+    font-size: 17px;
+}

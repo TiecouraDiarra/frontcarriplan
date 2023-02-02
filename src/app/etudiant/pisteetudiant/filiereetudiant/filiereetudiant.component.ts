@@ -11,6 +11,7 @@ export class FiliereetudiantComponent implements OnInit {
 
   parcours: any;
   p:number=1
+  searchText:any;
   constructor(public service: ParcoursService, private route: Router) { }
 
   ngOnInit() {

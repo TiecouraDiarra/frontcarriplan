@@ -19,6 +19,14 @@ export class DetailsparcoursPage implements OnInit {
   matiere : any
   id:any
 
+  option={
+    slidesPervView:1.5,
+    centeredSlides:true,
+    loop:true,
+    spaceBetween:10,
+    autoplay:true
+  }
+
   ngOnInit() {
 
     //RECUPERER L'ID DU PARCOURS
@@ -45,7 +53,7 @@ export class DetailsparcoursPage implements OnInit {
   }
 
   //METHODE PERMETTANT DE NAVIGUER VERS LA PAGE DETAIL METIER
-  goToDettailMetiers(id: number) {
+  goToDettailMetier(id: number) {
     console.log(id);
     return this.router.navigate(['tabs/detailsmetier', id])
   }

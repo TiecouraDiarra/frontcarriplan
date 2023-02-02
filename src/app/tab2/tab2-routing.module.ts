@@ -44,6 +44,10 @@ const routes: Routes = [
         path: 'modifprofiletudiant',
         loadChildren: () => import('../etudiant/modifprofiletudiant/modifprofiletudiant.module').then( m => m.ModifprofiletudiantPageModule)
       },
+      {
+        path: 'detailsautoevaluationetudiant/:id',
+        loadChildren: () => import('../etudiant/detailsautoevaluationetudiant/detailsautoevaluationetudiant.module').then( m => m.DetailsautoevaluationetudiantPageModule)
+      },
     ]
   }
 ];

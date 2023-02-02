@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Plugins } from '@capacitor/core';
 const { Storage } = Plugins;
 
-export const INTRO_KEY = 'intro-slides';
+// export const INTRO_KEY = 'intro-slides';
 
 const USER_KEY = 'auth-user';
 

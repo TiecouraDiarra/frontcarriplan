@@ -11,7 +11,7 @@
     <ion-progress-bar style="height: 10px; border-radius: 15px;" value="1.0"></ion-progress-bar>
   </div>
   <h3>Vos moyennes au DEF</h3>
-  <form>
+  <form >
     <div class="ligne">
       <ion-item mode="md" *ngFor="let question of questions">
         <ion-label position="floating">{{question.question}}</ion-label>
@@ -48,7 +48,14 @@
         <ion-input max="20" min="0" pattern="[0-9]" type="number" type="number" required="true"></ion-input>
       </ion-item> -->
     </div>
-    <ion-button (click)="popUpFaireAuto()" style="--background: #00A5E4; margin: 10px; float: right;">Suivant</ion-button>
+    <!-- Debut du boutton permettant d'envoyer le formulaire -->
+    <!-- <div class="row mx-5" style="margin-top: 5px;">
+      <ion-button ion-button type="submit" style="--background: #00A5E4; 
+      margin-right: 11px; border-radius: 10px;"></ion-button>
+    </div> -->
+    <!-- Fin du boutton permettant d'envoyer le formulaire -->
+    <ion-button (click)="popUpFaireAuto()" ion-button type="submit" style="--background: #00A5E4; margin: 10px; 
+    float: right;">Suivant</ion-button>
   </form>
 </ion-content>
 

@@ -172,7 +172,8 @@ const routes: Routes = [
   {
     path: 'autoevaluationprofessionnel',
     loadChildren: () => import('./professionnel/autoevaluationprofessionnel/autoevaluationprofessionnel.module').then( m => m.AutoevaluationprofessionnelPageModule)
-  },  {
+  },
+  {
     path: 'loadingpage',
     loadChildren: () => import('./eleve/loadingpage/loadingpage.module').then( m => m.LoadingpagePageModule)
   },
@@ -192,6 +193,14 @@ const routes: Routes = [
     path: 'modifprofilprofessionnel',
     loadChildren: () => import('./professionnel/modifprofilprofessionnel/modifprofilprofessionnel.module').then( m => m.ModifprofilprofessionnelPageModule)
   },
+  {
+    path: 'detailsautoevaluationeleve',
+    loadChildren: () => import('./eleve/detailsautoevaluationeleve/detailsautoevaluationeleve.module').then( m => m.DetailsautoevaluationelevePageModule)
+  },  {
+    path: 'detailsautoevaluationetudiant',
+    loadChildren: () => import('./etudiant/detailsautoevaluationetudiant/detailsautoevaluationetudiant.module').then( m => m.DetailsautoevaluationetudiantPageModule)
+  },
+
 
 
 

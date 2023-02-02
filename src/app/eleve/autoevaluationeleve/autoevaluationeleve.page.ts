@@ -2,7 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
-import { ActionSheetController, IonContent, IonSlides, NavController } from '@ionic/angular';
+import { ActionSheetController, IonContent, IonSlides, LoadingController, NavController } from '@ionic/angular';
+import { data } from 'jquery';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { AutoevaluationService } from 'src/app/services/autoevaluation/autoevaluation.service';
 import { QuestionService } from 'src/app/services/question/question.service';
@@ -26,6 +27,8 @@ export class AutoevaluationelevePage implements OnInit {
   isSignUpFailed = false;
   errorMessage = '';
 
+  parcoursecoleprofessionnel:any
+
 
   questions: any[];
   answers: any = {};
@@ -37,7 +40,14 @@ export class AutoevaluationelevePage implements OnInit {
     answers: '';
   }
 
-  constructor(public serviceQ: QuestionService, private service: AutoevaluationService, private route: Router, private storage: StorageService) {
+  constructor(
+    private loadingCtrl : LoadingController,
+    public serviceQ: QuestionService, 
+    private service: AutoevaluationService, 
+    private route: Router, 
+    private storage: StorageService,
+    
+    ) {
   }
 
   back(): void {
@@ -49,8 +59,9 @@ export class AutoevaluationelevePage implements OnInit {
     console.log(this.idUser.id)
     //AFFICHER LES QUESTIONS POUR ELEVES
     this.service.AfficherLaListeQuestionEleve().subscribe(data => {
-      console.log(this.questions)
+
       this.questions = data;
+      console.log(this.questions)
     })
   }
 
@@ -62,6 +73,7 @@ export class AutoevaluationelevePage implements OnInit {
         console.log(data);
         this.isSuccessful = true;
         this.isSignUpFailed = false;
+        // this.ResultatAuto();
       },
       error: err => {
         this.errorMessage = err.error.message;
@@ -70,6 +82,19 @@ export class AutoevaluationelevePage implements OnInit {
     }
     )
   }
+
+
+  //AFFICHER PARCOURS LYCEE APRES AUTOEVALUATION EFFECTUEE
+  ResultatAuto(){
+    this.service.AfficherParcoursLycce(this.idUser.id).subscribe(data=>{
+      this.parcoursecoleprofessionnel = data;
+      console.log(this.parcoursecoleprofessionnel)
+    })
+    this.service.AfficherParcoursEcoleProfessionnelle(this.idUser.id).subscribe(data=>{
+      console.log(data)
+    })
+  }
+  
 
 
   //POPUP PERMETTANT DE FAIRE AUTOEVALUATION
@@ -91,17 +116,58 @@ export class AutoevaluationelevePage implements OnInit {
       // reverseButtons: true
     }).then((result) => {
       if (result.isConfirmed) {
-        swalWithBootstrapButtons.fire(
-          'Auto-évaluation effectuée avec succès !',
-          'Tes pistes sont prêtes',
-          'success',);
+        // this.showLoading();
         this.submitAnswers();
-        this.route.navigateByUrl('/tabs/await', { skipLocationChange: true }).then(() => {
-          this.route.navigate(["/tabs/await"])
-        })
+        this.popUp();
+      //   swalWithBootstrapButtons.fire(
+      //     'Auto-évaluation effectuée avec succès !',
+      //     'Tes pistes sont prêtes',
+      //     'success',);
+        
       }
     })
 
+  }
+
+  popUp() {
+    Swal.fire({
+      position:'center',
+      text: 'Auto-évaluation effectuée avec succès ! \n Tes pistes sont prêtes',
+      icon:'success',
+      heightAuto: false,
+      showConfirmButton: true,
+      confirmButtonText: "OK",
+      confirmButtonColor: '#0857b5',
+      showDenyButton: false,
+      showCancelButton: false,
+      allowOutsideClick: false
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.ResultatAuto();
+        this.showLoading();
+        
+        this.route.navigateByUrl('/tabs/autoeleve', {skipLocationChange: true}).then(() => {
+          this.route.navigate(["/tabs/autoeleve"])
+        })
+        // event.target.complete();
+      }
+    })
+
+  }
+
+  //Loading fonction
+  async showLoading() {
+    const loading = await this.loadingCtrl.create({
+      message: 'Patientez...',
+      duration: 3000,
+      spinner: 'circles',
+    });
+    loading.present().then(() => {
+      this.route.navigate(["/tabs/autoeleve"])
+    //   this.route.navigateByUrl('/tabs/autoeleve', { skipLocationChange: true }).then(() => {
+    //     this.route.navigate(["/tabs/autoeleve"])
+    //   })
+    });
   }
 
 

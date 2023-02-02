@@ -7,7 +7,7 @@
   </div>
 
   <!-- Debut du formulaire d'inscription -->
-  <form *ngIf="!isLoggedIn" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+  <form  name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
 
     <!-- Debut du champ de saisie pour le numéro ou email -->
     <ion-item mode="md">
@@ -70,10 +70,10 @@
   </form>
   <!-- Fin du formulaire d'inscription -->
 
-  <div class="alert alert-success" *ngIf="isLoggedIn">
+  <!-- <div class="alert alert-success" *ngIf="isLoggedIn">
     Logged in as {{ roles }}.
     <ion-button (click)="logout()"> dfghj</ion-button>
-  </div>
+  </div> -->
 
   <!-- Debut de la division permettant de naviguer vers la page d'inscription -->
   <div class="row" style="text-align: center; margin-top: 30px;">

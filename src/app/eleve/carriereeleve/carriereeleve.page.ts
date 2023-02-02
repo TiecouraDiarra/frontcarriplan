@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth/auth.service';
+import { AutoevaluationService } from 'src/app/services/autoevaluation/autoevaluation.service';
 import { StorageService } from 'src/app/services/storage/storage.service';
 
 @Component({
@@ -9,12 +11,27 @@ import { StorageService } from 'src/app/services/storage/storage.service';
 })
 export class CarriereelevePage implements OnInit {
 
-  constructor(private authService: AuthService, private storageService: StorageService) { }
+  constructor(private auService : AutoevaluationService,private authService: AuthService, private storageService: StorageService, private route : Router) { }
+
+  User : any
+  auto : any
+
+  counter = 0;
+
+  incrementCounter() {
+    this.counter++;
+  }
 
   ngOnInit() {
+    this.User = this.storageService.getUser()
+    console.log(this.User)
+    this.auService.AfficherLaListeAutoUser(this.User.id).subscribe(data=>{
+      this.auto = data;
+      this.incrementCounter();
+      console.log(this.auto)
+    })
   }
-  cat: string = "men"; // default button
-
+  
   option={
     slidesPervView:1.5,
     centeredSlides:true,
@@ -45,5 +62,11 @@ export class CarriereelevePage implements OnInit {
         console.log(err);
       }
     });
+  }
+
+  //LA METHODE PERMETTANT DE NAVIGUER VERS LA PAGE SUIVANYE
+  goToDettailAuto(id: number) {
+    console.log(id);
+    return this.route.navigate(['tabs/detailsautoevaluationeleve', id])
   }
 }

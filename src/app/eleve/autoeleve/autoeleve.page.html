@@ -13,100 +13,73 @@
         <p style="margin-left: 10px;margin-top: 14px;">Faire une auto-évaluation</p>
       </ion-button>
     </div>
-    <div class="cont">
+    <div class="cont" *ngIf="autorecentelycee.length > 0">
       <div class="row">
         <h4><b style="font-size: 25px;">1.</b> Découvre les séries qui te conviennent aux lycées</h4>
       </div>
-      <div class="row" style="margin-top: -15px;">
-        <ion-card>
+      <div class="row">
+        <ion-card class="crd">
           <ion-card-content>
-            <div class="row" style="margin-top: -18px;">
-              <div class="col-6" style="margin-left: -13px;">
-                <!-- *ngFor="let Pays of pays | paginate:{itemsPerPage :10, currentPage:p}; let id = index"> -->
-                <a [routerLink]="['/tabs/detailsmetier']" style="text-decoration: none;">
-                  <ion-card class="card2">
-                    <div class="row image ">
-                      <img style="height: 70px;" alt="" src="assets/imgs/metier1.jpg" />
-                      <div class="tt1">
-                        <p>Informaticien</p>
+            <ion-slides [options]="option">
+              <ion-slide *ngFor="let Auto of autorecentelycee">
+                <ion-card (click)="goToDettailParcours(Auto.id)">
+                  <div class="row image" style="height: 10vh !important;">
+                    <div class="monimage" style="background-image:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url(../../../../assets/imgs/parcours/{{Auto.imageparcours}}); object-fit: fill !important; width: 100%; height: auto;">
+                      <div class="tt">
+                        <p>{{Auto.nomparcours}}</p>
                       </div>
                     </div>
-                    <div class="tti" style="text-align: center; font-weight: bold;">
-                      Savoir plus
-                    </div>
-                  </ion-card>
-                </a>
-              </div>
-              <div class="col-6">
-                <a [routerLink]="['/tabs/detailsparcours']" style="text-decoration: none;">
-                  <ion-card class="card2">
-                    <div class="row image ">
-                      <img style="height: 70px;" alt="" src="assets/imgs/scienceexp.jpg" />
-                      <div class="tt1">
-                        <p>Science Expérimentale</p>
-                      </div>
-                    </div>
-                    <div class="tti" style="text-align: center; font-weight: bold;">
-                      Savoir plus
-                    </div>
-                  </ion-card>
-                </a>
-              </div>
-            </div>
-            <pagination-controls (pageChange)="p = $event" class="pagination"></pagination-controls>
+                  </div>
+                  <div class="tti" style="text-align: center; font-weight: bold; font-size: 16px; background: #00A5E4; color: white;">
+                    Savoir plus
+                  </div>
+                </ion-card>
+              </ion-slide>
+            </ion-slides>
+            <!-- <ion-button class="prev-button" fill="clear" (click)="prevSlide()">
+              <ion-icon name="arrow-back"></ion-icon>
+            </ion-button>
+            <ion-button class="next-button" fill="clear" (click)="nextSlide()">
+              <ion-icon name="arrow-forward"></ion-icon>
+            </ion-button> -->
             <ion-button [routerLink]="['/tabs/pisteeleve']"
-              style="--background: #00A5E4; text-transform: none; margin-top: -10px;">Voir plus de séries</ion-button>
-
-            <ion-card-subtitle style="color: black; font-weight: bold;font-size: 16px; text-align: center;">Les séries
-              sont classées en fonction de tes reponses aux questionnaires</ion-card-subtitle>
-
+              style="--background: #00A5E4; text-transform: none; margin-top: 10px;">Voir plus de séries</ion-button>
+            <ion-card-subtitle style="color: black; font-weight: bold;font-size: 16px; text-align: center; text-transform: none;">
+              Les séries
+              sont classées en fonction de tes reponses aux questionnaires
+            </ion-card-subtitle>
           </ion-card-content>
         </ion-card>
       </div>
     </div>
-    <div class="conte">
+
+
+    <div class="conte" *ngIf="autorecenteeprof.length > 0">
       <div class="row">
         <h4><b style="font-size: 25px;">2.</b> Découvre les séries qui te conviennent aux écoles professionnelles</h4>
       </div>
-      <div class="row" style="margin-top: -15px;">
+      <div class="row">
         <ion-card>
           <ion-card-content>
-            <div class="row" style="margin-top: -18px;">
-              <div class="col-6" style="margin-left: -13px;">
-                <!-- *ngFor="let Pays of pays | paginate:{itemsPerPage :10, currentPage:p}; let id = index"> -->
-                <a [routerLink]="['/tabs/detailsmetier']" style="text-decoration: none;">
-                  <ion-card class="card2">
-                    <div class="row image ">
-                      <img style="height: 70px;" alt="" src="assets/imgs/metier1.jpg" />
-                      <div class="tt1">
-                        <p>Informaticien</p>
+            <ion-slides [options]="option" class="ion-margin-top">
+              <ion-slide *ngFor="let Parcoursecoleprofessionnel of autorecenteeprof">
+                <ion-card class="card2" (click)="goToDettailParcours(Parcoursecoleprofessionnel.id)">
+                  <div class="row image" style="height: 10vh !important;">
+                    <div class="monimage" style="background-image:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url(../../../../assets/imgs/parcours/{{Parcoursecoleprofessionnel.imageparcours}}); object-fit: fill !important; width: 100%; height: auto;">
+                      <div class="tt">
+                        <p>{{Parcoursecoleprofessionnel.nomparcours}}</p>
                       </div>
                     </div>
-                    <div class="tti" style="text-align: center; font-weight: bold;">
-                      Savoir plus
-                    </div>
-                  </ion-card>
-                </a>
-              </div>
-              <div class="col-6">
-                <a [routerLink]="['/tabs/detailsparcours']" style="text-decoration: none;">
-                  <ion-card class="card2">
-                    <div class="row image ">
-                      <img style="height: 70px;" alt="" src="assets/imgs/scienceexp.jpg" />
-                      <div class="tt1">
-                        <p>Science Expérimentale</p>
-                      </div>
-                    </div>
-                    <div class="tti" style="text-align: center; font-weight: bold;">
-                      Savoir plus
-                    </div>
-                  </ion-card>
-                </a>
-              </div>
-            </div>
-            <pagination-controls (pageChange)="p = $event" class="pagination"></pagination-controls>
+                  </div>
+                  <div class="tti" style="text-align: center; font-weight: bold; font-size: 16px; background: #00A5E4; color: white;">
+                    Savoir plus
+                  </div>
+                </ion-card>
+              </ion-slide>
+            </ion-slides>
+          
             <ion-button [routerLink]="['/tabs/pisteeleve']"
-              style="--background: #00A5E4; text-transform: none; margin-top: -10px; margin-left: -16px;">Voir plus de
+              style="--background: #00A5E4; text-transform: none; margin-top: 10px; margin-left: -16px;">Voir plus de
               séries</ion-button>
 
             <ion-card-subtitle style="color: black; font-weight: bold;font-size: 16px; text-align: center;">Les séries

@@ -43,7 +43,7 @@
     <!-- Debut du champ de saisie pour le numéro -->
     <ion-item mode="md">
       <ion-label for="numero" position="floating">Numéro</ion-label>
-      <ion-input type="tel" name="numero" [(ngModel)]="form.numero" required minlength="8" maxlength="13"
+      <ion-input type="number" name="numero" [(ngModel)]="form.numero" required minlength="8" maxlength="13"
         #numero="ngModel" [ngClass]="{ 'is-invalid': f.submitted && numero.errors }">
       </ion-input>
       <div style="text-align: center;" class="invalid-feedback" *ngIf="numero.errors && f.submitted">

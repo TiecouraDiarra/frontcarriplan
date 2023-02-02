@@ -1,9 +1,9 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
   integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-  <ion-header [translucent]="true">
-    <ion-toolbar>
-    </ion-toolbar>
-  </ion-header>
+<ion-header [translucent]="true">
+  <ion-toolbar>
+  </ion-toolbar>
+</ion-header>
 
 <ion-content>
   <div class="row tite" style="margin-top: 10px; display: flex; font-size: 30px; margin-left: 1px;">
@@ -28,29 +28,83 @@
       <ion-card-header>
         <ion-card-subtitle style="color: black; font-weight: bold;font-size: 16px;">Description</ion-card-subtitle>
       </ion-card-header>
-    
+
       <ion-card-content style="margin-top: -10px; text-align: justify;">
         {{parcours.description}}
       </ion-card-content>
 
-      <ion-card-header style="margin-top: -19px;">
-        <ion-card-subtitle style="color: black; font-weight: bold; font-size: 16px;">Les Cours</ion-card-subtitle>
-      </ion-card-header>
       <ion-card-content style="margin-top: -10px;">
-        <ul style="text-align: justify;" *ngFor="let Matiere of matiere">
-          <li><b>{{Matiere.nommatiere}} : </b>{{Matiere.descriptionmatiere}}</li>
-          <!-- <li><b>Maths : </b>Tigre de Chine méridionale</li>
-          <li><b>Maths : </b>Tigre de Chine méridionale</li>
-          <li><b>Maths : </b>Tigre de Chine méridionale</li> -->
-        </ul>
+
+        <div class="mescards">
+
+          <ion-card style="width: 80%; text-align: center;">
+            <ion-card-header>
+              <ion-card-title>Série</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              {{parcours.filiere}}
+            </ion-card-content>
+          </ion-card>
+          <ion-card style="width: 80%; text-align: center;">
+            <ion-card-header>
+              <ion-card-title>Titre</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              {{parcours.titre}}
+            </ion-card-content>
+          </ion-card>
+          <ion-card style="width: 80%; text-align: center;">
+            <ion-card-header>
+              <ion-card-title>Admission</ion-card-title>
+            </ion-card-header>
+
+            <ion-card-content>
+              {{parcours.admission}}
+            </ion-card-content>
+          </ion-card>
+          <ion-card style="width: 80%; text-align: center;">
+            <ion-card-header>
+              <ion-card-title>Durrée</ion-card-title>
+            </ion-card-header>
+
+            <ion-card-content>
+              {{parcours.duree}}
+            </ion-card-content>
+          </ion-card>
+        </div>
+
       </ion-card-content>
+
       <ion-card-header style="margin-top: -28px;">
-        <ion-card-subtitle style="color: black; font-weight: bold; font-size: 16px;">Les Métiers qui sont liés à cette séries</ion-card-subtitle>
+        <ion-card-subtitle *ngIf="metier.length > 0" style="color: black; font-weight: bold; font-size: 16px;">Les
+          Métiers qui sont liés à cette
+          séries</ion-card-subtitle>
+        <ion-card-subtitle *ngIf="metier.length == 0" 
+        style="color: black; font-weight: bold; font-size: 16px;">
+        Aucun métier n'est associé à cette série</ion-card-subtitle>
       </ion-card-header>
       <ion-card-content style="margin-top: -10px;">
-        <div class="row">
-          <div class="col-6" style="margin-left: -11px;" *ngFor="let Metier of metier | paginate:{itemsPerPage :2, currentPage:p}; let id = index">
-          <!-- *ngFor="let Pays of pays | paginate:{itemsPerPage :10, currentPage:p}; let id = index"> -->
+        <ion-slides [options]="option">
+          <ion-slide *ngFor="let Metier of metier">
+            <ion-card (click)="goToDettailMetiers(Metier.id)" class="card2">
+              <div class="row image" style="height: 10vh !important;">
+                <div class="monimage"
+                  style="background-image:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url(../../../../assets/imgs/metiers/{{Metier.imagemetier}}); object-fit: fill !important; width: 100%; height: auto;">
+                  <div class="tt">
+                    <p>{{Metier.nommetier}}</p>
+                  </div>
+                </div>
+              </div>
+              <div class="tti"
+                style="text-align: center; font-weight: bold; font-size: 16px; background: #00A5E4; color: white;">
+                Savoir plus
+              </div>
+            </ion-card>
+          </ion-slide>
+        </ion-slides>
+        <!-- <div class="row">
+          <div class="col-6" style="margin-left: -11px;"
+            *ngFor="let Metier of metier | paginate:{itemsPerPage :2, currentPage:p}; let id = index">
             <a (click)="goToDettailMetiers(Metier.id)" style="text-decoration: none;">
               <ion-card class="card2">
                 <div class="row image ">
@@ -59,14 +113,13 @@
                     <p>{{Metier.nommetier}}</p>
                   </div>
                 </div>
-                <div class="tti" style="text-align: center; font-weight: bold;">
+                <div class="tti" style="text-align: center; font-weight: bold; background: #00A5E4; color: white;">
                   Savoir plus
                 </div>
               </ion-card>
             </a>
           </div>
-        </div>
-        <pagination-controls (pageChange)="p = $event" class="pagination"></pagination-controls>
+        </div> -->
       </ion-card-content>
       <ion-card-header style="margin-top: -19px;">
         <ion-card-subtitle style="color: black; font-weight: bold; ">Les Conseils</ion-card-subtitle>
@@ -76,5 +129,5 @@
       </ion-card-content>
     </ion-card>
   </div>
- 
+
 </ion-content>

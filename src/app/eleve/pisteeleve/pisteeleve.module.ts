@@ -9,6 +9,7 @@ import { PisteelevePageRoutingModule } from './pisteeleve-routing.module';
 import { PisteelevePage } from './pisteeleve.page';
 import { LyceeComponent } from "./lycee/lycee.component";
 import { EprofessionnelleComponent } from './eprofessionnelle/eprofessionnelle.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
         
@@ -18,6 +19,7 @@ import { EprofessionnelleComponent } from './eprofessionnelle/eprofessionnelle.c
         FormsModule,
         IonicModule,
         PisteelevePageRoutingModule,
+        Ng2SearchPipeModule
     ]
 })
 export class PisteelevePageModule {}
