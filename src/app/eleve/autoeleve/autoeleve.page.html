@@ -13,16 +13,19 @@
         <p style="margin-left: 10px;margin-top: 14px;">Faire une auto-évaluation</p>
       </ion-button>
     </div>
-    <div class="cont" *ngIf="autorecentelycee.length > 0">
+    <div class="cont" *ngIf="autorecentelycee && autorecentelycee.length > 0">
       <div class="row">
         <h4><b style="font-size: 25px;">1.</b> Découvre les séries qui te conviennent aux lycées</h4>
       </div>
       <div class="row">
-        <ion-card class="crd">
+        <ion-card>
           <ion-card-content>
+            <ion-card-subtitle style="color: black; font-weight: bold;font-size: 16px; text-align: center; text-transform: none;">
+              {{totaleserieproposee}} séries proposées
+            </ion-card-subtitle>
             <ion-slides [options]="option">
               <ion-slide *ngFor="let Auto of autorecentelycee">
-                <ion-card (click)="goToDettailParcours(Auto.id)">
+                <ion-card class="fili" (click)="goToDettailParcours(Auto.id)">
                   <div class="row image" style="height: 10vh !important;">
                     <div class="monimage" style="background-image:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url(../../../../assets/imgs/parcours/{{Auto.imageparcours}}); object-fit: fill !important; width: 100%; height: auto;">
                       <div class="tt">
@@ -54,14 +57,17 @@
     </div>
 
 
-    <div class="conte" *ngIf="autorecenteeprof.length > 0">
+    <div class="conte" *ngIf="autorecenteeprof && autorecenteeprof.length > 0">
       <div class="row">
         <h4><b style="font-size: 25px;">2.</b> Découvre les séries qui te conviennent aux écoles professionnelles</h4>
       </div>
       <div class="row">
         <ion-card>
           <ion-card-content>
-            <ion-slides [options]="option" class="ion-margin-top">
+            <ion-card-subtitle style="color: black; font-weight: bold;font-size: 16px; text-align: center; text-transform: none;">
+              {{totalprofproposee}} séries proposées
+            </ion-card-subtitle>
+            <ion-slides [options]="option">
               <ion-slide *ngFor="let Parcoursecoleprofessionnel of autorecenteeprof">
                 <ion-card class="card2" (click)="goToDettailParcours(Parcoursecoleprofessionnel.id)">
                   <div class="row image" style="height: 10vh !important;">
@@ -79,7 +85,7 @@
             </ion-slides>
           
             <ion-button [routerLink]="['/tabs/pisteeleve']"
-              style="--background: #00A5E4; text-transform: none; margin-top: 10px; margin-left: -16px;">Voir plus de
+              style="--background: #00A5E4; text-transform: none; margin-top: 10px;">Voir plus de
               séries</ion-button>
 
             <ion-card-subtitle style="color: black; font-weight: bold;font-size: 16px; text-align: center;">Les séries

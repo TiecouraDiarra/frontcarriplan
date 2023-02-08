@@ -10,6 +10,7 @@ import { MetiersService } from 'src/app/services/metiers/metiers.service';
 export class MetierprofessionnelleComponent implements OnInit {
 
   metier : any
+  searchText:any;
   p:number=1
   constructor(public service: MetiersService, private route: Router) { }
 

@@ -12,25 +12,32 @@ import { StorageService } from 'src/app/services/storage/storage.service';
 })
 export class AutoelevePage implements OnInit {
   roles: string[] = [];
-  User : any
-  parcourslycee:any
-  parcoursecoleprofessionnel:any
+  User: any
+  parcourslycee: any
+  parcoursecoleprofessionnel: any
+  private refreshData = false;
 
-  option={
-    slidesPervView:1.5,
-    centeredSlides:true,
-    loop:true,
-    spaceBetween:10,
-    autoplay:true
+  option = {
+    slidesPervView: 1.5,
+    centeredSlides: true,
+    loop: true,
+    spaceBetween: 10,
+    autoplay: true
   }
   @ViewChild(IonSlides) slides: IonSlides;
 
 
-  constructor(private authService: AuthService, private storageService: StorageService, private service: AutoevaluationService, private route: Router) { }
-  p:number=1;
-  pi:number=1;
-  autorecentelycee:any
-  autorecenteeprof:any
+  constructor(
+    private authService: AuthService,
+    private storageService: StorageService,
+    private service: AutoevaluationService,
+    private route: Router) { }
+  p: number = 1;
+  pi: number = 1;
+  autorecentelycee: any
+  autorecenteeprof: any
+  totaleserieproposee:number = 0;
+  totalprofproposee:number = 0;
 
 
   slidesDidLoad(event: Event) {
@@ -58,15 +65,21 @@ export class AutoelevePage implements OnInit {
     // })
 
     //AFFICHER AUTO RECENTE LYCEE APRES AUTOEVALUATION EFFECTUEE
-    this.service.AutoRecenteLycee(this.User.id).subscribe(data=>{
+    this.service.AutoRecenteLycee(this.User.id).subscribe(data => {
       this.autorecentelycee = data;
       console.log(this.autorecentelycee)
+      for (const t of this.autorecentelycee) {
+        this.totaleserieproposee += 1;
+      }
     })
 
     //AFFICHER AUTO RECENTE ECOLE PROFESSIONNELLE APRES AUTOEVALUATION EFFECTUEE
-    this.service.AutoRecenteeProf(this.User.id).subscribe(data=>{
+    this.service.AutoRecenteeProf(this.User.id).subscribe(data => {
       this.autorecenteeprof = data;
       console.log(this.autorecenteeprof)
+      for (const t of this.autorecenteeprof) {
+        this.totalprofproposee += 1;
+      }
     })
 
     //AFFICHER PARCOURS LYCEE APRES AUTOEVALUATION EFFECTUEE
@@ -74,6 +87,28 @@ export class AutoelevePage implements OnInit {
     //   this.parcoursecoleprofessionnel = data;
     //   console.log(this.parcoursecoleprofessionnel)
     // })
+  }
+
+  ionViewDidEnter() {
+    if (this.refreshData) {
+      // Code pour actualiser les données nécessaires pour la page
+      //AFFICHER AUTO RECENTE LYCEE APRES AUTOEVALUATION EFFECTUEE
+      this.service.AutoRecenteLycee(this.User.id).subscribe(data => {
+        this.autorecentelycee = data;
+        console.log(this.autorecentelycee)
+      })
+
+      //AFFICHER AUTO RECENTE ECOLE PROFESSIONNELLE APRES AUTOEVALUATION EFFECTUEE
+      this.service.AutoRecenteeProf(this.User.id).subscribe(data => {
+        this.autorecenteeprof = data;
+        console.log(this.autorecenteeprof)
+      })
+      this.refreshData = false;
+    }
+  }
+
+  ionViewWillLeave() {
+    this.refreshData = true;
   }
 
   //METHODE PERMETTANT DE SE DECONNECTER

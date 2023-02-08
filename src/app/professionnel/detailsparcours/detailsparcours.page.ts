@@ -17,6 +17,14 @@ export class DetailsparcoursPage implements OnInit {
   id :  any
   p:number=1
 
+  option={
+    slidesPervView:1.5,
+    centeredSlides:true,
+    loop:true,
+    spaceBetween:10,
+    autoplay:true
+  }
+
   constructor(public service : ParcoursService, private route:ActivatedRoute, private router: Router, private authService: AuthService, private storageService: StorageService) { }
 
   ngOnInit() {

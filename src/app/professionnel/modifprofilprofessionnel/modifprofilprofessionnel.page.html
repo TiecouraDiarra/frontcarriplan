@@ -123,13 +123,13 @@
 
         <!-- Debut du champ de saisie pour le nouveau mot de passe -->
         <ion-item mode='md'>
-          <ion-icon [name]="type ? 'eye-off' : 'eye'" slot="end" color="dark" (click)="changeType()" style="font-family: 'Poppins';
+          <ion-icon [name]="type1 ? 'eye-off' : 'eye'" slot="end" color="dark" (click)="changeType1()" style="font-family: 'Poppins';
         font-style: normal; opacity: 0.5;">
           </ion-icon>
           <ion-label for="nouveaumdp" position='floating'>Nouveau mot de passe</ion-label>
           <ion-input name="nouveaumdp" [(ngModel)]="form.nouveaumdp" required minlength="6" #nouveaumdp="ngModel"
             [ngClass]="{ 'is-invalid': f.submitted && nouveaumdp.errors }" color="black" type="password"
-            [type]="type ? 'password' : 'text'"></ion-input>
+            [type]="type1 ? 'password' : 'text'"></ion-input>
           <div style="text-align: center;" class="invalid-feedback" *ngIf="nouveaumdp.errors && f.submitted">
             <div *ngIf="nouveaumdp.errors['required']">Nouveau mot de passe obligatoire</div>
             <div *ngIf="nouveaumdp.errors['minlength']">
@@ -141,13 +141,13 @@
 
         <!-- Debut du champ de saisie pour confirmer le mot de passe -->
         <ion-item mode='md'>
-          <ion-icon [name]="type ? 'eye-off' : 'eye'" slot="end" color="dark" (click)="changeType()" style="font-family: 'Poppins';
+          <ion-icon [name]="type2 ? 'eye-off' : 'eye'" slot="end" color="dark" (click)="changeType2()" style="font-family: 'Poppins';
         font-style: normal; opacity: 0.5;">
           </ion-icon>
           <ion-label for="confirmNewmdp" position='floating'>Confirmer le mot de passe</ion-label>
           <ion-input name="confirmNewmdp" [(ngModel)]="form.confirmNewmdp" required minlength="6"
             #confirmNewmdp="ngModel" [ngClass]="{ 'is-invalid': f.submitted && confirmNewmdp.errors }" color="black"
-            type="password" [type]="type ? 'password' : 'text'"></ion-input>
+            type="password" [type]="type2 ? 'password' : 'text'"></ion-input>
           <div style="text-align: center;" class="invalid-feedback" *ngIf="confirmNewmdp.errors && f.submitted">
             <div *ngIf="confirmNewmdp.errors['required']">Mot de passe obligatoire</div>
             <div *ngIf="confirmNewmdp.errors['minlength']">

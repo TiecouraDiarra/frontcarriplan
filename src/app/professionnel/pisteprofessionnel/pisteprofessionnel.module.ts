@@ -10,6 +10,7 @@ import { PisteprofessionnelPage } from './pisteprofessionnel.page';
 import { FormationprofessionnelleComponent } from './formationprofessionnelle/formationprofessionnelle.component';
 import { MetierprofessionnelleComponent } from './metierprofessionnelle/metierprofessionnelle.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
   imports: [
@@ -17,7 +18,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     FormsModule,
     IonicModule,
     PisteprofessionnelPageRoutingModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    Ng2SearchPipeModule
   ],
   declarations: [PisteprofessionnelPage, FormationprofessionnelleComponent, MetierprofessionnelleComponent]
 })

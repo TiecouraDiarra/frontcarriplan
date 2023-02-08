@@ -65,7 +65,7 @@ export class AutoevaluationelevePage implements OnInit {
     })
   }
 
-  //FAIRE UNE AUTOEVALUATION
+  //ENVOYER LE RESULTAT DE L'AUTOEVALUATION
   submitAnswers() {
     this.service.faireAuto(this.answers, this.idUser.id).subscribe({
       next: data => {
@@ -84,7 +84,7 @@ export class AutoevaluationelevePage implements OnInit {
   }
 
 
-  //AFFICHER PARCOURS LYCEE APRES AUTOEVALUATION EFFECTUEE
+  //AFFICHER RESULTAT AUTOEVALUATION
   ResultatAuto(){
     this.service.AfficherParcoursLycce(this.idUser.id).subscribe(data=>{
       this.parcoursecoleprofessionnel = data;
@@ -97,7 +97,7 @@ export class AutoevaluationelevePage implements OnInit {
   
 
 
-  //POPUP PERMETTANT DE FAIRE AUTOEVALUATION
+  //POPUP PERMETTANT DE VALIDER AUTOEVALUATION
   popUpFaireAuto() {
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
@@ -113,7 +113,7 @@ export class AutoevaluationelevePage implements OnInit {
       showCancelButton: true,
       confirmButtonText: 'Confimer',
       cancelButtonText: 'Annuler',
-      // reverseButtons: true
+      reverseButtons: true
     }).then((result) => {
       if (result.isConfirmed) {
         // this.showLoading();
@@ -129,6 +129,7 @@ export class AutoevaluationelevePage implements OnInit {
 
   }
 
+  //POPUP PERMETTANT DE NAVIGUER VERS LA PAGE APRES AUTO
   popUp() {
     Swal.fire({
       position:'center',

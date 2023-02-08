@@ -63,7 +63,12 @@
 
 
   <ion-slides [options]="option" class="ion-margin-top">
-    <ion-slide>
+    <ion-slide *ngFor="let Parc of parcours">
+      <ion-card class="rrr">
+        <img style="height: 100px;" src="../../../../assets/imgs/parcours/{{Parc.imageparcours}}" alt="">
+      </ion-card> 
+    </ion-slide>
+    <!-- <ion-slide>
       <ion-card>
         <img src="assets/imgs/scienceexp.jpg" alt="">
       </ion-card>
@@ -77,20 +82,15 @@
       <ion-card>
         <img src="assets/imgs/scienceexp.jpg" alt="">
       </ion-card>
-    </ion-slide>
-    <ion-slide>
-      <ion-card>
-        <img src="assets/imgs/scienceexp.jpg" alt="">
-      </ion-card>
-    </ion-slide>
+    </ion-slide> -->
 
   </ion-slides>
 
   <div class="container" style="margin: 8px;">
-    <div class="row" *ngIf="auto.length > 0">
+    <div class="row" *ngIf="auto && auto.length > 0">
       <h4>Mes auto-evaluations</h4>
     </div>
-    <div class="row" *ngIf="auto.length == 0">
+    <div class="row" *ngIf="auto && auto.length == 0">
       <h4>Aucune auto-évaluation n'a été faite !!!</h4>
     </div>
     <ion-row>

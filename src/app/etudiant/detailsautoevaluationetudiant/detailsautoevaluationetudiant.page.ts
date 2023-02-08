@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AutoevaluationService } from 'src/app/services/autoevaluation/autoevaluation.service';
 
 @Component({
@@ -12,6 +12,7 @@ export class DetailsautoevaluationetudiantPage implements OnInit {
   id:any
   Auto: any
   parcours : any
+  totalefiliereproposee: number = 0;
 
   option={
     slidesPervView:1.5,
@@ -21,7 +22,7 @@ export class DetailsautoevaluationetudiantPage implements OnInit {
     autoplay:true
   } 
 
-  constructor(private route: ActivatedRoute, private service : AutoevaluationService) { }
+  constructor(private router:Router,private route: ActivatedRoute, private service : AutoevaluationService) { }
 
   ngOnInit() {
     //RECUPERER L'ID AUTO
@@ -31,11 +32,20 @@ export class DetailsautoevaluationetudiantPage implements OnInit {
       console.log(data);
       this.parcours = this.Auto.parcours
       console.log(this.Auto.parcours);
+      for (const t of this.parcours) {
+        this.totalefiliereproposee += 1;
+      }
     })
   }
 
   back(): void {
     window.history.back()
+  }
+
+  //LA METHODE PERMETTANT DE NAVIGUER VERS LA PAGE SUIVANYE
+  goToDettailParcours(id: number) {
+    console.log(id);
+    return this.router.navigate(['tab2/detailsparcours', id])
   }
 
 }

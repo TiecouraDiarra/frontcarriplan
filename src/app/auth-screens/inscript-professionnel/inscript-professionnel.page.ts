@@ -11,6 +11,7 @@ import Swal from 'sweetalert2';
 })
 export class InscriptProfessionnelPage implements OnInit {
   type = true;
+  type1=true;
   domaines : any;
 
   form: any = {
@@ -28,7 +29,7 @@ export class InscriptProfessionnelPage implements OnInit {
   constructor(private authService: AuthService, private route: Router, private domaineService : DomaineprofService) { }
 
   ngOnInit() {
-    //METHODE PERMETTANT D'AFFICHER LES SERIES DES BACHELIERS
+    //METHODE PERMETTANT D'AFFICHER LES DOMAINES DES PROFESSIONNELS
     this.domaineService.getalldomaineprof().subscribe(data =>{
       console.log(data)
       this.domaines = data;
@@ -36,9 +37,14 @@ export class InscriptProfessionnelPage implements OnInit {
   }
 
 
-  changeType() {
-    this.type = !this.type;
-  }
+     //METHODE PERMETTANT DE CHANGER LE TYPE DE L'ICON EYE DANS LE CHAMP MOT DE PASSE
+     changeType() {
+      this.type = !this.type;
+    }
+    //METHODE PERMETTANT DE CHANGER LE TYPE DE L'ICON EYE DANS LE CHAMP MOT DE PASSE
+    changeType1() {
+      this.type1 = !this.type1;
+    }
   back(): void {
     window.history.back()
   }

@@ -51,6 +51,13 @@ export class AutoevaluationService {
     );
   }
 
+  //AFFICHER PARCOURS ETUDIANT APRES AUTOEVALUATION EFFECTUEE
+  ResultatAutoEtudiant(id_user: number): Observable<any> {
+    console.log("ID de user : " + id_user);
+    return this.http.get(`${this.API_URL}/ResultatAutoEtudiant/${id_user}`,
+    );
+  }
+
   //AFFICHER PARCOURS ECOLE PROFESSIONNELLE APRES AUTOEVALUATION EFFECTUEE
   AfficherParcoursEcoleProfessionnelle(id_user: number): Observable<any> {
     console.log("ID de user : " + id_user);
@@ -72,15 +79,27 @@ export class AutoevaluationService {
     );
   }
 
+  //AFFICHER AUTO RECENTE LYCEE
+  Autorecenteetudiant(id_user: number): Observable<any> {
+    console.log("ID de user : " + id_user);
+    return this.http.get(`${this.API_URL}/Autorecenteetudiant/${id_user}`,
+    );
+  }
+
 
   //AFFICHER LA LISTE DES QUESTIONS POUR L'ELEVE
   AfficherLaListeQuestionEleve(): Observable<any> {
     return this.http.get(`${this.API1_URL}/afficherQuestionEleve`);
   }
 
-  //AFFICHER LA LISTE DES QUESTIONS POUR LE PROFESSIONNEL
+  //AFFICHER LA LISTE DES QUESTIONS POUR LE PROFESSIONNEL(DOMAINE)
   AfficherLaListeQuestionProf(): Observable<any> {
     return this.http.get(`${this.API1_URL}/afficherQuestionProfe`);
+  }
+
+  //AFFICHER LA LISTE DES QUESTIONS POUR LE PROFESSIONNEL(FILIERE)
+  AfficherLaListeQuestionProfFiliere(): Observable<any> {
+    return this.http.get(`${this.API1_URL}/afficherQuestionProfeFiliere`);
   }
 
   //RECUPERER L'ID D'UN PARCOURS

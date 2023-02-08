@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { LoadingController } from '@ionic/angular';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { AutoevaluationService } from 'src/app/services/autoevaluation/autoevaluation.service';
 import { QuestionService } from 'src/app/services/question/question.service';
@@ -15,8 +16,14 @@ export class AutoevaluationetudiantPage implements OnInit {
 
   questions: any[];
   answers: any = {};
+  formValid = false;
+  
   idUser: any;
   Etudiant: any
+  isSuccessful = false;
+  isSignUpFailed = false;
+  errorMessage = '';
+  parcoursetudiant:any
 
   message: string | undefined;
   resetForm() {
@@ -24,16 +31,46 @@ export class AutoevaluationetudiantPage implements OnInit {
     answers: '';
   }
 
-  form: any = {
-    numero: null
-  }
+  // form: any = {
+  //   numero: null
+  // }
+  // form: any = {
+  //   questions:null,
+  //   answers:null,
+  // };
 
-  constructor(public serviceQ: QuestionService, private service: AutoevaluationService, private route: Router, private storage: StorageService, private authService: AuthService) { }
+  constructor(
+    public serviceQ: QuestionService,
+    private service: AutoevaluationService,
+    private route: Router,
+    private storage: StorageService,
+    private authService: AuthService,
+    private loadingCtrl: LoadingController
+  ) { }
+
+  checkFormValid() {
+    this.formValid = true;
+    this.questions.forEach(question => {
+    if (!this.answers[question.id]) {
+    this.formValid = false;
+    return;
+    }
+    });
+    }
 
   ngOnInit() {
     this.idUser = this.storage.getUser()
     console.log(this.idUser);
-    const { numero } = this.form;
+    // const { numero } = this.form;
+    // this.questions.forEach(question => {
+    //   if (!this.answers[question.id]) {
+    //   this.formValid = false;
+    //   return;
+    //   }
+    //   this.formValid = true;
+    //   });
+
+      
     this.authService.RecupererIdEtudiant(this.idUser.id).subscribe(data => {
       this.Etudiant = data,
         console.log(this.Etudiant),
@@ -91,7 +128,37 @@ export class AutoevaluationetudiantPage implements OnInit {
 
   }
 
+  //ENVOYER LE RESULTAT DE L'AUTOEVALUATION
   submitAnswers() {
+    this.service.faireAuto(this.answers, this.idUser.id).subscribe({
+      next:data => {
+        this.answers = data;
+        console.log(data);
+        this.isSuccessful = true;
+        this.isSignUpFailed = false;
+      },
+      error: err => {
+        this.errorMessage = err.error.message;
+        this.isSignUpFailed = true;
+      }
+    } 
+    )
+
+  }
+
+  //AFFICHER RESULTAT AUTOEVALUATION
+  ResultatAuto() {
+    this.service.ResultatAutoEtudiant(this.idUser.id).subscribe(data => {
+      this.parcoursetudiant = data;
+      console.log(this.parcoursetudiant)
+    })
+    // this.service.AfficherParcoursEcoleProfessionnelle(this.idUser.id).subscribe(data => {
+    //   console.log(data)
+    // })
+  }
+
+  //POPUP PERMETTANT DE VALIDER AUTOEVALUATION
+  popUpFaireAuto() {
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
         confirmButton: 'btn btn-primary',
@@ -99,55 +166,70 @@ export class AutoevaluationetudiantPage implements OnInit {
       },
       heightAuto: false
     })
-    if (this.answers == "") {
-      swalWithBootstrapButtons.fire(
-        this.message = " Tous les champs sont obligatoires !",
-      )
-      this.resetForm();
-    } else {
-      swalWithBootstrapButtons.fire({
-        // title: 'Etes-vous sûre de vous déconnecter?',
-        text: "Vous allez effectuer votre autoévaluation ?",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonText: 'Confimer',
-        cancelButtonText: 'Annuler',
-        // reverseButtons: true
-      }).then((result) => {
-        if (result.isConfirmed) {
-          this.route.navigate(['/tab2/autoetudiant']);
-          swalWithBootstrapButtons.fire(
-            'Auto-évaluation effectuée avec succès !',
-            'Tes pistes sont prêtes',
-            'success',)
-          // console.log(this.answers);
-          console.log(this.answers);
-          this.service.faireAuto(this.answers, this.idUser.id).subscribe(
-            data => {
-              //this.route.navigate(['/tabs/loadingpage']);
-              this.answers = data;
-              console.log(data);
-              swalWithBootstrapButtons.fire(
-                'Auto-évaluation effectuée avec succès !',
-                'Tes pistes sont prêtes',
-                'success',)
-              this.resetForm();
+    swalWithBootstrapButtons.fire({
+      // title: 'Etes-vous sûre de vous déconnecter?',
+      text: "Vous allez effectuer votre autoévaluation ?",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Confimer',
+      cancelButtonText: 'Annuler',
+      reverseButtons: true
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // this.showLoading();
+        this.submitAnswers();
+        this.popUp();
+        //   swalWithBootstrapButtons.fire(
+        //     'Auto-évaluation effectuée avec succès !',
+        //     'Tes pistes sont prêtes',
+        //     'success',);
 
-            }
-          )
-        } else if (
-          /* Read more about handling dismissals below */
-          result.dismiss === Swal.DismissReason.cancel
-        ) {
-          swalWithBootstrapButtons.fire(
-            'Auto-évaluation annulée'
-          )
-
-        }
-      })
-    }
+      }
+    })
 
   }
 
+  // ionViewWillEnter() {
+  //   this.route.navigateByUrl('/tab2/autoetudiant', { skipLocationChange: true }).then(() => {
+  //     this.route.navigate(["/tab2/autoetudiant"])
+  //   });
+  // }
+
+  //POPUP PERMETTANT DE NAVIGUER VERS LA PAGE APRES AUTO
+  popUp() {
+    Swal.fire({
+      position: 'center',
+      text: 'Auto-évaluation effectuée avec succès ! \n Tes pistes sont prêtes',
+      icon: 'success',
+      heightAuto: false,
+      showConfirmButton: true,
+      confirmButtonText: "OK",
+      confirmButtonColor: '#0857b5',
+      showDenyButton: false,
+      showCancelButton: false,
+      allowOutsideClick: false
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.ResultatAuto();
+        this.showLoading();
+        // this.ionViewWillEnter();
+        this.route.navigateByUrl('/tab2/autoetudiant', { skipLocationChange: true }).then(() => {
+          this.route.navigate(["/tab2/autoetudiant"])
+        })
+        // event.target.complete();
+      }
+    })
+
+  }
+
+  //Loading fonction
+  async showLoading() {
+    const loading = await this.loadingCtrl.create({
+      message: 'Patientez...',
+      duration: 3000,
+      spinner: 'circles',
+    });
+    loading.present();
+  }
 
 }

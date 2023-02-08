@@ -15,7 +15,7 @@
     <div class="ligne">
       <ion-item mode="md" *ngFor="let question of questions">
         <ion-label position="floating">{{question.question}}</ion-label>
-        <ion-input [(ngModel)]="answers[question.id]" name="answers[question.id]" max="20" min="0" pattern="[0-9]" type="number" integerOnly step="1" minlength="0" maxlength="20"
+        <ion-input [(ngModel)]="answers[question.id]" name="answers[question.id]" max="20" min="0" type="number" integerOnly step="1" minlength="0" maxlength="20"
           required="true"></ion-input> 
       </ion-item>
       <!-- <ion-item mode="md">

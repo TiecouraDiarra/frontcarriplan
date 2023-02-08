@@ -6,153 +6,30 @@
   </ion-header>
 
   <ion-content [fullscreen]="true">
-    <!-- <div padding>
-    <ion-segment [(ngModel)]="cat">
-      <ion-segment-button value="men">
-        Men
-      </ion-segment-button>
-      <ion-segment-button value="women">
-        Women
-      </ion-segment-button>
-    </ion-segment>
-  </div> -->
-
-    <!-- <div [ngSwitch]="cat">
-    <ion-list *ngSwitchCase="'men'">
-      <ion-item>
-        <ion-thumbnail item-left>
-          <img src="img/men-image1.png">
-        </ion-thumbnail>
-        <h2>Cothing</h2>
-      </ion-item>
-      <ion-item>
-        <ion-thumbnail item-left>
-          <img src="img/men-image2.png">
-        </ion-thumbnail>
-        <h2>Watches</h2>
-      </ion-item>
-      <ion-item>
-        <ion-thumbnail item-left>
-          <img src="img/men-image3.png">
-        </ion-thumbnail>
-        <h2>Footwear</h2>
-      </ion-item>
-    </ion-list>
-
-    <ion-list *ngSwitchCase="'women'">
-      <ion-item>
-        <ion-thumbnail item-left>
-          <img src="img/women-image1.png">
-        </ion-thumbnail>
-        <h2>Cothing</h2>
-      </ion-item>
-      <ion-item>
-        <ion-thumbnail item-left>
-          <img src="img/women-image1.png">
-        </ion-thumbnail>
-        <h2>Watches</h2>
-      </ion-item>
-      <ion-item>
-        <ion-thumbnail item-left>
-          <img src="/img/women-image1.png">
-        </ion-thumbnail>
-        <h2>Footwear</h2>
-      </ion-item>
-    </ion-list>
-  </div> -->
-
-
     <ion-slides [options]="option" class="ion-margin-top">
-      <ion-slide>
-        <ion-card>
-          <img src="assets/imgs/scienceexp.jpg" alt="">
-        </ion-card>
+      <ion-slide *ngFor="let Parc of parcours">
+        <ion-card class="rrr">
+          <img style="height: 100px;" src="../../../../assets/imgs/parcours/{{Parc.imageparcours}}" alt="">
+        </ion-card> 
       </ion-slide>
-      <ion-slide>
-        <ion-card>
-          <img src="assets/imgs/scienceexp.jpg" alt="">
-        </ion-card>
-      </ion-slide>
-      <ion-slide>
-        <ion-card>
-          <img src="assets/imgs/scienceexp.jpg" alt="">
-        </ion-card>
-      </ion-slide>
-      <ion-slide>
-        <ion-card>
-          <img src="assets/imgs/scienceexp.jpg" alt="">
-        </ion-card>
-      </ion-slide>
-
     </ion-slides>
 
-    <!-- <div class="container" style="margin: 8px;">
-    <div class="row">
-      <h4>Mes auto-evaluations</h4>
+    <div class="container" style="margin: 8px;">
+      <div class="row" *ngIf="auto && auto.length > 0">
+        <h4>Mes auto-evaluations</h4>
+      </div>
+      <div class="row" *ngIf="auto && auto.length == 0">
+        <h4>Aucune auto-évaluation n'a été faite !!!</h4>
+      </div>
+      <ion-row>
+        <ion-col *ngFor="let Auto of auto, let i = index">
+          <ion-card (click)="goToDettailAuto(Auto.id)" class="crd">
+            <ion-card-header>
+              <ion-card-title>{{i+1}} auto-evaluation</ion-card-title>
+              <ion-card-subtitle style="font-size: 12px;">{{Auto.dateauto | date:"dd/MM/yyyy HH'h'mm"}}</ion-card-subtitle>
+            </ion-card-header>
+          </ion-card>
+        </ion-col>
+      </ion-row>
     </div>
-    <ion-row>
-      <ion-col>
-        <ion-card style="margin-left: -8px;">
-          <ion-card-header>
-            <ion-card-title>1 er</ion-card-title>
-            <ion-card-subtitle style="font-size: 12px;">18-01-2023</ion-card-subtitle>
-          </ion-card-header>
-        </ion-card>
-      </ion-col>
-      <ion-col>
-        <ion-card style="margin-left: -10px;">
-          <ion-card-header>
-            <ion-card-title>2 ème</ion-card-title>
-            <ion-card-subtitle style="font-size: 12px;">18-01-2023</ion-card-subtitle>
-          </ion-card-header>
-        </ion-card>
-      </ion-col>
-      <ion-col>
-        <ion-card style="margin-left: -14px;">
-          <ion-card-header>
-            <ion-card-title>3 ème</ion-card-title>
-            <ion-card-subtitle style="font-size: 12px;">18-01-2023</ion-card-subtitle>
-          </ion-card-header>
-        </ion-card>
-      </ion-col>
-    </ion-row>
-  </div> -->
-    <!-- <ion-row>
-      <ion-col>
-        <ion-card>
-          <ion-card-header>
-            <ion-card-title>Card Title</ion-card-title>
-            <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
-          </ion-card-header>
-        
-          <ion-card-content>
-            Here's a small text description for the card content. Nothing more, nothing less.
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-      <ion-col>
-        <ion-card>
-          <ion-card-header>
-            <ion-card-title>Card Title</ion-card-title>
-            <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
-          </ion-card-header>
-        
-          <ion-card-content>
-            Here's a small text description for the card content. Nothing more, nothing less.
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-      <ion-col>
-        <ion-card>
-          <ion-card-header>
-            <ion-card-title>Card Title</ion-card-title>
-            <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
-          </ion-card-header>
-        
-          <ion-card-content>
-            Here's a small text description for the card content. Nothing more, nothing less.
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-    </ion-row> -->
   </ion-content>

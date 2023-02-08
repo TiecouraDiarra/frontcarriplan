@@ -60,7 +60,7 @@ export class Tab2Page implements OnInit {
       showCancelButton: true,
       confirmButtonText: 'Confimer',
       cancelButtonText: 'Annuler',
-      // reverseButtons: true
+      reverseButtons: true
     }).then((result) => {
       if (result.isConfirmed) {
         this.authService.logout().subscribe({

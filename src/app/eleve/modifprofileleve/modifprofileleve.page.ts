@@ -13,15 +13,13 @@ import Swal from 'sweetalert2';
 export class ModifprofilelevePage implements OnInit {
 
   type = true;
+  type1 = true;
+  type2 = true;
   cat: string = "profil";
   User: any
   roles: string[] = [];
 
-  form: any = {
-    nomcomplet: null,
-    numero: null,
-    email: null,
-  };
+  form: any
 
   forme: any = {
     ancienmdp: null,
@@ -34,7 +32,14 @@ export class ModifprofilelevePage implements OnInit {
   errorMessage = '';
   message: string | undefined;
 
-  constructor(private storageService: StorageService, private route: Router, private auService: AutoevaluationService, private authService: AuthService) { }
+  constructor(private storageService: StorageService, private route: Router, private auService: AutoevaluationService, private authService: AuthService) { 
+    this.User = this.storageService.getUser();
+    this.form = {
+      nomcomplet: this.User.nomcomplet,
+      numero: this.User.numero,
+      email: this.User.email,
+    };
+  }
 
   ngOnInit() {
     this.roles = this.storageService.getUser().roles;
@@ -49,6 +54,15 @@ export class ModifprofilelevePage implements OnInit {
   //METHODE PERMETTANT DE CHANGER LE TYPE DE L'ICON EYE DANS LE CHAMP MOT DE PASSE
   changeType() {
     this.type = !this.type;
+  }
+  //METHODE PERMETTANT DE CHANGER LE TYPE DE L'ICON EYE DANS LE CHAMP MOT DE PASSE
+  changeType1() {
+    this.type1 = !this.type1;
+  }
+
+  //METHODE PERMETTANT DE CHANGER LE TYPE DE L'ICON EYE DANS LE CHAMP MOT DE PASSE
+  changeType2() {
+    this.type2 = !this.type2;
   }
 
   //METHODE PERMETTANT DE MODIFIER LE PROFIL D'UN ELEVE

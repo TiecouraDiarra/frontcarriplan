@@ -11,21 +11,58 @@
     </div>
     
     <ion-row>
-      <!-- <h3 style="margin-top: 20px;">Quelle est votre filière?</h3> -->
-      <!-- <ion-item>
-        <ion-select [(ngModel)]="answers[questions[0]]" name="answers[question.id]" interface="popover" placeholder="{{questions[1]}}">
-          <ion-select-option value="licence1">Licence 1</ion-select-option>
-          <ion-select-option value="licence2">Licence 2</ion-select-option>
-          <ion-select-option value="licence3">Licence 3</ion-select-option>
-          <ion-select-option value="licence3">Master 1</ion-select-option>
-          <ion-select-option value="licence3">Master 2</ion-select-option>
+      <h3 style="margin-top: 20px;">Quelle est votre filière ?</h3>
+
+      <!-- <ion-item mode="md" *ngFor="let questionfilieres of questionsfiliere">
+        <ion-label position="floating">{{questionfilieres.question}}</ion-label>
+        <ion-input [(ngModel)]="answers[questionfilieres.id]" name="answers[questionfilieres.id]" type="test"
+          required="true"></ion-input> 
+      </ion-item> -->
+      <ion-item mode="md" *ngFor="let questionfilieres of questionsfiliere">
+        <ion-label position="floating">{{questionfilieres.question}}</ion-label>
+        <ion-select [(ngModel)]="answers[questionfilieres.id]" name="answers[questionfilieres.id]" required="true">
+          <ion-select-option value="Licence 1">Licence 1</ion-select-option>
+          <ion-select-option value="Licence 2">Licence 2</ion-select-option>
+          <ion-select-option value="Licence 3">Licence 3</ion-select-option>
+          <ion-select-option value="Master 1">Master 1</ion-select-option>
+          <ion-select-option value="Master 2">Master 2</ion-select-option>
         </ion-select>
+      </ion-item>
+
+      <h3 style="margin-top: 20px;">Quelle est votre domaine ?</h3>
+      <!-- <ion-item mode="md" *ngFor="let question of questions">
+        <ion-label position="floating">{{question.question}}</ion-label>
+        <ion-input [(ngModel)]="answers[question.id]" name="answers[question.id]" type="test"
+          required="true"></ion-input> 
       </ion-item> -->
       <ion-item mode="md" *ngFor="let question of questions">
         <ion-label position="floating">{{question.question}}</ion-label>
+        <ion-select [(ngModel)]="answers[question.id]" name="answers[question.id]" required="true">
+          <!-- <ion-select-option value="informatique">Informatique / Télécoms</ion-select-option>
+          <ion-select-option value="comptabilite">Comptabilité</ion-select-option>
+          <ion-select-option value="banqueassurance">Banque / Assurance</ion-select-option>
+          <ion-select-option value="electroelectricite">Électronique / Électricité</ion-select-option>
+          <ion-select-option value="transport">Transports / Logistique</ion-select-option> -->
+          <ion-select-option *ngFor="let Dom of domaines" value="{{Dom.nomdomaine}}">{{Dom.nomdomaine}}</ion-select-option>
+          <!-- <ion-select-option data-toggle="modal" data-target="#exampleModal" value="banqueassurance">Banque / Assurance</ion-select-option> -->
+        </ion-select>
+        <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@fat">Open modal for @fat</button> -->
+        
+      </ion-item>
+      <!-- <ion-item>
+        <ion-select interface="popover" placeholder="Selectionner votre filière">
+          <ion-select-option value="licence1">Licence 1</ion-select-option>
+          <ion-select-option value="licence2">Licence 2</ion-select-option>
+          <ion-select-option value="licence3">Licence 3</ion-select-option>
+          <ion-select-option value="master1">Master 1</ion-select-option>
+          <ion-select-option value="master1">Master 2</ion-select-option>
+        </ion-select>
+      </ion-item> -->
+      <!-- <ion-item mode="md" *ngFor="let question of questions">
+        <ion-label position="floating">{{question.question}}</ion-label>
         <ion-input [(ngModel)]="answers[question.id]" name="answers[question.id]" minlength="4"
         maxlength="20" type="text" required="true"></ion-input> 
-      </ion-item>
+      </ion-item> -->
       <!-- <h3 style="margin-top: 25px;">Quel est votre niveau d’étude?</h3> -->
       <!-- <ion-item *ngFor="let question of questions">
         <ion-item mode="md">
@@ -52,6 +89,35 @@
         </ion-select>
       </ion-item> -->
     </ion-row>
-    <ion-button (click)="submitAnswers()" style="--background: #00A5E4; margin: 10px; float: right;">Suivant</ion-button>
+    <ion-button (click)="popUpFaireAuto()" style="--background: #00A5E4; margin: 10px; float: right;">Suivant</ion-button>
   </form>
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="recipient-name" class="col-form-label">Recipient:</label>
+              <input type="text" class="form-control" id="recipient-name">
+            </div>
+            <div class="form-group">
+              <label for="message-text" class="col-form-label">Message:</label>
+              <textarea class="form-control" id="message-text"></textarea>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Send message</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </ion-content>
+

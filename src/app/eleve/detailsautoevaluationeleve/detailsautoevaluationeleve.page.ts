@@ -9,10 +9,11 @@ import { AutoevaluationService } from 'src/app/services/autoevaluation/autoevalu
 })
 export class DetailsautoevaluationelevePage implements OnInit {
 
-  constructor(private route: ActivatedRoute, private service : AutoevaluationService) { }
+  constructor(private router:Router,private route: ActivatedRoute, private service : AutoevaluationService) { }
   id:any
   Auto: any
   parcours : any
+  totalparcoursproposee: number = 0;
 
   option={
     slidesPervView:1.5,
@@ -30,11 +31,20 @@ export class DetailsautoevaluationelevePage implements OnInit {
       console.log(data);
       this.parcours = this.Auto.parcours
       console.log(this.Auto.parcours);
+      for (const t of this.parcours) {
+        this.totalparcoursproposee += 1;
+      }
     })
   }
 
   back(): void {
     window.history.back()
   }
+
+    //LA METHODE PERMETTANT DE NAVIGUER VERS LA PAGE SUIVANYE
+    goToDettailParcours(id: number) {
+      console.log(id);
+      return this.router.navigate(['tabs/detailsparcours', id])
+    }
 
 }

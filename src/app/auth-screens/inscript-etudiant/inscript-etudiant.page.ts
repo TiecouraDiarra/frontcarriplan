@@ -13,6 +13,7 @@ import Swal from 'sweetalert2';
 export class InscriptEtudiantPage implements OnInit {
 
   type = true;
+  type1= true;
   series : any
   form: any = {
     nomcomplet:null,
@@ -37,9 +38,14 @@ export class InscriptEtudiantPage implements OnInit {
     })
   }
 
-  changeType() {
-    this.type = !this.type;
-  }
+    //METHODE PERMETTANT DE CHANGER LE TYPE DE L'ICON EYE DANS LE CHAMP MOT DE PASSE
+    changeType() {
+      this.type = !this.type;
+    }
+    //METHODE PERMETTANT DE CHANGER LE TYPE DE L'ICON EYE DANS LE CHAMP MOT DE PASSE
+    changeType1() {
+      this.type1 = !this.type1;
+    }
   
   back(): void {
     window.history.back()

@@ -5,14 +5,14 @@
   </ion-toolbar>
 </ion-header>
 <ion-content>
-  <div class="row tite" style="margin-top: 10px; display: flex; font-size: 30px; margin-left: 1px;">
+  <div class="row tite" style="margin-top: 20px; display: flex; font-size: 30px; margin-left: 1px;">
 
     <div class="col-2">
       <!-- <ion-icon (click)="back()" name="arrow-back-outline"></ion-icon> -->
       <ion-icon (click)="back()" name="arrow-back-circle-outline"></ion-icon>
     </div>
     <div class="col" style="margin-top: 4px;">
-      <div class="titee">
+      <div class="titee" *ngIf="parcours && parcours.nomparcours">
         <h2 class="tit">{{parcours.nomparcours}}</h2>
       </div>
     </div>
@@ -23,28 +23,27 @@
       <!-- <div class="tt" >
         <p>Science Exacte</p>
       </div> -->
-      <img style="opacity: 2.0;" alt="" src="../../assets/imgs/parcours/{{parcours.imageparcours}}" />
+      <img *ngIf="parcours && parcours.imageparcours" style="opacity: 2.0;" alt="" src="../../assets/imgs/parcours/{{parcours.imageparcours}}" />
       <ion-card-header>
         <ion-card-subtitle style="color: black; font-weight: bold;font-size: 16px;">Description</ion-card-subtitle>
       </ion-card-header>
 
-      <ion-card-content style="margin-top: -10px; text-align: justify;">
+      <ion-card-content *ngIf="parcours && parcours.description" style="margin-top: -10px; text-align: justify;">
         {{parcours.description}}
       </ion-card-content>
 
-      <ion-card-content style="margin-top: -10px;">
+      <ion-card-content class="mescards">
+       
 
-        <div class="mescards">
-
-          <ion-card style="width: 80%; text-align: center;">
+          <ion-card style="width: 100%; text-align: center; margin-left: -2%;" *ngIf="parcours && parcours.filiere">
             <ion-card-header>
               <ion-card-title>Série</ion-card-title>
             </ion-card-header>
             <ion-card-content>
               {{parcours.filiere}}
             </ion-card-content>
-          </ion-card>
-          <ion-card style="width: 80%; text-align: center;">
+          </ion-card> 
+          <ion-card style="width: 96%; text-align: center;" *ngIf="parcours && parcours.titre">
             <ion-card-header>
               <ion-card-title>Titre</ion-card-title>
             </ion-card-header>
@@ -52,7 +51,7 @@
               {{parcours.titre}}
             </ion-card-content>
           </ion-card>
-          <ion-card style="width: 80%; text-align: center;">
+          <ion-card style="width: 100%; text-align: center; margin-left: -2%;" *ngIf="parcours && parcours.admission">
             <ion-card-header>
               <ion-card-title>Admission</ion-card-title>
             </ion-card-header>
@@ -61,7 +60,7 @@
               {{parcours.admission}}
             </ion-card-content>
           </ion-card>
-          <ion-card style="width: 80%; text-align: center;">
+          <ion-card style="width:96%; text-align: center;" *ngIf="parcours && parcours.duree">
             <ion-card-header>
               <ion-card-title>Durrée</ion-card-title>
             </ion-card-header>
@@ -70,14 +69,13 @@
               {{parcours.duree}}
             </ion-card-content>
           </ion-card>
-        </div>
-
+       
       </ion-card-content>
       <ion-card-header style="margin-top: -28px;">
-        <ion-card-subtitle *ngIf="metier.length > 0" style="color: black; font-weight: bold; font-size: 16px;">Les
+        <ion-card-subtitle *ngIf="metier && metier.length > 0" style="color: black; font-weight: bold; font-size: 16px;">Les
           Métiers qui sont liés à cette
           séries</ion-card-subtitle>
-        <ion-card-subtitle *ngIf="metier.length == 0" style="color: black; font-weight: bold; font-size: 16px;">
+        <ion-card-subtitle *ngIf="metier && metier.length == 0" style="color: black; font-weight: bold; font-size: 16px;">
           Aucun métier n'est associé à cette série</ion-card-subtitle>
       </ion-card-header>
 
@@ -122,7 +120,7 @@
       <ion-card-header style="margin-top: -19px;">
         <ion-card-subtitle style="color: black; font-weight: bold; ">Les Conseils</ion-card-subtitle>
       </ion-card-header>
-      <ion-card-content style="margin-top: -10px; text-align: justify;">
+      <ion-card-content style="margin-top: -10px; text-align: justify;" *ngIf="parcours && parcours.conseil">
         {{parcours.conseil}}
       </ion-card-content>
     </ion-card>

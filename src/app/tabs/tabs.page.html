@@ -1,20 +1,19 @@
-
 <ion-header [translucent]="true" style="margin-top: 10px;">
   <ion-toolbar>
     <img style="margin-bottom: -13px;" src="assets/imgs/imgconfig/logo.png" />
     <ion-buttons slot="primary">
       <ion-button id="popover-button">
         <div class="num"
-        style="width: 35px;justify-content: center; height: 30px; border-radius: 100%; border: 3px solid #5AC7EB;background-color: #5AC7EB;">
-        <h2 style="position: relative; bottom: 10px;">{{initials}}</h2>
-      </div>
+          style="width: 35px;justify-content: center; height: 30px; border-radius: 100%; border: 3px solid #5AC7EB;background-color: #5AC7EB;">
+          <h2 style="position: relative; bottom: 10px;">{{initials}}</h2>
+        </div>
         <!-- <ion-icon slot="icon-only" style="color: black; margin-bottom: -13px;" name="person-circle"></ion-icon> -->
       </ion-button>
-  
+
       <ion-popover trigger="popover-button" [dismissOnSelect]="true" class="popUps">
         <ng-template class="popUp">
           <ion-content>
-            <ion-list >
+            <ion-list>
               <ion-item [button]="true" [detail]="false" routerLink="/tabs/profileleve">
                 <ion-icon style="margin-right: 10px;" name="person"></ion-icon>
                 Profil
@@ -27,7 +26,7 @@
           </ion-content>
         </ng-template>
       </ion-popover>
-  
+
     </ion-buttons>
 
   </ion-toolbar>
@@ -43,7 +42,7 @@
     <ion-tab-button tab="autoeleve">
       <ion-icon name="color-filter-outline"></ion-icon>
       <ion-label>Evaluation</ion-label>
-    </ion-tab-button>  
+    </ion-tab-button>
 
     <ion-tab-button tab="pisteeleve">
       <ion-icon name="analytics-outline"></ion-icon>

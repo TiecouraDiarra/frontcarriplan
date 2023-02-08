@@ -12,7 +12,7 @@
       <ion-icon (click)="back()" name="arrow-back-circle-outline"></ion-icon>
     </div>
     <div class="col" style="margin-top: 4px;">
-      <div class="titee">
+      <div class="titee" *ngIf="metier && metier.nommetier">
         <h2 class="tit">{{metier.nommetier}}</h2>
       </div>
     </div>
@@ -23,19 +23,19 @@
       <!-- <div class="tt" >
         <p>Science Exacte</p>
       </div> -->
-      <img style="opacity: 2.0;" alt="" src="../../assets/imgs/metiers/{{metier.imagemetier}}" />
+      <img *ngIf="metier && metier.imagemetier" style="opacity: 2.0;" alt="" src="../../assets/imgs/metiers/{{metier.imagemetier}}" />
       <ion-card-header>
         <ion-card-subtitle style="color: black; font-weight: bold;font-size: 16px;">Description</ion-card-subtitle>
       </ion-card-header>
     
-      <ion-card-content style="margin-top: -10px; text-align: justify;">
+      <ion-card-content style="margin-top: -10px; text-align: justify;" *ngIf="metier && metier.descriptionmetier">
        {{metier.descriptionmetier}}
       </ion-card-content>
 
       <ion-card-header style="margin-top: -19px;">
         <ion-card-subtitle style="color: black; font-weight: bold; ">Les Conseils</ion-card-subtitle>
       </ion-card-header>
-      <ion-card-content style="margin-top: -10px; text-align: justify;">
+      <ion-card-content style="margin-top: -10px; text-align: justify;" *ngIf="metier && metier.avantage">
         {{metier.avantage}}
       </ion-card-content>
     </ion-card>

@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { data } from 'jquery';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { AutoevaluationService } from 'src/app/services/autoevaluation/autoevaluation.service';
+import { ParcoursService } from 'src/app/services/parcours/parcours.service';
 import { StorageService } from 'src/app/services/storage/storage.service';
 
 @Component({
@@ -13,23 +14,28 @@ import { StorageService } from 'src/app/services/storage/storage.service';
 export class CarriereetudiantPage implements OnInit {
 
   User : any
-  auto : any
+  parcours : any
+  auto : any[];
 
-  counter = 0;
 
-  incrementCounter() {
-    this.counter++;
-  }
-  constructor(private authService: AuthService, private storageService: StorageService, private auService : AutoevaluationService, private route : Router) { }
+  constructor(private authService: AuthService, private storageService: StorageService, private auService : AutoevaluationService, private route : Router, private parcoursservice : ParcoursService) { }
 
   ngOnInit() {
     this.User = this.storageService.getUser()
     console.log(this.User)
+
+    //AFFICHER LA LISTE DES AUTO EVALUATION PAR UTILISATEUR
     this.auService.AfficherLaListeAutoUser(this.User.id).subscribe(data=>{
       this.auto = data;
-      this.incrementCounter();
       console.log(this.auto)
     })
+
+    //AFFICHER LA LISTE DES AUTO EVALUATION PAR UTILISATEUR
+    this.parcoursservice.afficherImageUniversite().subscribe(data=>{
+      this.parcours = data;
+      console.log(this.parcours)
+    })
+
   }
   
   // cat: string = "men"; 

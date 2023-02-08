@@ -200,6 +200,10 @@ const routes: Routes = [
     path: 'detailsautoevaluationetudiant',
     loadChildren: () => import('./etudiant/detailsautoevaluationetudiant/detailsautoevaluationetudiant.module').then( m => m.DetailsautoevaluationetudiantPageModule)
   },
+  {
+    path: 'detailsautoevaluationprofessionnel',
+    loadChildren: () => import('./professionnel/detailsautoevaluationprofessionnel/detailsautoevaluationprofessionnel.module').then( m => m.DetailsautoevaluationprofessionnelPageModule)
+  },
 
 
 

@@ -10,6 +10,7 @@ import { ParcoursService } from 'src/app/services/parcours/parcours.service';
 export class FormationprofessionnelleComponent implements OnInit {
 
 parcours:any
+searchText:any;
 p:number=1
 
   constructor(public service: ParcoursService, private route: Router) { }

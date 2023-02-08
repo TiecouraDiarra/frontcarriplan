@@ -92,7 +92,7 @@ ion-card .card2{
 
 .tit{
     // margin: 0px !important;
-    font-size: 24px;
+    font-size: 20px;
     font-weight: bold;
     text-align: center;
 }
@@ -106,9 +106,12 @@ ion-button:hover{
     background: none !important;
 }
 
-.mescards,.mescards{
+.mescards{
     display: grid;
     grid-template-columns: auto auto;
+    // background-color: red;
+    // width: 100% !important;
+    // margin-right: auto !important;
 }
 
 .testcard{
@@ -148,4 +151,5 @@ ion-button:hover{
 .mescards ion-card-content{
     margin-top: 10px;
     font-size: 17px;
+
 }

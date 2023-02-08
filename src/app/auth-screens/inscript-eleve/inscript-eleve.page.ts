@@ -11,6 +11,7 @@ import Swal from 'sweetalert2';
 export class InscriptElevePage implements OnInit {
   
   type = true;
+  type1 = true;
   form: any = {
     nomcomplet:null,
     numero:null,
@@ -29,9 +30,16 @@ export class InscriptElevePage implements OnInit {
   ngOnInit() {
   }
 
+    //METHODE PERMETTANT DE CHANGER LE TYPE DE L'ICON EYE DANS LE CHAMP MOT DE PASSE
   changeType() {
     this.type = !this.type;
   }
+  //METHODE PERMETTANT DE CHANGER LE TYPE DE L'ICON EYE DANS LE CHAMP MOT DE PASSE
+  changeType1() {
+    this.type1 = !this.type1;
+  }
+
+
   back(): void {
     window.history.back()
   }

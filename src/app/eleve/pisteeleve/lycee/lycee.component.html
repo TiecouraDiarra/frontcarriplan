@@ -20,7 +20,7 @@
 
 <div class="search-one">
   <ion-icon name="search-outline"></ion-icon>
-  <ion-input type="text" placeholder="Rechercher séries par nom" [(ngModel)]="searchText"></ion-input>
+  <ion-input type="text" placeholder="Rechercher séries" [(ngModel)]="searchText"></ion-input>
 </div>
 <div class="row ligne">
   <div class="gride" *ngFor="let Parcours of parcours | filter:searchText">
