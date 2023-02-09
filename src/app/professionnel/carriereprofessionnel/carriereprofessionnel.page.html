@@ -14,7 +14,43 @@
       </ion-slide>
     </ion-slides>
 
-    <div class="container" style="margin: 8px;">
+    <ion-accordion-group style="padding: 10px; margin-top: 15px;">
+      <ion-accordion value="first">
+        <ion-item slot="header" color="light" *ngIf="Parcours1 && Parcours1.domaineProf.nomdomaine">
+          <ion-label style="font-size: 13px;">Formations({{Parcours1.domaineProf.nomdomaine}})</ion-label>
+        </ion-item>
+        <div class="ion-padding" slot="content" style="background-color: #E6F4F1;">
+          First Content
+        </div>
+      </ion-accordion>
+      <ion-accordion value="third" style="margin-top: 15px;">
+        <ion-item slot="header" color="light" *ngIf="auto && auto.length > 0">
+          <ion-label style="font-size: 13px;">Mes auto-evaluations</ion-label>
+        </ion-item>
+        <div class="ion-padding" slot="content" style="background-color: #E6F4F1;">
+          <div class="container">
+            <!-- <div class="row" *ngIf="auto && auto.length > 0">
+              <h4>Mes auto-evaluations</h4>
+            </div>
+            <div class="row" *ngIf="auto && auto.length == 0">
+              <h4>Aucune auto-évaluation n'a été faite !!!</h4>
+            </div> -->
+            <ion-row>
+              <ion-col *ngFor="let Auto of auto, let i = index">
+                <ion-card (click)="goToDettailAuto(Auto.id)" class="crd">
+                  <ion-card-header>
+                    <ion-card-title>{{i+1}} auto-evaluation</ion-card-title>
+                    <ion-card-subtitle style="font-size: 12px;">{{Auto.dateauto | date:"dd/MM/yyyy HH'h'mm"}}</ion-card-subtitle>
+                  </ion-card-header>
+                </ion-card>
+              </ion-col>
+            </ion-row>
+          </div>
+        </div>
+      </ion-accordion>
+    </ion-accordion-group>
+
+    <!-- <div class="container" style="margin: 8px;">
       <div class="row" *ngIf="auto && auto.length > 0">
         <h4>Mes auto-evaluations</h4>
       </div>
@@ -31,5 +67,5 @@
           </ion-card>
         </ion-col>
       </ion-row>
-    </div>
+    </div> -->
   </ion-content>

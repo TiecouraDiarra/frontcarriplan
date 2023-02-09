@@ -11,35 +11,44 @@ import { StorageService } from 'src/app/services/storage/storage.service';
   styleUrls: ['./carriereprofessionnel.page.scss'],
 })
 export class CarriereprofessionnelPage implements OnInit {
-  User : any
-  parcours : any
-  auto : any[];
+  User: any
+  parcours: any
+  auto: any[];
 
-  constructor(private authService: AuthService, private storageService: StorageService, private auService : AutoevaluationService, private route : Router, private parcoursservice : ParcoursService) { }
+  Parcours1: any
+
+  constructor(private authService: AuthService, private storageService: StorageService, private auService: AutoevaluationService, private route: Router, private parcoursservice: ParcoursService) { }
 
   ngOnInit() {
     this.User = this.storageService.getUser()
     console.log(this.User)
 
+    this.authService.RecupererIdEtudiant(this.User.id).subscribe(data => {
+      this.Parcours1 = data,
+        console.log(this.Parcours1);
+        console.log(this.Parcours1.domaineProf.nomdomaine);
+
+    })
+
     //AFFICHER LA LISTE DES AUTO EVALUATION PAR UTILISATEUR
-    this.auService.AfficherLaListeAutoUser(this.User.id).subscribe(data=>{
+    this.auService.AfficherLaListeAutoUser(this.User.id).subscribe(data => {
       this.auto = data;
       console.log(this.auto)
     })
 
-    //AFFICHER LA LISTE DES AUTO EVALUATION PAR UTILISATEUR
-    this.parcoursservice.afficherImageUniversite().subscribe(data=>{
+    //AFFICHER LES IMAGES DES FORMATIONS
+    this.parcoursservice.afficherImageFormation().subscribe(data => {
       this.parcours = data;
       console.log(this.parcours)
     })
 
   }
-  option={
-    slidesPervView:1.5,
-    centeredSlides:true,
-    loop:true,
-    spaceBetween:10,
-    autoplay:true
+  option = {
+    slidesPervView: 1.5,
+    centeredSlides: true,
+    loop: true,
+    spaceBetween: 10,
+    autoplay: true
   }
   //METHODE PERMETTANT DE SE DECONNECTER
   logout(): void {
