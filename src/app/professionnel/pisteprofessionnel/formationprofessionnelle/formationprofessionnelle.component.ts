@@ -17,7 +17,7 @@ p:number=1
 
   ngOnInit() {
     //AFFICHER LA LISTE DES PARCOURS DE L'UNIVERSITE
-    this.service.getParcoursUniversite().subscribe(data => {
+    this.service.getFormationProf().subscribe(data => {
       this.parcours = data;
     })
   }

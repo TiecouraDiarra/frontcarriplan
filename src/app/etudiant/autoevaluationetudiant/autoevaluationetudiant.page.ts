@@ -153,7 +153,7 @@ export class AutoevaluationetudiantPage implements OnInit {
       console.log(this.parcoursetudiant)
     })
     // this.service.AfficherParcoursEcoleProfessionnelle(this.idUser.id).subscribe(data => {
-    //   console.log(data)
+    //   console.log(data) GAFAM (GOOGLE, AMAZONE, FACEBOOK, APPLE, MICROSOFT)
     // })
   }
 

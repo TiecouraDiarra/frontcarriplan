@@ -31,7 +31,13 @@ export class ParcoursService {
     // return this.http.get(API_URL + 'afficherParcoursLycee');
   }
 
-  //AFFICHER LES PARCOURS DE L'UNIVERSITE
+  //AFFICHER LES FORMATIONS DES PROFESSIONNELLES
+  getFormationProf(): Observable<any> {
+    return this.http.get(`${this.API_URL}/afficherFormationsProfessionnel`);
+    // return this.http.get(API_URL + 'afficherParcoursLycee');
+  }
+
+  //AFFICHER LES IMAGES DE L'UNIVERSITE
   afficherImageUniversite(): Observable<any> {
     return this.http.get(`${this.API_URL}/afficherImageUniversite`);
     // return this.http.get(API_URL + 'afficherParcoursLycee');

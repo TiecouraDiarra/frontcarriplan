@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth/auth.service';
+import { AutoevaluationService } from 'src/app/services/autoevaluation/autoevaluation.service';
 import { StorageService } from 'src/app/services/storage/storage.service';
 
 @Component({
@@ -9,9 +11,57 @@ import { StorageService } from 'src/app/services/storage/storage.service';
 })
 export class AutoprofessionnelPage implements OnInit {
 
-  constructor(private authService: AuthService, private storageService: StorageService) { }
+  roles: string[] = [];
+  User : any
+
+  autorecenteformation:any
+  autorecenteemetier:any
+  totaleformationproposee: number = 0;
+  private refreshData = false;
+
+  option={
+    slidesPervView:1.5,
+    centeredSlides:true,
+    loop:true,
+    spaceBetween:10,
+    autoplay:true
+  }
+
+  constructor(
+    private authService: AuthService,
+    private service : AutoevaluationService, 
+    private storageService: StorageService,
+    private route: Router) { }
 
   ngOnInit() {
+    this.roles = this.storageService.getUser().roles;
+    this.User = this.storageService.getUser()
+    console.log(this.User)
+
+    //AFFICHER AUTO RECENTE ETUDIANT FILIERE APRES AUTOEVALUATION EFFECTUEE
+    this.service.AutorecenteProfessionnel(this.User.id).subscribe(data=>{
+      this.autorecenteformation = data;
+      console.log(this.autorecenteformation);
+      for (const t of this.autorecenteformation) {
+        this.totaleformationproposee += 1;
+      }
+    })
+  }
+
+  ionViewDidEnter() {
+    if (this.refreshData) {
+      // Code pour actualiser les données nécessaires pour la page
+      this.service.AutorecenteProfessionnel(this.User.id).subscribe(data=>{
+        this.autorecenteformation = data;
+        console.log(this.autorecenteformation);
+        
+      })
+      this.refreshData = false;
+    }
+  }
+ 
+  ionViewWillLeave() {
+    this.refreshData = true;
   }
 
   //METHODE PERMETTANT DE SE DECONNECTER
@@ -26,6 +76,12 @@ export class AutoprofessionnelPage implements OnInit {
         console.log(err);
       }
     });
+  }
+
+   //LA METHODE PERMETTANT DE NAVIGUER VERS LA PAGE SUIVANYE
+   goToDettailParcours(id: number) {
+    console.log(id);
+    return this.route.navigate(['tab3/detailsparcours', id])
   }
 
 }

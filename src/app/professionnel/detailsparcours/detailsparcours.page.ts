@@ -14,6 +14,7 @@ export class DetailsparcoursPage implements OnInit {
   parcours : any
   metier : any
   matiere : any
+  totalmetier: number = 0;
   id :  any
   p:number=1
 
@@ -38,6 +39,9 @@ export class DetailsparcoursPage implements OnInit {
      //RECUPERER LES METIERS EN FONCTION D'UN PARCOURS
      this.service.RecupererMetierParParcours(this.id).subscribe(data => {
       this.metier = data;
+      for (const t of this.metier) {
+        this.totalmetier += 1;
+      }
     })
 
      //RECUPERER LES MATIERES EN FONCTION D'UN PARCOURS

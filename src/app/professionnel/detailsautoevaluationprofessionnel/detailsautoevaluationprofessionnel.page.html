@@ -32,7 +32,7 @@
     <ion-card class="crd">
       <ion-card-content>
         <ion-card-subtitle style="color: black; font-weight: bold;font-size: 16px; text-align: center; text-transform: none;">
-          {{totalefiliereproposee}} filières proposées
+          {{totalefiliereproposee}} formations proposées
         </ion-card-subtitle>
         <ion-slides [options]="option">
           <ion-slide *ngFor="let Auto of parcours">
@@ -53,7 +53,7 @@
 
         <ion-button [routerLink]="['/tab3/pisteprofessionnel']"
           style="--background: #00A5E4; text-transform: none; margin-top: 10px;">Voir plus de séries</ion-button>
-        <ion-card-subtitle style="color: black; font-weight: bold;font-size: 16px; text-align: center;">Les séries
+        <ion-card-subtitle style="color: black; font-weight: bold;font-size: 16px; text-align: center;">Les formations
           sont classées en fonction de tes reponses aux questionnaires</ion-card-subtitle>
       </ion-card-content>
     </ion-card>

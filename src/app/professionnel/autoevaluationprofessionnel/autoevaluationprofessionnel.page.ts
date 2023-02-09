@@ -21,6 +21,7 @@ export class AutoevaluationprofessionnelPage implements OnInit {
   answers: any = {};
   idUser: any;
   message: string | undefined;
+  parcoursprofessionnel:any;
 
   isSuccessful = false;
   isSignUpFailed = false;
@@ -90,15 +91,15 @@ export class AutoevaluationprofessionnelPage implements OnInit {
   }
 
   //AFFICHER RESULTAT AUTOEVALUATION
-  // ResultatAuto() {
-  //   this.service.AfficherParcoursLycce(this.idUser.id).subscribe(data => {
-  //     this.parcoursecoleprofessionnel = data;
-  //     console.log(this.parcoursecoleprofessionnel)
-  //   })
-  //   this.service.AfficherParcoursEcoleProfessionnelle(this.idUser.id).subscribe(data => {
-  //     console.log(data)
-  //   })
-  // }
+  ResultatAuto() {
+    this.ser.ResultatAutoProfessionnel(this.idUser.id).subscribe(data => {
+      this.parcoursprofessionnel = data;
+      console.log(this.parcoursprofessionnel)
+    })
+    // this.service.AfficherParcoursEcoleProfessionnelle(this.idUser.id).subscribe(data => {
+    //   console.log(data)
+    // })
+  }
 
     //POPUP PERMETTANT DE VALIDER AUTOEVALUATION
     popUpFaireAuto() {
@@ -147,7 +148,7 @@ export class AutoevaluationprofessionnelPage implements OnInit {
       allowOutsideClick: false
     }).then((result) => {
       if (result.isConfirmed) {
-        // this.ResultatAuto();
+        this.ResultatAuto();
         this.showLoading();
         
         this.route.navigateByUrl('/tab3/autoprofessionnel', {skipLocationChange: true}).then(() => {

@@ -58,6 +58,13 @@ export class AutoevaluationService {
     );
   }
 
+  //AFFICHER PARCOURS PROFESSIONNEL APRES AUTOEVALUATION EFFECTUEE
+  ResultatAutoProfessionnel(id_user: number): Observable<any> {
+    console.log("ID de user : " + id_user);
+    return this.http.get(`${this.API_URL}/ResultatAutoProfessionnel/${id_user}`,
+    );
+  }
+
   //AFFICHER PARCOURS ECOLE PROFESSIONNELLE APRES AUTOEVALUATION EFFECTUEE
   AfficherParcoursEcoleProfessionnelle(id_user: number): Observable<any> {
     console.log("ID de user : " + id_user);
@@ -83,6 +90,13 @@ export class AutoevaluationService {
   Autorecenteetudiant(id_user: number): Observable<any> {
     console.log("ID de user : " + id_user);
     return this.http.get(`${this.API_URL}/Autorecenteetudiant/${id_user}`,
+    );
+  }
+
+  //AFFICHER AUTO RECENTE PROFESSIONNELLE
+  AutorecenteProfessionnel(id_user: number): Observable<any> {
+    console.log("ID de user : " + id_user);
+    return this.http.get(`${this.API_URL}/AutorecenteProfessionnel/${id_user}`,
     );
   }
 
