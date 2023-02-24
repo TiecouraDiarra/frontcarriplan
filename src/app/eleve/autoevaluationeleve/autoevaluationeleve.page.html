@@ -11,12 +11,13 @@
     <ion-progress-bar style="height: 10px; border-radius: 15px;" value="1.0"></ion-progress-bar>
   </div>
   <h3>Vos moyennes au DEF</h3>
-  <form >
+  <form>
     <div class="ligne">
       <ion-item mode="md" *ngFor="let question of questions">
         <ion-label position="floating">{{question.question}}</ion-label>
-        <ion-input [(ngModel)]="answers[question.id]" name="answers[question.id]" max="20" min="0" type="number" integerOnly step="1" minlength="0" maxlength="20"
+        <ion-input pattern="^(1?[0-9]|20|0)$" [(ngModel)]="answers[question.id]" name="answers[question.id]" max="20" min="0" type="number" integerOnly step="1" minlength="0" maxlength="20"
           required="true"></ion-input> 
+          <!-- <span class="error">Veuillez entrer un nombre entier.</span> -->
       </ion-item>
       <!-- <ion-item mode="md">
         <ion-label position="floating">Histoire & Géographie :</ion-label>

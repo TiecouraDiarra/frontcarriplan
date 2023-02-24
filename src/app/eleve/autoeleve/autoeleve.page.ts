@@ -4,6 +4,7 @@ import { IonSlides } from '@ionic/angular';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { AutoevaluationService } from 'src/app/services/autoevaluation/autoevaluation.service';
 import { StorageService } from 'src/app/services/storage/storage.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-autoeleve',
@@ -16,6 +17,9 @@ export class AutoelevePage implements OnInit {
   parcourslycee: any
   parcoursecoleprofessionnel: any
   private refreshData = false;
+  auto: any
+  autoevaluationsEffectuees: number = 0;
+  image: string = environment.imageUrl
 
   option = {
     slidesPervView: 1.5,
@@ -31,13 +35,15 @@ export class AutoelevePage implements OnInit {
     private authService: AuthService,
     private storageService: StorageService,
     private service: AutoevaluationService,
-    private route: Router) { }
+    private route: Router) {
+    this.ionViewWillLeave();
+  }
   p: number = 1;
   pi: number = 1;
   autorecentelycee: any
   autorecenteeprof: any
-  totaleserieproposee:number = 0;
-  totalprofproposee:number = 0;
+  totaleserieproposee: number = 0;
+  totalprofproposee: number = 0;
 
 
   slidesDidLoad(event: Event) {
@@ -58,6 +64,19 @@ export class AutoelevePage implements OnInit {
     this.User = this.storageService.getUser()
     console.log(this.User)
 
+    console.log(this.User)
+    this.service.AfficherLaListeAutoUser(this.User.id).subscribe(data => {
+      this.auto = data;
+      console.log(this.auto)
+    })
+
+    //AFFICHER LA LISTE DES AUTO EVALUATION PAR UTILISATEUR
+    this.service.AfficherLaListeAutoUser(this.User.id).subscribe(data => {
+      // this.auto = data;
+      this.autoevaluationsEffectuees = data.length
+      // console.log(this.auto)
+    })
+
     //AFFICHER PARCOURS LYCEE APRES AUTOEVALUATION EFFECTUEE
     // this.service.AfficherParcoursLycce(this.User.id).subscribe(data=>{
     //   this.parcourslycee = data;
@@ -67,19 +86,22 @@ export class AutoelevePage implements OnInit {
     //AFFICHER AUTO RECENTE LYCEE APRES AUTOEVALUATION EFFECTUEE
     this.service.AutoRecenteLycee(this.User.id).subscribe(data => {
       this.autorecentelycee = data;
+      this.totaleserieproposee = data.length;
+      console.log(this.image + "parcours/" + this.autorecentelycee[0].imageparcours)
       console.log(this.autorecentelycee)
-      for (const t of this.autorecentelycee) {
-        this.totaleserieproposee += 1;
-      }
+      // for (const t of this.autorecentelycee) {
+      //   this.totaleserieproposee += 1;
+      // }
     })
 
     //AFFICHER AUTO RECENTE ECOLE PROFESSIONNELLE APRES AUTOEVALUATION EFFECTUEE
     this.service.AutoRecenteeProf(this.User.id).subscribe(data => {
       this.autorecenteeprof = data;
+      this.totalprofproposee = data.length;
       console.log(this.autorecenteeprof)
-      for (const t of this.autorecenteeprof) {
-        this.totalprofproposee += 1;
-      }
+      // for (const t of this.autorecenteeprof) {
+      //   this.totalprofproposee += 1;
+      // }
     })
 
     //AFFICHER PARCOURS LYCEE APRES AUTOEVALUATION EFFECTUEE
@@ -95,6 +117,7 @@ export class AutoelevePage implements OnInit {
       //AFFICHER AUTO RECENTE LYCEE APRES AUTOEVALUATION EFFECTUEE
       this.service.AutoRecenteLycee(this.User.id).subscribe(data => {
         this.autorecentelycee = data;
+        this.totaleserieproposee = data.length;
         console.log(this.autorecentelycee)
       })
 
@@ -131,6 +154,12 @@ export class AutoelevePage implements OnInit {
   goToDettailParcours(id: number) {
     console.log(id);
     return this.route.navigate(['tabs/detailsparcours', id])
+  }
+
+  //LA METHODE PERMETTANT DE NAVIGUER VERS LA PAGE DETAILS AUTO
+  goToDettailAuto(id: number) {
+    console.log(id);
+    return this.route.navigate(['tabs/detailsautoevaluationeleve', id])
   }
 
 }

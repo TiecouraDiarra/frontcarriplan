@@ -31,6 +31,7 @@ ion-content {
                 ion-label{
                     font-size: 16px;
                     font-family: 'Poppins';
+                    transform: none;
                 }
             }
             
@@ -43,13 +44,13 @@ ion-content {
     font-family: 'Poppins';
     // line-height: 194.5%;
     // opacity: 0.5;
-    transform: rotate(0.01deg);
+    //transform: rotate(0.01deg);
     // line-height: 194.5%;
     font-style: normal;
 }
 
 h3 {
-    margin-top: 15px; 
+    margin-top: 25px; 
     font-size: 20px;
     font-weight: 800;
     letter-spacing: 0.06em;

@@ -5,11 +5,14 @@
 <ion-content [fullscreen]="true">
   <div class="container fluid">
     <div class="scroll-text">
-      <p>Vous avez droit à 3 auto-évaluations.</p>
+      <p *ngIf="autoevaluationsEffectuees == 0">Vous avez droit à 3 auto-évaluations.</p>
+      <p *ngIf="autoevaluationsEffectuees == 1">Il vous reste 2 auto-évaluations.</p>
+      <p *ngIf="autoevaluationsEffectuees == 2">Il vous reste 1 auto-évaluation.</p>
+      <p style="color:red" *ngIf="autoevaluationsEffectuees == 3">Nombre d'auto-évaluations atteint.</p>
       <!-- <h3>Mes pistes </h3> -->
     </div>
     <div class="row" style="text-align: center; letter-spacing: 0.06em;">
-      <ion-button [routerLink]="['/tab3/autoevaluationprofessionnel']" style="--background: #00A5E4; color: black; margin-left: 0px;">
+      <ion-button [routerLink]="['/tab3/autoevaluationprofessionnel']" [disabled]="autoevaluationsEffectuees >= 3" style="--background: #00A5E4; color: black; margin-left: 0px;">
         <ion-icon style="color: white;" name="color-filter-outline"></ion-icon>
              <p style="margin-left: 10px; margin-top: 20px; text-transform: none; color: white;">Faire une auto-évaluation</p>
       </ion-button>
@@ -22,27 +25,30 @@
       <div class="row">
         <ion-card class="crd">
           <ion-card-content>
-            <ion-card-subtitle style="color: black; font-weight: bold;font-size: 16px; text-align: center; text-transform: none;">
+            <ion-card-subtitle *ngIf="autorecenteformation && autorecenteformation.length > 1" style="color: black; font-weight: bold;font-size: 16px; text-align: center; text-transform: none;">
               {{totaleformationproposee}} formations proposées
+            </ion-card-subtitle>
+            <ion-card-subtitle *ngIf="autorecenteformation && autorecenteformation.length == 1" style="color: black; font-weight: bold;font-size: 16px; text-align: center; text-transform: none;">
+              {{totaleformationproposee}} formation proposée
             </ion-card-subtitle>
             <ion-slides [options]="option">
               <ion-slide *ngFor="let Auto of autorecenteformation">
                 <ion-card class="fili" (click)="goToDettailParcours(Auto.id)">
                   <div class="row image" style="height: 10vh !important;">
-                    <div class="monimage" style="background-image:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url(../../../../assets/imgs/parcours/{{Auto.imageparcours}}); object-fit: fill !important; width: 100%; height: auto;">
+                    <div class="monimage" style="background-image:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url({{image}}parcours/{{Auto.imageparcours}}); object-fit: fill !important; width: 100%; height: auto;">
                       <div class="tt">
                         <p>{{Auto.nomparcours}}</p>
                       </div>
                     </div>
                   </div>
-                  <div class="tti">
+                  <div class="tti" style="text-align: center; font-weight: bold; font-size: 16px; background: #00A5E4; color: white;">
                     Savoir plus
                   </div>
                 </ion-card>
               </ion-slide>
             </ion-slides>
-            <ion-button [routerLink]="['/tab3/pisteprofessionnel']"
-              style="--background: #00A5E4; text-transform: none; margin-top: 10px;">Voir plus de séries</ion-button>
+            <!-- <ion-button [routerLink]="['/tab3/pisteprofessionnel']"
+              style="--background: #00A5E4; text-transform: none; margin-top: 10px;">Voir plus de formations</ion-button> -->
             <ion-card-subtitle style="color: black; font-weight: bold;font-size: 16px; text-align: center; text-transform: none;">
               Les formations
               sont classées en fonction de tes reponses aux questionnaires

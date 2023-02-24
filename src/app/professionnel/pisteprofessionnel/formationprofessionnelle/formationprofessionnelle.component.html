@@ -9,7 +9,7 @@
     <a (click)="goToDettailParcours(Parcours.id)" style="text-decoration: none;">
       <ion-card class="crd">
         <div class="row image" style="height: 20vh !important;">
-          <div class="monimage" style="background-image:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url(../../../../assets/imgs/parcours/{{Parcours.imageparcours}}); object-fit: fill !important; width: 100%; height: auto;">
+          <div class="monimage" style="background-image:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url({{image}}parcours/{{Parcours.imageparcours}}); object-fit: fill !important; width: 100%; height: auto;">
             <div class="tt">
               <p>{{Parcours.nomparcours}}</p>
               <img src="" alt="">
@@ -17,7 +17,7 @@
           </div>
         </div>
         
-        <div class="tti" style="text-align: center; font-weight: bold; font-size: 16px;">
+        <div class="tti" style="text-align: center; font-weight: bold; font-size: 16px;background: #00A5E4; color: white;">
           Savoir plus
         </div>
       </ion-card>

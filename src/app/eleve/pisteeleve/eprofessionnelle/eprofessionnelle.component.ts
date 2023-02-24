@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ParcoursService } from 'src/app/services/parcours/parcours.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-eprofessionnelle',
@@ -9,6 +10,7 @@ import { ParcoursService } from 'src/app/services/parcours/parcours.service';
 })
 export class EprofessionnelleComponent implements OnInit {
 
+  image: string = environment.imageUrl
   parcours: any;
   searchText:any;
   constructor(public service: ParcoursService, private route: Router) { }

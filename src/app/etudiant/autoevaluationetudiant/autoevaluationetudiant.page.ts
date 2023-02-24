@@ -226,7 +226,7 @@ export class AutoevaluationetudiantPage implements OnInit {
   async showLoading() {
     const loading = await this.loadingCtrl.create({
       message: 'Patientez...',
-      duration: 3000,
+      duration: 1000,
       spinner: 'circles',
     });
     loading.present();

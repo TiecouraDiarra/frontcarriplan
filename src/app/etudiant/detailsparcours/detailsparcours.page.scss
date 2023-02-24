@@ -1,18 +1,19 @@
-ion-content{
+ion-content {
     // ICI ON BLOCK LE SCROLLING
-    --offset-bottom: auto!important;
+    --offset-bottom: auto !important;
     // background: #F8F6FB;
     background: url('../../../assets/imgs/background.png') no-repeat center center/cover;
-  --overflow: hidden;
-  overflow: auto;
-  &::-webkit-scrollbar {
-    display: none;
-  }
+    --overflow: hidden;
+    overflow: auto;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
 }
 
 * {
     font-family: 'Poppins';
-    transform: rotate(0.01deg);
+    // transform: rotate(0.01deg);
     font-style: normal;
 }
 
@@ -32,9 +33,9 @@ ion-content{
     justify-content: center;
     margin-top: 20px;
     margin-left: -30px;
-  }
-  
-.ttt{
+}
+
+.ttt {
     height: 10%;
     width: 100%;
 }
@@ -45,12 +46,13 @@ ion-content{
 //     }
 // }
 
-ion-card .card2{
+ion-card .card2 {
     text-align: center;
     align-content: center;
     align-self: center;
     border-radius: 15px;
     width: 100%;
+
     img {
         // text-align: center;
         // align-content: center;
@@ -86,14 +88,14 @@ ion-card .card2{
     font-weight: bold;
 }
 
-.tit{
+.tit {
     // margin: 0px !important;
     font-size: 18px;
     font-weight: bold;
     text-align: center;
 }
 
-.titee{
+.titee {
     text-align: center;
     justify-content: center
 }
@@ -106,7 +108,7 @@ ion-card .card2{
     cursor: pointer;
 }
 
-ion-button:hover{
+ion-button:hover {
     background: none !important;
 }
 
@@ -123,23 +125,23 @@ ion-button:hover{
 //     font-weight: 1000;
 // }
 
-.mescards{
+.mescards {
     display: grid;
     grid-template-columns: auto auto;
 }
 
-.testcard{
+.testcard {
     width: 90%;
 }
 
-.mescards ion-card-header{
+.mescards ion-card-header {
     --font-size: 10px !important;
     padding: 7px;
     background-color: #00A5E4;
-    
+
 }
 
-.mescards ion-card-title{
+.mescards ion-card-title {
     --color: white;
     font-weight: bold;
     font-size: 16px;
@@ -154,7 +156,7 @@ ion-button:hover{
     margin: 0 auto;
     left: 0;
     right: 0;
-    top: 30%;
+    top: 20%;
     color: white;
 
     // width: 70%;
@@ -162,7 +164,7 @@ ion-button:hover{
     font-weight: 1000;
 }
 
-.mescards ion-card-content{
+.mescards ion-card-content {
     margin-top: 10px;
     font-size: 15px;
     // padding: 0 !important;

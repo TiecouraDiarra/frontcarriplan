@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MetiersService } from 'src/app/services/metiers/metiers.service';
 import { ParcoursService } from 'src/app/services/parcours/parcours.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-metieretudiant',
@@ -13,6 +14,7 @@ export class MetieretudiantComponent implements OnInit {
   metier : any
   p:number=1
   searchText:any;
+  image: string = environment.imageUrl
   constructor(public service: MetiersService, private route: Router) { }
 
   ngOnInit() {

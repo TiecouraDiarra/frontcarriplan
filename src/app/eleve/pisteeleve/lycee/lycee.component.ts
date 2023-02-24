@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { env } from 'process';
 import { ParcoursService } from 'src/app/services/parcours/parcours.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-lycee',
@@ -8,7 +10,7 @@ import { ParcoursService } from 'src/app/services/parcours/parcours.service';
   styleUrls: ['./lycee.component.scss'],
 })
 export class LyceeComponent implements OnInit {
-
+  image: string = environment.imageUrl
   parcours: any;
   searchText:any;
   constructor(public service: ParcoursService, private route: Router) { }
@@ -17,7 +19,11 @@ export class LyceeComponent implements OnInit {
     //AFFICHER LA LISTE DES PARCOURS DU LYCEE
     this.service.getParcoursEleve().subscribe(data => {
       this.parcours = data;
+      console.log(this.parcours)
+      console.log(this.image+""+this.parcours[0].imageparcours)
     })
+
+    
   }
 
   //LA METHODE PERMETTANT DE NAVIGUER VERS LA PAGE SUIVANYE

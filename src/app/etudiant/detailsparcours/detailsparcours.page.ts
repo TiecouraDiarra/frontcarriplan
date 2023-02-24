@@ -4,6 +4,7 @@ import { IonTabs, NavController } from '@ionic/angular';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { ParcoursService } from 'src/app/services/parcours/parcours.service';
 import { StorageService } from 'src/app/services/storage/storage.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-detailsparcours',
@@ -17,6 +18,7 @@ export class DetailsparcoursPage implements OnInit {
   matiere : any
   id :  any
   p:number=1
+  image: string = environment.imageUrl
 
   option={
     slidesPervView:1.5,

@@ -4,6 +4,7 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 import { MetiersService } from 'src/app/services/metiers/metiers.service';
 import { ParcoursService } from 'src/app/services/parcours/parcours.service';
 import { StorageService } from 'src/app/services/storage/storage.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-detailsmetier',
@@ -14,6 +15,7 @@ export class DetailsmetierPage implements OnInit {
 
   constructor(public service : MetiersService, private route:ActivatedRoute, private router: Router, private authService: AuthService, private storageService: StorageService) { }
   p:number=1;
+  image: string = environment.imageUrl
   metier : any
   id:any
 

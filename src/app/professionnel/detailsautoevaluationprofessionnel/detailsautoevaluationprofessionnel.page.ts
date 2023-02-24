@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AutoevaluationService } from 'src/app/services/autoevaluation/autoevaluation.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-detailsautoevaluationprofessionnel',
@@ -12,7 +13,8 @@ export class DetailsautoevaluationprofessionnelPage implements OnInit {
   id:any
   Auto: any
   parcours : any
-  totalefiliereproposee: number = 0;
+  totaleformationproposee: number = 0;
+  image: string = environment.imageUrl
 
   option={
     slidesPervView:1.5,
@@ -34,7 +36,7 @@ export class DetailsautoevaluationprofessionnelPage implements OnInit {
        this.parcours = this.Auto.parcours
        console.log(this.Auto.parcours);
        for (const t of this.parcours) {
-         this.totalefiliereproposee += 1;
+         this.totaleformationproposee += 1;
        }
      })
   }

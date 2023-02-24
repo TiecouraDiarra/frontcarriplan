@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { ParcoursService } from 'src/app/services/parcours/parcours.service';
 import { StorageService } from 'src/app/services/storage/storage.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-detailsparcours',
@@ -13,6 +14,7 @@ export class DetailsparcoursPage implements OnInit {
 
   constructor(public service : ParcoursService, private route:ActivatedRoute, private router: Router, private authService: AuthService, private storageService: StorageService) { }
   p:number=1;
+  image: string = environment.imageUrl
 
   parcours : any
   metier : any

@@ -13,6 +13,13 @@ export class AccueilprofessionnelPage implements OnInit {
 
   ngOnInit() {
   }
+  option={
+    slidesPervView:1.5,
+    centeredSlides:true,
+    loop:true,
+    spaceBetween:10,
+    autoplay:true
+  }
 
   //METHODE PERMETTANT DE SE DECONNECTER
   logout(): void {

@@ -5,81 +5,112 @@ ion-content {
     background: url('../../../assets/imgs/background.png') no-repeat center center/cover;
     --overflow: hidden;
     overflow: auto;
-  
+
     &::-webkit-scrollbar {
         display: none;
     }
-  
+
     // --background: url('../../../assets/imgs/background.png') no-repeat center center/cover;
-  }
-  
-  * {
+}
+
+* {
     font-family: 'Poppins';
     // line-height: 194.5%;
     // opacity: 0.5;
-    transform: rotate(0.01deg);
+    // transform: rotate(0.01deg);
     // line-height: 194.5%;
     font-style: normal;
-  }
-  
-  .rrr{
+}
+
+.rrr {
     background-color: #E6F4F1;
-  }
-  
-  ion-card {
+}
+
+ion-card {
     width: 90%;
     // height: 160px;
     box-shadow: none;
     border-radius: 12px;
     // margin-left: -8px;
-  
+
     img {
         object-fit: cover;
         // width: 100%;
         transform: scale(1.1, 1.1) rotate(1deg);
         transition: 600ms all ease-in-out;
     }
-  }
-  
-  .swiper-slide-active {
+}
+
+.swiper-slide-active {
     transform: scale(1.05, 1.05);
-  
+
     ion-card {
         img {
             transform: scale(1, 1);
         }
     }
-  }
-  
-  .swiper-slide {
+}
+
+.swiper-slide {
     transition: 400ms all ease-in-out;
-  }
-  
-  h4 {
+}
+
+h4 {
     margin-top: 10px;
     font-size: 20px;
     font-weight: 800;
     letter-spacing: 0.06em;
     text-align: center;
     // margin: 0px !important;
-  }
-  
-  ion-col {
+}
+
+ion-col {
     // background-color: #135d54;
     // border: solid 1px #fff;
     color: #fff;
     margin-top: -10px;
     text-align: center;
-  }
-  
-  ion-button:hover {
+}
+
+ion-button:hover {
     background: none !important;
-  }
-  
-  .crd:hover {
+}
+
+.crd:hover {
     cursor: pointer;
-  }
-  
-  .crd {
+}
+
+.crd {
     cursor: pointer;
-  }
+}
+
+.card2:hover {
+    cursor: pointer;
+}
+
+.card2 {
+    cursor: pointer;
+}
+.tt {
+    z-index: 1;
+    position: absolute;
+    text-align: center;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    top: 20%;
+    color: white;
+    font-size: 15px;
+    font-weight: 1000;
+}
+
+.ligne{
+    overflow-y: scroll; 
+    height: 140px;
+    --overflow: hidden;
+    overflow: auto;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AutoevaluationService } from 'src/app/services/autoevaluation/autoevaluation.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-detailsautoevaluationetudiant',
@@ -12,6 +13,7 @@ export class DetailsautoevaluationetudiantPage implements OnInit {
   id:any
   Auto: any
   parcours : any
+  image: string = environment.imageUrl
   totalefiliereproposee: number = 0;
 
   option={

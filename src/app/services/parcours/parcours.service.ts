@@ -64,4 +64,10 @@ export class ParcoursService {
     return this.http.get(`${this.API_URL}/RecupererIdParcoursMatiere/${idParcours}`);
   }
 
+  //AFFICHER FORMATION PAR DOMAINE
+  AfficherFormationParDomaine(nomtype:string):Observable<any>{
+    return this.http.get(`${this.API_URL}/AfficherFormationParDomaine/${nomtype}`);
+  }
+
+
 }

@@ -31,14 +31,18 @@
   <div class="row" style="padding: 15px; margin-right: 15px;">
     <ion-card class="crd">
       <ion-card-content>
-        <ion-card-subtitle style="color: black; font-weight: bold;font-size: 16px; text-align: center; text-transform: none;">
+        <ion-card-subtitle *ngIf="parcours && parcours.length > 1" style="color: black; font-weight: bold;font-size: 16px; text-align: center; text-transform: none;">
           {{totalefiliereproposee}} filières proposées
         </ion-card-subtitle>
+        <ion-card-subtitle *ngIf="parcours && parcours.length == 1" style="color: black; font-weight: bold;font-size: 16px; text-align: center; text-transform: none;">
+          {{totalefiliereproposee}} filière proposée
+        </ion-card-subtitle>
+        
         <ion-slides [options]="option">
           <ion-slide *ngFor="let Auto of parcours">
             <ion-card class="fili" (click)="goToDettailParcours(Auto.id)">
               <div class="row image" style="height: 10vh !important;">
-                <div class="monimage" style="background-image:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url(../../../../assets/imgs/parcours/{{Auto.imageparcours}}); object-fit: fill !important; width: 100%; height: auto;">
+                <div class="monimage" style="background-image:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url({{image}}parcours/{{Auto.imageparcours}}); object-fit: fill !important; width: 100%; height: auto;">
                   <div class="tt">
                     <p>{{Auto.nomparcours}}</p>
                   </div>
@@ -51,9 +55,9 @@
           </ion-slide>
         </ion-slides>
 
-        <ion-button [routerLink]="['/tab2/pisteetudiant']"
-          style="--background: #00A5E4; text-transform: none; margin-top: 10px;">Voir plus de séries</ion-button>
-        <ion-card-subtitle style="color: black; font-weight: bold;font-size: 16px; text-align: center;">Les séries
+        <!-- <ion-button [routerLink]="['/tab2/pisteetudiant']"
+          style="--background: #00A5E4; text-transform: none; margin-top: 10px;">Voir plus de filières</ion-button> -->
+        <ion-card-subtitle style="color: black; font-weight: bold;font-size: 16px; text-align: center;">Les filières
           sont classées en fonction de tes reponses aux questionnaires</ion-card-subtitle>
       </ion-card-content>
     </ion-card>

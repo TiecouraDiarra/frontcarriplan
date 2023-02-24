@@ -9,81 +9,70 @@
     <h3>L’orientation grâce à l’inspiration</h3>
 
     <img alt="" src="assets/imgs/etudiant2.jpg" />
-    <div class="row" style="text-align: center;">
+    <div class="row" style="text-align: center; margin-top: 10px;">
       <p>Le programme 
         <b>CARRIPLAN</b> aide les 
         lycéens à s’orienter après le bac.
       </p>
     </div>
 
-    <h3>Avec CARRIPLAN, trouve ta voie en 3 étapes</h3>
+    <h3 class="caarr">Avec CARRIPLAN, trouve ta voie en 3 étapes</h3>
 
 
-
-    <div class="card1">
-      <div class="num"
-        style="width: 50px;justify-content: center; height: 50px; border-radius: 100%; border: 3px solid #5AC7EB;">
-        <h3 style="position: relative; bottom: 6px;">1</h3>
-      </div>
-
-      <ion-card>
-        <ion-card-header>
-          <!-- <ion-card-title style="font-size: 20px; text-align: center;">Je suis élève</ion-card-title> -->
-          <div class="row" style="font-size: 17px; font-weight: bold; margin-top: 15px;">
-            Je m’inscris et je réponds au questionnaire
+    <ion-slides [options]="option" class="ion-margin-top">
+      <ion-slide>
+        <div class="card1">
+          <div class="num"
+            style="width: 50px;justify-content: center; height: 50px; border-radius: 100%; border: 3px solid #5AC7EB;">
+            <h3 class="textnum">1</h3>
           </div>
-        </ion-card-header>
-        <!-- <ion-card-content style="margin-top: -15px; color: black I !important;;">
-          
-          <div class="row" style="font-size: 15px; margin-top: 10px; font-weight: 800;">
-            Réponds à un petit questionnaire avec des
-            questions sur tes goûts, tes envies, tes notes…
+    
+          <ion-card>
+            <ion-card-header>
+              <div class="row" style="font-size: 17px; font-weight: bold; margin-top: 15px;">
+                Je m’inscris et je réponds au questionnaire
+              </div>
+            </ion-card-header>
+          </ion-card>
+        </div>
+      </ion-slide>
+      <ion-slide>
+        <div class="card2">
+          <div class="num"
+            style="width: 50px;justify-content: center; height: 50px; border-radius: 100%; border: 3px solid #5AC7EB;">
+            <h3 class="textnum">2</h3>
           </div>
-        </ion-card-content> -->
-      </ion-card>
-    </div>
+    
+          <ion-card>
+            <ion-card-header>
+              <div class="row" style="font-size: 17px; font-weight: bold;margin-top: 15px;margin-right: 15px;margin-left: 15px;">
+                Je découvre mes pistes d’études
+              </div>
+            </ion-card-header>
+          </ion-card>
+        </div>
+      </ion-slide>
+      <ion-slide>
+        <div class="card3">
+          <div class="num"
+            style="width: 50px;justify-content: center; height: 50px; border-radius: 100%; border: 3px solid #5AC7EB;">
+            <h3 class="textnum">3</h3>
+          </div>
+    
+          <ion-card>
+            <ion-card-header>
+              <div class="row" style="font-size: 17px; font-weight: bold;margin-top: 15px;margin-right: 15px;margin-left: 15px;">
+                Je planifie ma carrière
+              </div>
+            </ion-card-header>
+          </ion-card>
+        </div>
+      </ion-slide>
+    </ion-slides>
 
-    <div class="card2">
-      <div class="num"
-        style="width: 50px;justify-content: center; height: 50px; border-radius: 100%; border: 3px solid #5AC7EB;">
-        <h3 style="position: relative; bottom: 6px;">2</h3>
-      </div>
+    
 
-      <ion-card>
-        <ion-card-header>
-          <div class="row" style="font-size: 17px; font-weight: bold;margin-top: 15px;margin-right: 15px;margin-left: 15px;">
-            Je découvre mes pistes d’études
-          </div>
-        </ion-card-header>
-        <!-- <ion-card-content style="margin-top: -15px; color: black I !important;;">
-          
-          <div class="row" style="font-size: 15px; margin-top: 10px; font-weight: 800;">
-            En fonction de tes réponses au questionnaire, des pistes 
-            d’études te seront recommandées et tu pourras les explorer !
-          </div>
-        </ion-card-content> -->
-      </ion-card>
-    </div>
-    <div class="card3">
-      <div class="num"
-        style="width: 50px;justify-content: center; height: 50px; border-radius: 100%; border: 3px solid #5AC7EB;">
-        <h3 style="position: relative; bottom: 6px;">3</h3>
-      </div>
-
-      <ion-card>
-        <ion-card-header>
-          <!-- <ion-card-title style="font-size: 20px; text-align: center;">Je suis élève</ion-card-title> -->
-          <div class="row" style="font-size: 17px; font-weight: bold;margin-top: 15px;margin-right: 15px;margin-left: 15px;">
-            Je planifie ma carrière
-          </div>
-        </ion-card-header>
-        <!-- <ion-card-content style="margin-top: -15px; color: black I !important;;">
-          
-          <div class="row" style="font-size: 15px; margin-top: 10px; font-weight: 800;">
-            Planifie ta carrière en fonction de tes compétences, tes intérêts ...
-          </div>
-        </ion-card-content> -->
-      </ion-card>
-    </div>
+    
+    
   </div>
 </ion-content>

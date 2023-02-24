@@ -23,7 +23,7 @@
       <!-- <div class="tt" >
         <p>Science Exacte</p>
       </div> -->
-      <img *ngIf="parcours && parcours.imageparcours" style="opacity: 2.0;" alt="" src="../../assets/imgs/parcours/{{parcours.imageparcours}}" />
+      <img *ngIf="parcours && parcours.imageparcours" style="opacity: 2.0;" alt="" src="{{image}}parcours/{{parcours.imageparcours}}" />
       <ion-card-header>
         <ion-card-subtitle style="color: black; font-weight: bold;font-size: 16px;">Description</ion-card-subtitle>
       </ion-card-header>
@@ -85,7 +85,7 @@
             <ion-card (click)="goToDettailMetier(Metier.id)" class="card2">
               <div class="row image" style="height: 10vh !important;">
                 <div class="monimage"
-                  style="background-image:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url(../../../../assets/imgs/metiers/{{Metier.imagemetier}}); object-fit: fill !important; width: 100%; height: auto;">
+                  style="background-image:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url({{image}}metiers/{{Metier.imagemetier}}); object-fit: fill !important; width: 100%; height: auto;">
                   <div class="tt">
                     <p>{{Metier.nommetier}}</p>
                   </div>

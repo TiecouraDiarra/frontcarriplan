@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { MetiersService } from 'src/app/services/metiers/metiers.service';
 import { StorageService } from 'src/app/services/storage/storage.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-detailsmetiers',
@@ -13,6 +14,7 @@ export class DetailsmetiersPage implements OnInit {
   p:number=1;
   metier : any
   id:any
+  image: string = environment.imageUrl
 
   constructor(public service : MetiersService, private route:ActivatedRoute, private router: Router, private authService: AuthService, private storageService: StorageService) { }
 

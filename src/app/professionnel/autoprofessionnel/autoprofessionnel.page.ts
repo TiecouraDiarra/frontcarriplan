@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { AutoevaluationService } from 'src/app/services/autoevaluation/autoevaluation.service';
 import { StorageService } from 'src/app/services/storage/storage.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-autoprofessionnel',
@@ -12,24 +13,27 @@ import { StorageService } from 'src/app/services/storage/storage.service';
 export class AutoprofessionnelPage implements OnInit {
 
   roles: string[] = [];
-  User : any
+  User: any
+  auto : any
+  image: string = environment.imageUrl
+  autoevaluationsEffectuees: number = 0;
 
-  autorecenteformation:any
-  autorecenteemetier:any
+  autorecenteformation: any
+  autorecenteemetier: any
   totaleformationproposee: number = 0;
   private refreshData = false;
 
-  option={
-    slidesPervView:1.5,
-    centeredSlides:true,
-    loop:true,
-    spaceBetween:10,
-    autoplay:true
+  option = {
+    slidesPervView: 1.5,
+    centeredSlides: true,
+    loop: true,
+    spaceBetween: 10,
+    autoplay: true
   }
 
   constructor(
     private authService: AuthService,
-    private service : AutoevaluationService, 
+    private service: AutoevaluationService,
     private storageService: StorageService,
     private route: Router) { }
 
@@ -39,27 +43,34 @@ export class AutoprofessionnelPage implements OnInit {
     console.log(this.User)
 
     //AFFICHER AUTO RECENTE ETUDIANT FILIERE APRES AUTOEVALUATION EFFECTUEE
-    this.service.AutorecenteProfessionnel(this.User.id).subscribe(data=>{
+    this.service.AutorecenteProfessionnel(this.User.id).subscribe(data => {
       this.autorecenteformation = data;
       console.log(this.autorecenteformation);
       for (const t of this.autorecenteformation) {
         this.totaleformationproposee += 1;
       }
     })
+
+    //AFFICHER LA LISTE DES AUTO EVALUATION PAR UTILISATEUR
+    this.service.AfficherLaListeAutoUser(this.User.id).subscribe(data => {
+      this.auto = data;
+      this.autoevaluationsEffectuees = data.length
+      console.log(this.auto)
+    })
   }
 
   ionViewDidEnter() {
     if (this.refreshData) {
       // Code pour actualiser les données nécessaires pour la page
-      this.service.AutorecenteProfessionnel(this.User.id).subscribe(data=>{
+      this.service.AutorecenteProfessionnel(this.User.id).subscribe(data => {
         this.autorecenteformation = data;
         console.log(this.autorecenteformation);
-        
+
       })
       this.refreshData = false;
     }
   }
- 
+
   ionViewWillLeave() {
     this.refreshData = true;
   }
@@ -78,8 +89,8 @@ export class AutoprofessionnelPage implements OnInit {
     });
   }
 
-   //LA METHODE PERMETTANT DE NAVIGUER VERS LA PAGE SUIVANYE
-   goToDettailParcours(id: number) {
+  //LA METHODE PERMETTANT DE NAVIGUER VERS LA PAGE SUIVANYE
+  goToDettailParcours(id: number) {
     console.log(id);
     return this.route.navigate(['tab3/detailsparcours', id])
   }

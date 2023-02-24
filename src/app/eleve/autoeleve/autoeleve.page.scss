@@ -17,7 +17,7 @@ ion-content {
     font-family: 'Poppins';
     // line-height: 194.5%;
     // opacity: 0.5;
-    transform: rotate(0.01deg);
+    // transform: rotate(0.01deg);
     // line-height: 194.5%;
     font-style: normal;
 }
@@ -34,6 +34,7 @@ ion-card {
     align-self: center;
     border-radius: 15px;
     width: 90%;
+    margin-left: 18px;
     
     img {
         // text-align: center;
@@ -61,7 +62,7 @@ h3 {
 
 h4 {
     margin-top: 15px;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 800;
     letter-spacing: 0.06em;
     text-align: center;
@@ -73,7 +74,7 @@ h4 {
     position: absolute;
     top: 4%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    // transform: translate(-50%, -50%);
     z-index: 1;
     background-color: #5AC7EB;
 
@@ -139,27 +140,19 @@ ion-button:hover {
 }
 
 .tt {
-    // background: rgba(0, 0, 0, 0.8);
     z-index: 1;
     position: absolute;
-    text-align: center;
-    // font-family: Georgia;
+    // text-align: center;
     margin: 0 auto;
     left: 0;
     right: 0;
-    top: 30%;
+    top: 15%;
     color: white;
-
-    // width: 70%;
     font-size: 15px;
     font-weight: 1000;
 }
 
-.pagination {
-    justify-content: center;
-    margin-top: 10px;
-    margin-left: -30px;
-}
+
 
 .card2:hover {
     cursor: pointer;
@@ -193,14 +186,6 @@ ion-button:hover {
 
 
 
-h4 {
-    margin-top: 10px;
-    font-size: 20px;
-    font-weight: 800;
-    letter-spacing: 0.06em;
-    text-align: center;
-    // margin: 0px !important;
-}
 
 .scroll-text {
     width: 100%;

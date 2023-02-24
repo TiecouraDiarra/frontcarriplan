@@ -32,7 +32,7 @@ export class ModifprofilelevePage implements OnInit {
   errorMessage = '';
   message: string | undefined;
 
-  constructor(private storageService: StorageService, private route: Router, private auService: AutoevaluationService, private authService: AuthService) { 
+  constructor(private storageService: StorageService, private route: Router, private auService: AutoevaluationService, private authService: AuthService) {
     this.User = this.storageService.getUser();
     this.form = {
       nomcomplet: this.User.nomcomplet,
@@ -80,9 +80,7 @@ export class ModifprofilelevePage implements OnInit {
         this.errorMessage = err.error.message;
         this.isSignUpFailed = true;
       }
-    }
-      
-    )
+    })
   }
   //POPUP PERMETTANT DE CONFIRMER LA MODIFICATION DU PROFIL 
   popUpModifProfil() {
@@ -107,11 +105,11 @@ export class ModifprofilelevePage implements OnInit {
           'Modification effectuée avec succès !',
           'Tes pistes sont prêtes',
           'success',);
-          this.ModifierEleve();
+        this.ModifierEleve();
         this.route.navigateByUrl('/tabs/profileleve', { skipLocationChange: true }).then(() => {
           this.route.navigate(["/tabs/profileleve"])
         })
-      } 
+      }
     })
 
   }
@@ -157,16 +155,16 @@ export class ModifprofilelevePage implements OnInit {
         swalWithBootstrapButtons.fire(
           'Modification effectuée avec succès !',
           'success',);
-          this.ModifierMdpEleve();
+        this.ModifierMdpEleve();
         this.route.navigateByUrl('/tabs/profileleve', { skipLocationChange: true }).then(() => {
           this.route.navigate(["/tabs/profileleve"])
         })
-      } 
+      }
     })
 
   }
 
 
-  
+
 
 }

@@ -12,6 +12,13 @@ export class AccueilelevePage implements OnInit {
 
   constructor(private authService: AuthService, private storageService: StorageService) { }
 
+  option={
+    slidesPervView:1.5,
+    centeredSlides:true,
+    loop:true,
+    spaceBetween:10,
+    autoplay:true
+  }
 
   ngOnInit() {
   }

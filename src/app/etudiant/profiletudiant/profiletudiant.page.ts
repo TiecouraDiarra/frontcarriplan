@@ -14,6 +14,7 @@ export class ProfiletudiantPage implements OnInit {
 
   User : any
   auto : any
+  Etudiant : any
 
   counter = 0;
 
@@ -34,6 +35,12 @@ export class ProfiletudiantPage implements OnInit {
       this.auto = data;
       this.incrementCounter();
       console.log(this.auto)
+    })
+
+    this.authService.RecupererIdEtudiant(this.User.id).subscribe(data => {
+      this.Etudiant = data,
+        console.log(this.Etudiant),
+        console.log(this.Etudiant.serieLycee.nomserie);
     })
   }
 

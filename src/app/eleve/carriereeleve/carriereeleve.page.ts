@@ -11,10 +11,10 @@ import { StorageService } from 'src/app/services/storage/storage.service';
 })
 export class CarriereelevePage implements OnInit {
 
-  constructor(private auService : AutoevaluationService,private authService: AuthService, private storageService: StorageService, private route : Router) { }
+  constructor(private auService: AutoevaluationService, private authService: AuthService, private storageService: StorageService, private route: Router) { }
 
-  User : any
-  auto : any
+  User: any
+  auto: any
 
   counter = 0;
 
@@ -25,22 +25,31 @@ export class CarriereelevePage implements OnInit {
   ngOnInit() {
     this.User = this.storageService.getUser()
     console.log(this.User)
-    this.auService.AfficherLaListeAutoUser(this.User.id).subscribe(data=>{
+    this.auService.AfficherLaListeAutoUser(this.User.id).subscribe(data => {
       this.auto = data;
       this.incrementCounter();
       console.log(this.auto)
     })
   }
-  
-  option={
-    slidesPervView:1.5,
-    centeredSlides:true,
-    loop:true,
-    spaceBetween:10,
-    autoplay:true
+
+  ionViewWillEnter() {
+    this.User = this.storageService.getUser()
+    this.auService.AfficherLaListeAutoUser(this.User.id).subscribe(data => {
+      this.auto = data;
+      this.incrementCounter();
+      console.log(this.auto)
+    })
   }
 
-  @ViewChild('popover') popover:any;
+  option = {
+    slidesPervView: 1.5,
+    centeredSlides: true,
+    loop: true,
+    spaceBetween: 10,
+    autoplay: true
+  }
+
+  @ViewChild('popover') popover: any;
 
   isOpen = false;
 
@@ -64,7 +73,7 @@ export class CarriereelevePage implements OnInit {
     });
   }
 
-  //LA METHODE PERMETTANT DE NAVIGUER VERS LA PAGE SUIVANYE
+  //LA METHODE PERMETTANT DE NAVIGUER VERS LA PAGE DETAILS AUTO
   goToDettailAuto(id: number) {
     console.log(id);
     return this.route.navigate(['tabs/detailsautoevaluationeleve', id])

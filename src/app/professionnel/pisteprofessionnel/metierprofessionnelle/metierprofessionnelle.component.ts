@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MetiersService } from 'src/app/services/metiers/metiers.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-metierprofessionnelle',
@@ -11,6 +12,7 @@ export class MetierprofessionnelleComponent implements OnInit {
 
   metier : any
   searchText:any;
+  image: string = environment.imageUrl
   p:number=1
   constructor(public service: MetiersService, private route: Router) { }
 

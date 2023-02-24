@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AutoevaluationService } from 'src/app/services/autoevaluation/autoevaluation.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-detailsautoevaluationeleve',
@@ -14,6 +15,7 @@ export class DetailsautoevaluationelevePage implements OnInit {
   Auto: any
   parcours : any
   totalparcoursproposee: number = 0;
+  image: string = environment.imageUrl
 
   option={
     slidesPervView:1.5,
