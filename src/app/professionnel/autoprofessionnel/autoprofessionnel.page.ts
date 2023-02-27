@@ -42,8 +42,13 @@ export class AutoprofessionnelPage implements OnInit {
     this.User = this.storageService.getUser()
     console.log(this.User)
 
-    //AFFICHER AUTO RECENTE ETUDIANT FILIERE APRES AUTOEVALUATION EFFECTUEE
-    this.service.AutorecenteProfessionnel(this.User.id).subscribe(data => {
+   
+  }
+  ionViewWillEnter() {
+    this.roles = this.storageService.getUser().roles;
+    this.User = this.storageService.getUser()
+     //AFFICHER AUTO RECENTE ETUDIANT FILIERE APRES AUTOEVALUATION EFFECTUEE
+     this.service.AutorecenteProfessionnel(this.User.id).subscribe(data => {
       this.autorecenteformation = data;
       console.log(this.autorecenteformation);
       for (const t of this.autorecenteformation) {
@@ -59,21 +64,20 @@ export class AutoprofessionnelPage implements OnInit {
     })
   }
 
-  ionViewDidEnter() {
-    if (this.refreshData) {
-      // Code pour actualiser les données nécessaires pour la page
-      this.service.AutorecenteProfessionnel(this.User.id).subscribe(data => {
-        this.autorecenteformation = data;
-        console.log(this.autorecenteformation);
+  // ionViewDidEnter() {
+  //   if (this.refreshData) {
+  //     this.service.AutorecenteProfessionnel(this.User.id).subscribe(data => {
+  //       this.autorecenteformation = data;
+  //       console.log(this.autorecenteformation);
 
-      })
-      this.refreshData = false;
-    }
-  }
+  //     })
+  //     this.refreshData = false;
+  //   }
+  // }
 
-  ionViewWillLeave() {
-    this.refreshData = true;
-  }
+  // ionViewWillLeave() {
+  //   this.refreshData = true;
+  // }
 
   //METHODE PERMETTANT DE SE DECONNECTER
   logout(): void {

@@ -72,23 +72,26 @@ export class InscriptProfessionnelPage implements OnInit {
   }
 
   popUp() {
+    let timerInterval = 3000;
     Swal.fire({
       position:'center',
       text: 'Compte creé avec success!!',
       icon:'success',
       heightAuto: false,
-      showConfirmButton: true,
-      confirmButtonText: "OK",
+      showConfirmButton: false,
+      // confirmButtonText: "OK",
       confirmButtonColor: '#0857b5',
       showDenyButton: false,
       showCancelButton: false,
-      allowOutsideClick: false
+      allowOutsideClick: false,
+      timer: timerInterval, // ajouter le temps d'attente
+      timerProgressBar: true // ajouter la barre de progression du temps
     }).then((result) => {
-      if (result.isConfirmed) {
+      // if (result.isConfirmed) {
         this.route.navigateByUrl('/connexion', {skipLocationChange: true}).then(() => {
           this.route.navigate(["/connexion"])
         })
-      }
+      // }
     })
 
   }

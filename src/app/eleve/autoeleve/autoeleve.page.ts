@@ -36,7 +36,6 @@ export class AutoelevePage implements OnInit {
     private storageService: StorageService,
     private service: AutoevaluationService,
     private route: Router) {
-    this.ionViewWillLeave();
   }
   p: number = 1;
   pi: number = 1;
@@ -70,12 +69,7 @@ export class AutoelevePage implements OnInit {
       console.log(this.auto)
     })
 
-    //AFFICHER LA LISTE DES AUTO EVALUATION PAR UTILISATEUR
-    this.service.AfficherLaListeAutoUser(this.User.id).subscribe(data => {
-      // this.auto = data;
-      this.autoevaluationsEffectuees = data.length
-      // console.log(this.auto)
-    })
+    
 
     //AFFICHER PARCOURS LYCEE APRES AUTOEVALUATION EFFECTUEE
     // this.service.AfficherParcoursLycce(this.User.id).subscribe(data=>{
@@ -84,25 +78,19 @@ export class AutoelevePage implements OnInit {
     // })
 
     //AFFICHER AUTO RECENTE LYCEE APRES AUTOEVALUATION EFFECTUEE
-    this.service.AutoRecenteLycee(this.User.id).subscribe(data => {
-      this.autorecentelycee = data;
-      this.totaleserieproposee = data.length;
-      console.log(this.image + "parcours/" + this.autorecentelycee[0].imageparcours)
-      console.log(this.autorecentelycee)
-      // for (const t of this.autorecentelycee) {
-      //   this.totaleserieproposee += 1;
-      // }
-    })
+    // this.service.AutoRecenteLycee(this.User.id).subscribe(data => {
+    //   this.autorecentelycee = data;
+    //   this.totaleserieproposee = data.length;
+    //   console.log(this.image + "parcours/" + this.autorecentelycee[0].imageparcours)
+    //   console.log(this.autorecentelycee)
+    // })
 
     //AFFICHER AUTO RECENTE ECOLE PROFESSIONNELLE APRES AUTOEVALUATION EFFECTUEE
-    this.service.AutoRecenteeProf(this.User.id).subscribe(data => {
-      this.autorecenteeprof = data;
-      this.totalprofproposee = data.length;
-      console.log(this.autorecenteeprof)
-      // for (const t of this.autorecenteeprof) {
-      //   this.totalprofproposee += 1;
-      // }
-    })
+    // this.service.AutoRecenteeProf(this.User.id).subscribe(data => {
+    //   this.autorecenteeprof = data;
+    //   this.totalprofproposee = data.length;
+    //   console.log(this.autorecenteeprof)
+    // })
 
     //AFFICHER PARCOURS LYCEE APRES AUTOEVALUATION EFFECTUEE
     // this.service.AfficherParcoursEcoleProfessionnelle(this.User.id).subscribe(data=>{
@@ -110,29 +98,30 @@ export class AutoelevePage implements OnInit {
     //   console.log(this.parcoursecoleprofessionnel)
     // })
   }
+  ionViewWillEnter() {
+    this.roles = this.storageService.getUser().roles;
+    this.User = this.storageService.getUser();
+    //AFFICHER AUTO RECENTE LYCEE APRES AUTOEVALUATION EFFECTUEE
+    this.service.AutoRecenteLycee(this.User.id).subscribe(data => {
+      this.autorecentelycee = data;
+      this.totaleserieproposee = data.length;
+      console.log(this.autorecentelycee)
+    })
 
-  ionViewDidEnter() {
-    if (this.refreshData) {
-      // Code pour actualiser les données nécessaires pour la page
-      //AFFICHER AUTO RECENTE LYCEE APRES AUTOEVALUATION EFFECTUEE
-      this.service.AutoRecenteLycee(this.User.id).subscribe(data => {
-        this.autorecentelycee = data;
-        this.totaleserieproposee = data.length;
-        console.log(this.autorecentelycee)
-      })
+    //AFFICHER AUTO RECENTE ECOLE PROFESSIONNELLE APRES AUTOEVALUATION EFFECTUEE
+    this.service.AutoRecenteeProf(this.User.id).subscribe(data => {
+      this.autorecenteeprof = data;
+      console.log(this.autorecenteeprof)
+      this.totalprofproposee = data.length;
+    })
 
-      //AFFICHER AUTO RECENTE ECOLE PROFESSIONNELLE APRES AUTOEVALUATION EFFECTUEE
-      this.service.AutoRecenteeProf(this.User.id).subscribe(data => {
-        this.autorecenteeprof = data;
-        console.log(this.autorecenteeprof)
-      })
-      this.refreshData = false;
-    }
+    //AFFICHER LA LISTE DES AUTO EVALUATION PAR UTILISATEUR
+    this.service.AfficherLaListeAutoUser(this.User.id).subscribe(data => {
+      this.autoevaluationsEffectuees = data.length
+    })
+
   }
 
-  ionViewWillLeave() {
-    this.refreshData = true;
-  }
 
   //METHODE PERMETTANT DE SE DECONNECTER
   logout(): void {
