@@ -8,16 +8,16 @@
   <div class="gride" *ngFor="let Metier of metier | filter:searchText">
     <a (click)="goToDettailMetiers(Metier.id)" style="text-decoration: none;">
       <ion-card class="crd">
-        <div class="row image" style="height: 20vh !important;">
+        <div class="row image" style="height: 17vh !important;">
           <div class="monimage" style="background-image:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url({{image}}metiers/{{Metier.imagemetier}}); object-fit: fill !important; width: 100%; height: auto;">
             <div class="tt">
-              <p>{{Metier.nommetier}}</p>
+              <p style="font-size: 20px;">{{Metier.nommetier}}</p>
               <img src="" alt="">
             </div>
           </div>
         </div>
         
-        <div class="tti" style="text-align: center; font-weight: bold; font-size: 16px; background: #00A5E4; color: white;">
+        <div class="tti" style="text-align: center;height: 4vh; font-weight: bold; font-size: 23px; background: #00A5E4; color: white;">
           Savoir plus
         </div>
       </ion-card>

@@ -211,7 +211,7 @@ export class AutoevaluationetudiantPage implements OnInit {
     }).then((result) => {
       if (result.isConfirmed) {
         this.ResultatAuto();
-        this.showLoading();
+        // this.showLoading();
         // this.ionViewWillEnter();
         this.route.navigateByUrl('/tab2/autoetudiant', { skipLocationChange: true }).then(() => {
           this.route.navigate(["/tab2/autoetudiant"])

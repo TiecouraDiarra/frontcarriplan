@@ -14,6 +14,7 @@ import { environment } from 'src/environments/environment';
 export class DetailsparcoursPage implements OnInit {
 
   parcours : any
+  nombremetier:number=0
   metier : any
   matiere : any
   id :  any
@@ -54,6 +55,7 @@ export class DetailsparcoursPage implements OnInit {
      //RECUPERER LES METIERS EN FONCTION D'UN PARCOURS
      this.service.RecupererMetierParParcours(this.id).subscribe(data => {
       this.metier = data;
+      this.nombremetier = data.length
     })
 
      //RECUPERER LES MATIERES EN FONCTION D'UN PARCOURS

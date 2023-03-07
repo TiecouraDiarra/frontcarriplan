@@ -61,7 +61,7 @@ export class AutoevaluationelevePage implements OnInit {
     this.service.AfficherLaListeQuestionEleve().subscribe(data => {
 
       this.questions = data;
-      console.log(this.questions)
+      // console.log(this.questions)
     })
   }
 
@@ -70,7 +70,7 @@ export class AutoevaluationelevePage implements OnInit {
     this.service.faireAuto(this.answers, this.idUser.id).subscribe({
       next: data => {
         this.answers = data;
-        console.log(data);
+        // console.log(data);
         this.isSuccessful = true;
         this.isSignUpFailed = false;
         // this.ResultatAuto();
@@ -88,10 +88,10 @@ export class AutoevaluationelevePage implements OnInit {
   ResultatAuto(){
     this.service.AfficherParcoursLycce(this.idUser.id).subscribe(data=>{
       this.parcoursecoleprofessionnel = data;
-      console.log(this.parcoursecoleprofessionnel)
+      // console.log(this.parcoursecoleprofessionnel)
     })
     this.service.AfficherParcoursEcoleProfessionnelle(this.idUser.id).subscribe(data=>{
-      console.log(data)
+      // console.log(data)
     })
   }
   
@@ -145,7 +145,7 @@ export class AutoevaluationelevePage implements OnInit {
     }).then((result) => {
       if (result.isConfirmed) {
         this.ResultatAuto();
-        this.showLoading();
+        // this.showLoading();
         
         this.route.navigateByUrl('/tabs/autoeleve', {skipLocationChange: true}).then(() => {
           this.route.navigate(["/tabs/autoeleve"])

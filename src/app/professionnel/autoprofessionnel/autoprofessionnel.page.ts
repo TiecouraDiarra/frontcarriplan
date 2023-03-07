@@ -50,10 +50,8 @@ export class AutoprofessionnelPage implements OnInit {
      //AFFICHER AUTO RECENTE ETUDIANT FILIERE APRES AUTOEVALUATION EFFECTUEE
      this.service.AutorecenteProfessionnel(this.User.id).subscribe(data => {
       this.autorecenteformation = data;
+      this.totaleformationproposee = data.length
       console.log(this.autorecenteformation);
-      for (const t of this.autorecenteformation) {
-        this.totaleformationproposee += 1;
-      }
     })
 
     //AFFICHER LA LISTE DES AUTO EVALUATION PAR UTILISATEUR
